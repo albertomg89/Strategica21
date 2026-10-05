@@ -661,6 +661,9 @@ html,body{overflow-x:clip}
 .tbl-wrap.card{padding-top:46px!important}
 .tbl-wrap.card > .tools{top:8px;right:10px}
 @media (max-width:560px){ .hero h1{font-size:min(22px,5.15vw)} }
+/* titolo: a capo dopo la prima frase */
+.hero h1 .h1l{display:block}
+.hero h1.flow .h1l{display:inline}
 @media (max-width:980px){ .tbl-wrap.card{padding-top:8px!important} .tbl-wrap.card > .tools{margin-right:8px} }
 .s60by{font-size:12.5px;color:var(--muted);margin:0 0 4px}
 /* larghezza piena e fonti su una riga */
@@ -720,7 +723,7 @@ html,body{overflow-x:clip}
 
 <div class="hero" id="tesi">
   <div class="kick"><span class="wm big">strategica<b>21</b></span><span class="kdiv"></span>Osservatorio sul consumatore europeo · edizione di settembre 2026</div>
-  <h1>Il consumatore europeo è più prudente. L'Italia è ferma sui beni.</h1>
+  <h1><span class="h1l">Il consumatore europeo è più prudente.</span> <span class="h1l">L'Italia è ferma sui beni.</span></h1>
   <div class="s60 card" data-title="strategica21 in 60 secondi" data-src="Eurostat, Commissione europea (luglio–settembre 2026)">
     <div class="s60h">In 60 secondi</div>
     <div class="s60k">
@@ -1675,6 +1678,16 @@ function padHeaders(){
   document.querySelectorAll('.card').forEach(c=>{ const t=c.querySelector(':scope > .tools'); const h=c.querySelector(':scope > header, :scope > h3'); if(!t||!h) return;
     h.style.paddingRight = mob ? '' : (t.getBoundingClientRect().width + 14)+'px'; });
 }
+/* titolo: ogni frase su una riga; se lo schermo è troppo stretto torna al testo continuo */
+function fitTitle(){
+  const h=document.querySelector('.hero h1'); if(!h) return; const ls=[...h.querySelectorAll('.h1l')]; if(!ls.length) return;
+  h.classList.remove('flow'); h.style.fontSize='';
+  const base=parseFloat(getComputedStyle(h).fontSize), min=Math.max(18, base*0.8);
+  const one=()=>{ const lh=parseFloat(getComputedStyle(h).lineHeight); return ls.every(l=>l.getBoundingClientRect().height < lh*1.5); };
+  let f=base; while(!one() && f-0.5>=min){ f-=0.5; h.style.fontSize=f+'px'; }
+  if(!one()){ h.style.fontSize=''; h.classList.add('flow'); }
+}
+fitTitle(); window.addEventListener('resize', fitTitle); document.fonts && document.fonts.ready.then(fitTitle);
 function equalize(){
   padHeaders();
   /* commento sotto il numero: sempre su una riga */
