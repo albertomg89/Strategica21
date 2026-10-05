@@ -661,6 +661,12 @@ html,body{overflow-x:clip}
 .tbl-wrap.card{padding-top:46px!important}
 .tbl-wrap.card > .tools{top:8px;right:10px}
 @media (max-width:560px){ .hero h1{font-size:min(22px,5.15vw)} }
+/* riquadri numerici: stessi margini interni in ogni cella, a ogni larghezza */
+.kpi > div,.stats > div{padding:18px 18px 18px 20px!important}
+@media (max-width:980px){ .kpi > div,.stats > div{padding:14px 12px 14px 14px!important} }
+/* griglie di numeri dentro le schede: stesso margine sinistro di titolo e testo */
+.panel > dl{margin-left:4px;margin-right:4px}
+@media (max-width:980px){ .uscn dl > div:last-child:nth-child(odd){grid-column:1/-1} }
 /* titolo: a capo dopo la prima frase */
 .hero h1 .h1l{display:block}
 .hero h1.flow .h1l{display:inline}
