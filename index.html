@@ -667,6 +667,8 @@ html,body{overflow-x:clip}
 /* griglie di numeri dentro le schede: stesso margine sinistro di titolo e testo */
 .panel > dl{margin-left:4px;margin-right:4px}
 @media (max-width:980px){ .uscn dl > div:last-child:nth-child(odd){grid-column:1/-1} }
+/* etichette Paese: stesso bordo sinistro anche quando vanno a capo */
+.flags .cb,.cbs .cb,.pendl .cb{margin-left:0!important}
 /* titolo: a capo dopo la prima frase */
 .hero h1 .h1l{display:block}
 .hero h1.flow .h1l{display:inline}
