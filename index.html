@@ -1021,10 +1021,8 @@ html,body{overflow-x:clip}
       <p class="disc"><b>Disclaimer.</b> Contenuti a scopo informativo. Non costituiscono consulenza sugli investimenti né raccomandazioni su strumenti finanziari. Le interpretazioni sono dell'autore.</p>
       <h4>Documenti e rilasci ufficiali</h4><ol id="srcs"></ol>
       <h4>Fonti dei singoli grafici</h4><ol id="src-charts"></ol>
-      <h4>API gratuite per l'aggiornamento automatico</h4><ol id="apis"></ol>
     </div>
   </details>
-  <p class="note2">Per aggiornare i dati chiedi a Claude, nel progetto, di aggiornare strategica21.</p>
 </section>
 </div>
 </div>
@@ -1401,13 +1399,12 @@ function drawScen(){
 $("seg").addEventListener("click", e=>{ const b=e.target.closest("button"); if(!b) return; cur=b.dataset.id; drawScen(); $("seg").querySelector(`[data-id="${cur}"]`).focus(); });
 
 function drawApis(){
-  $("apis").innerHTML = D.apis.map(a=>`<li><b>${esc(a.n)}</b>: ${esc(a.w)} <code>${esc(a.e)}</code> <span class="mut">${esc(a.note)}</span></li>`).join('');
   const docs = [...D.srcs, ["SEC EDGAR, bilanci depositati (10-Q, 10-K) delle società USA","https://www.sec.gov/edgar/search/"]];
   $("srcs").innerHTML = docs.map(([t,u])=>`<li><a href="${u}" target="_blank" rel="noopener">${esc(t)}</a></li>`).join('');
   const charts = [...document.querySelectorAll('.card[data-src]')].filter(c=>c.id!=='g7card').map(c=>[c.dataset.title, c.dataset.src]);
   const seen = new Set(); const uniq = charts.filter(([t,x])=>{ const k=t+x; if(seen.has(k)) return false; seen.add(k); return true; });
   $("src-charts").innerHTML = uniq.map(([t,x])=>`<li><b>${esc(t)}</b>: ${esc(x)}</li>`).join('');
-  $("src-count").textContent = (docs.length + uniq.length + D.apis.length) + " voci";
+  $("src-count").textContent = (docs.length + uniq.length) + " voci";
 }
 
 function srcLine(sv){ if(!sv) return ""; return `<div class="s"><a href="${sv[1]}" target="_blank" rel="noopener">${esc(sv[0])}</a><span class="tag2 ${sv[2]}">${sv[2]==='p'?'primaria':'secondaria'}</span></div>`; }
