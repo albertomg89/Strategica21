@@ -673,6 +673,18 @@ html,body{overflow-x:clip}
 @media (max-width:980px){ .uscn dl > div:last-child:nth-child(odd){grid-column:1/-1} }
 /* etichette Paese: stesso bordo sinistro anche quando vanno a capo */
 .flags .cb,.cbs .cb,.pendl .cb{margin-left:0!important}
+/* informativa privacy in finestra */
+.linkbtn{font:inherit;color:var(--val);background:none;border:0;padding:0;cursor:pointer;text-decoration:underline;text-underline-offset:2px}
+.privdlg{width:min(640px,calc(100vw - 32px));max-height:min(86vh,720px);padding:0;border:1px solid var(--rule);border-top:5px solid var(--val);background:var(--panel);color:var(--ink);overflow:hidden}
+.privdlg[open]{display:flex;flex-direction:column}
+.privdlg::backdrop{background:rgba(8,16,31,.55)}
+.privhead{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 22px 12px;border-bottom:1px solid var(--rule)}
+.privhead h3{font-family:var(--serif);font-size:20px;font-weight:600;margin:0}
+.privx{font:inherit;font-size:13px;font-weight:650;color:var(--ink);background:var(--panel);border:1px solid var(--rule);padding:6px 12px;cursor:pointer;border-radius:2px}
+.privx:hover{border-color:var(--ink)}
+.privbody{padding:14px 22px 18px;overflow-y:auto;font-size:14.5px;line-height:1.55}
+.privbody p{margin:0 0 10px}
+.privbody .privupd{font-size:12.5px;color:var(--muted);margin:14px 0 0}
 /* titolo: a capo dopo la prima frase */
 .hero h1 .h1l{display:block}
 .hero h1.flow .h1l{display:inline}
@@ -991,8 +1003,21 @@ html,body{overflow-x:clip}
     <p class="abio">Strategy executive nei settori consumer e luxury, con un percorso che unisce consulenza strategica, imprenditoria e pianificazione strategica in azienda. Lavora su crescita, redditività e modello operativo, con un approccio che combina analisi finanziaria e conoscenza del consumatore. Formazione in finanza in Università Bocconi ed Executive MBA in SDA Bocconi.</p>
     <div class="alinks"><a class="btnl" href="https://www.linkedin.com/in/amgizzi/" target="_blank" rel="noopener">Segui su LinkedIn</a></div>
     <p class="acopy">strategica21 è un progetto personale, indipendente e gratuito. © 2026 Alberto Maria Gizzi</p>
-    <p class="acopy">Questo sito non usa cookie né strumenti di tracciamento o di pubblicità. Le visite sono contate in forma anonima e aggregata; la scelta del tema chiaro o scuro resta salvata solo nel tuo browser.</p>
+    <p class="acopy">Questo sito non usa cookie né strumenti di tracciamento o di pubblicità. <button type="button" class="linkbtn" id="privOpen" aria-haspopup="dialog">Privacy</button></p>
   </div>
+  <dialog id="privDlg" class="privdlg" aria-labelledby="privT">
+    <div class="privhead"><h3 id="privT">Privacy</h3><button type="button" class="privx" id="privClose" aria-label="Chiudi">Chiudi</button></div>
+    <div class="privbody">
+      <p><b>Titolare del trattamento.</b> Alberto Maria Gizzi. Per ogni richiesta puoi scrivermi su <a href="https://www.linkedin.com/in/amgizzi/" target="_blank" rel="noopener">LinkedIn</a>.</p>
+      <p><b>Navigazione.</b> Per mostrarti il sito, il fornitore di hosting (Netlify) tratta l'indirizzo IP e i dati tecnici della richiesta, per erogare il servizio e garantirne la sicurezza.</p>
+      <p><b>Statistiche di visita.</b> Per ogni visita registro la pagina aperta, il sito di provenienza, il tipo di dispositivo e un identificativo anonimo che cambia ogni giorno e non permette di riconoscerti nei giorni successivi. L'indirizzo IP non viene conservato. I dati sono su server nell'Unione europea e servono solo a contare le visite.</p>
+      <p><b>Preferenze.</b> La scelta del tema chiaro o scuro resta nel tuo browser e non viene trasmessa.</p>
+      <p><b>Cosa non faccio.</b> Nessun cookie, nessuna profilazione, nessuna pubblicità, nessuna cessione dei dati a terzi.</p>
+      <p><b>Base giuridica e conservazione.</b> Legittimo interesse a far funzionare il sito e a misurarne l'uso in forma aggregata. I dati di visita sono conservati per 12 mesi, poi cancellati; restano solo i totali giornalieri.</p>
+      <p><b>I tuoi diritti.</b> Puoi chiedere accesso, rettifica, cancellazione o opporti al trattamento scrivendomi al contatto indicato sopra, e proporre reclamo al Garante per la protezione dei dati personali.</p>
+      <p class="privupd">Ultimo aggiornamento: 6 ottobre 2026.</p>
+    </div>
+  </dialog>
 </section>
 
 <section id="note" aria-labelledby="h-note">
@@ -1739,6 +1764,14 @@ equalize(); window.addEventListener('load',equalize); let eqt; window.addEventLi
   const u = new URLSearchParams(location.search).get('utm_source') || '';
   fetch('https://skdjrclpzhizzneusiqg.supabase.co/functions/v1/pv', { method:'POST', keepalive:true, headers:{'Content-Type':'application/json'}, body: JSON.stringify({ p: location.pathname, r, u, w: window.innerWidth }) }).catch(()=>{});
 } catch {} })();
+</script>
+<script>
+/* finestra privacy */
+(() => { const d=document.getElementById('privDlg'), o=document.getElementById('privOpen'), c=document.getElementById('privClose'); if(!d||!o) return;
+  o.addEventListener('click', () => { if (d.showModal) d.showModal(); else d.setAttribute('open',''); });
+  c.addEventListener('click', () => { if (d.close) d.close(); else d.removeAttribute('open'); });
+  d.addEventListener('click', e => { if (e.target === d && d.close) d.close(); });
+})();
 </script>
 </body>
 </html>
