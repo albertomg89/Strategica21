@@ -686,8 +686,8 @@ html,body{overflow-x:clip}
 .privbody p{margin:0 0 10px}
 .privbody .privupd{font-size:12.5px;color:var(--muted);margin:14px 0 0}
 /* titoli-conclusione sui grafici: la conclusione in alto, la metrica come sottotitolo */
-.panel header h3.atitle{font-size:18px;line-height:1.28;font-weight:600;text-wrap:balance}
-.panel header .metric{font-size:13px;font-weight:650;color:var(--ink);margin-top:6px;line-height:1.35}
+.panel header h3.atitle{font-size:18px;line-height:1.28;font-weight:600;text-wrap:balance;padding-bottom:11px;border-bottom:1px solid var(--rule)}
+.panel header .metric{font-size:13px;font-weight:650;color:var(--ink);margin-top:10px;line-height:1.35}
 .panel header .metric + .sub{margin-top:1px}
 @media (max-width:560px){ .panel header h3.atitle{font-size:17px} }
 @media (min-width:981px){ .panel.card > header.ah{padding-right:4px;padding-top:34px} }
@@ -1707,7 +1707,7 @@ function equalize(){
   padHeaders();
   /* commento sotto il numero: sempre su una riga */
   { const ems=[...document.querySelectorAll('.s60k em')]; let f=13; const set=v=>ems.forEach(e=>e.style.fontSize=v+'px'); set(f); while(ems.some(e=>e.scrollWidth>e.clientWidth+0.5) && f>11.5){ f-=0.25; set(f); } }
-  const sets=[['.grid2 > .panel',['header','.legend']],['.exec > article',['header']],['.cats > .cat',['h3','p']],['#kpi > div',['span']],['.s60k > div',['span','.s60p','em']],['.uscn dl > div',['dt']],['.dgk > div',['dt']]];
+  const sets=[['.grid2 > .panel',['header > h3.atitle','header > .metric','header > .sub','header','.legend']],['.exec > article',['header']],['.cats > .cat',['h3','p']],['#kpi > div',['span']],['.s60k > div',['span','.s60p','em']],['.uscn dl > div',['dt']],['.dgk > div',['dt']]];
   sets.forEach(([sel,parts])=>{ const els=[...document.querySelectorAll(sel)];
     parts.forEach(pt=>els.forEach(e=>{const x=e.querySelector(':scope > '+pt); if(x) x.style.minHeight='';}));
     const rows={}; els.forEach(e=>{ const k=Math.round(e.getBoundingClientRect().top+scrollY); (rows[k]=rows[k]||[]).push(e); });
