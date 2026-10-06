@@ -685,6 +685,25 @@ html,body{overflow-x:clip}
 .privbody{padding:14px 22px 18px;overflow-y:auto;font-size:14.5px;line-height:1.55}
 .privbody p{margin:0 0 10px}
 .privbody .privupd{font-size:12.5px;color:var(--muted);margin:14px 0 0}
+/* titoli-conclusione sui grafici: la conclusione in alto, la metrica come sottotitolo */
+.panel header h3.atitle{font-size:18px;line-height:1.28;font-weight:600;text-wrap:balance}
+.panel header .metric{font-size:13px;font-weight:650;color:var(--ink);margin-top:6px;line-height:1.35}
+.panel header .metric + .sub{margin-top:1px}
+@media (max-width:560px){ .panel header h3.atitle{font-size:17px} }
+@media (min-width:981px){ .panel.card > header.ah{padding-right:4px;padding-top:34px} }
+/* firma accanto al titolo */
+.byline{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 18px;margin:16px 0 0;font-size:14px;color:var(--muted)}
+.byline b{color:var(--ink);font-weight:650}
+.byline a{color:var(--val)}
+/* agenda con stato */
+.cal2 li{grid-template-columns:140px minmax(0,1fr) auto;align-items:start}
+.cal2 .st{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;padding:2px 8px;border:1px solid var(--rule);color:var(--muted);align-self:start}
+.cal2 li.past{opacity:.55}
+.cal2 li.next{background:var(--fcbg)}
+.cal2 li.next .st{color:#fff;background:var(--val);border-color:var(--val)}
+@media (max-width:980px){ .cal2 li{grid-template-columns:1fr;gap:4px} .cal2 .st{justify-self:start;order:-1} }
+/* minuti di lettura nel menu */
+.side nav a em.rt{font-style:normal;font-size:11.5px;color:var(--side-mut);font-variant-numeric:tabular-nums}
 /* titolo: a capo dopo la prima frase */
 .hero h1 .h1l{display:block}
 .hero h1.flow .h1l{display:inline}
@@ -702,7 +721,7 @@ html,body{overflow-x:clip}
 .s60k span{font-weight:650;color:var(--ink);min-height:2.6em}
 .s60k em{display:block;white-space:nowrap;overflow:hidden}
 .catdef{margin:0 0 16px;max-width:none}
-.grid2 > .panel > .dgk{flex:1 1 auto;grid-auto-rows:1fr;margin-top:8px}
+.grid2 > .panel > .dgk{flex:1 1 auto;grid-auto-rows:1fr;margin-top:4px}
 .grid2 > .panel > .dgk dd{font-size:30px}
 .grid2 .panel.card > header{min-height:0}
 .grid2 .panel.card > .legend:empty{min-height:0;padding:0}
@@ -716,17 +735,17 @@ html,body{overflow-x:clip}
 <aside class="side" id="side" aria-label="Sezioni dell'osservatorio">
   <div class="side-brand"><div class="sigbar"></div><div class="brandrow"><span class="wm">strategica<b>21</b></span></div><div class="d">Osservatorio sul consumatore europeo</div></div>
   <nav id="sidenav">
-    <div class="grp"><i></i>Quadro</div>
+    <div class="grp"><i></i>Per decidere</div>
     <a href="#tesi" data-sec="tesi"><span>Tesi del mese</span></a>
+    <a href="#categorie" data-sec="categorie"><span>Implicazioni per categoria</span></a>
+    <div class="grp"><i></i>Quadro</div>
     <a href="#europa" data-sec="europa"><span>Il consumatore europeo</span></a>
     <a href="#italia" data-sec="italia"><span>Focus Italia</span></a>
     <a href="#digitale" data-sec="digitale"><span>Il consumatore digitale</span></a>
     <a href="#usacn" data-sec="usacn"><span>Stati Uniti e Cina</span></a>
     <a href="#mercati" data-sec="mercati"><span>Cambi e titoli di Stato</span></a>
-    <div class="grp"><i></i>Per le aziende</div>
-    <a href="#categorie" data-sec="categorie"><span>Implicazioni per categoria</span></a>
+    <div class="grp"><i></i>Aziende e mercato</div>
     <a href="#aziende" data-sec="aziende"><span>Aziende europee</span></a>
-    <div class="grp"><i></i>Mercato</div>
     <a href="#agenda" data-sec="agenda"><span>Agenda</span></a>
     <div class="grp"><i></i>Riferimenti</div>
     <a href="#autore" data-sec="autore"><span>Autore</span></a>
@@ -748,6 +767,7 @@ html,body{overflow-x:clip}
 <div class="hero" id="tesi">
   <div class="kick"><span class="wm big">strategica<b>21</b></span><span class="kdiv"></span>Osservatorio sul consumatore europeo · edizione di settembre 2026</div>
   <h1><span class="h1l">Il consumatore europeo è più prudente.</span> <span class="h1l">L'Italia è ferma sui beni.</span></h1>
+  <p class="byline"><b>Alberto Maria Gizzi</b><span>Strategy executive, consumer e luxury</span><span>Dati da fonti primarie · <a href="#fonti">metodo</a></span></p>
   <div class="s60 card" data-title="strategica21 in 60 secondi" data-src="Eurostat, Commissione europea (luglio–settembre 2026)">
     <div class="s60h">In 60 secondi</div>
     <div class="s60k">
@@ -777,128 +797,6 @@ html,body{overflow-x:clip}
     </article>
   </div>
 </div>
-
-<section id="europa" aria-labelledby="h-eu">
-  <div class="sec-h"><h2 id="h-eu">Il consumatore europeo</h2><p class="srcl">Fonti: Eurostat, Commissione europea; Regno Unito: ONS.</p></div>
-  <div class="tbl-wrap card" data-title="Il consumatore europeo, tabella di confronto" data-src="Eurostat, Commissione europea, ONS (luglio–agosto 2026)"><table class="eut" id="eu-tbl"></table></div>
-  <p class="note2" id="eu-note"></p>
-  <div class="grid2" style="margin-top:20px">
-    <div class="panel card" data-src="Eurostat sts_trtu_m (G47_X_G473, NETTUR e VOL_SLS, dati corretti per i giorni lavorativi)" data-title="Vendite al dettaglio esclusi carburanti: valore contro volume, var. % annua"><header><h3>Vendite al dettaglio esclusi carburanti: valore contro volume, var. % annua</h3><div class="sub">Media maggio–luglio 2026 su stesso periodo 2025 · la distanza tra i punti è l'effetto prezzo</div></header>
-      <div class="legend"><span><i class="sw box" style="background:var(--val)"></i>Valore</span><span><i class="sw box" style="border:2.5px solid var(--vol)"></i>Volume</span><span><i class="sw box" style="background:var(--gap)"></i>Effetto prezzo</span></div>
-      <div class="chart" id="c-eu-vv"></div>
-      <p class="read"><b>Al netto dei carburanti l'effetto prezzo è di 1,2 punti</b> nell'area euro e di 1,5 in Italia (+1,9% contro +0,4%), circa metà di quanto indica il dato complessivo. <b>In Francia la crescita è tutta quantità.</b></p></div>
-    <div class="panel card" data-src="Eurostat sts_trtu_m (G47_FOOD e G47_NFOOD_X_G473)" data-title="Alimentari contro non alimentari, var. % annua a volume"><header><h3>Alimentari contro non alimentari, var. % annua a volume</h3><div class="sub">Media maggio–luglio 2026 su stesso periodo 2025</div></header>
-      <div class="legend"><span><i class="sw box" style="background:var(--val)"></i>Alimentari</span><span><i class="sw box" style="background:var(--vol)"></i>Non alimentari</span></div>
-      <div class="chart" id="c-eu-fnf"></div>
-      <p class="read"><b>In Italia calano solo gli alimentari</b> (−0,5%), mentre i non alimentari crescono (+1,1%); in Germania entrambi fermi, in Francia crescono entrambi. <b>L'italiano risparmia sulla spesa di tutti i giorni, non sul discrezionale.</b></p></div>
-    <div class="panel card" data-src="Eurostat prc_hicp_minr (ECOICOP ver. 2)" data-title="Prezzi per categoria di consumo, var. % annua"><header><h3>Prezzi per categoria di consumo, var. % annua</h3><div class="sub">Agosto 2026 su agosto 2025 · Italia e area euro, energia esclusa</div></header>
-      <div class="legend"><span><i class="sw box" style="background:var(--val)"></i>Italia</span><span><i class="sw box" style="background:var(--s4)"></i>Area euro</span></div>
-      <div class="chart" id="c-eu-cat"></div>
-      <p class="read"><b>Fuori dall'energia i prezzi sono quasi fermi</b>: abbigliamento +0,1% in Italia, cura della persona +1,3%. <b>Lo spazio per rincari di listino è minimo</b>, salvo marche con vantaggio distintivo.</p></div>
-    <div class="panel card" data-src="Commissione europea via Eurostat ei_bsco_m" data-title="Fiducia dei consumatori, saldo"><header><h3>Fiducia dei consumatori, saldo</h3><div class="sub">Gennaio 2025–agosto 2026 · Commissione europea</div></header>
-      <div class="legend"><span id="lg-cc"></span></div>
-      <div class="chart" id="c-eu-cc"></div>
-      <p class="read">Lo shock di <b>marzo–aprile 2026</b> è comune; il recupero no. <b>L'Italia resta la più pessimista</b>. La stima flash di settembre per l'area euro (<b>−16,5</b>) interrompe quattro mesi di recupero.</p></div>
-    <div class="panel card" data-src="Eurostat prc_hicp_minr (ECOICOP ver. 2)" data-title="Energia contro alimentari, var. % annua"><header><h3>Energia contro alimentari, var. % annua</h3><div class="sub">Agosto 2026 su agosto 2025 · indice armonizzato</div></header>
-      <div class="legend"><span><i class="sw box" style="background:var(--neg)"></i>Energia</span><span><i class="sw box" style="background:var(--vol)"></i>Alimentari</span></div>
-      <div class="chart" id="c-eu-px"></div>
-      <p class="read"><b>Energia a doppia cifra ovunque tranne in Germania</b>, alimentari sotto il 2,5%. Il colpo arriva dalle bollette, non dal carrello.</p></div>
-    <div class="panel card" data-src="Eurostat nasq_10_ki; ONS NRJS" data-title="Propensione al risparmio delle famiglie, %"><header><h3>Propensione al risparmio delle famiglie, %</h3><div class="sub">Q1 2026 · % del reddito disponibile lordo (Regno Unito: definizione ONS)</div></header>
-      <div class="legend"></div>
-      <div class="chart" id="c-eu-sv"></div>
-      <p class="read"><b>Tedeschi e francesi hanno un cuscinetto</b> (17–19% del reddito); <b>italiani e spagnoli molto meno</b> (11%). A parità di shock, chi risparmia poco taglia prima i consumi.</p></div>
-  </div>
-</section>
-
-<section id="italia" aria-labelledby="h-italia">
-  <div class="sec-h"><h2 id="h-italia">Focus Italia</h2><p class="srcl">Fonti: Eurostat, Commissione europea, Istat, BCE.</p></div>
-  <div class="kpi" id="kpi"></div>
-  <div class="grid2" style="margin-top:20px">
-<div class="panel card" data-src="Istat, conti economici trimestrali; Q1 2026 come rivisto (OCSE, 26 agosto 2026); trimestri 2025 da elaborazioni Confcommercio su dati Istat" data-title="Pil, variazione % sul trimestre precedente"><header><h3>Pil, variazione % sul trimestre precedente</h3><div class="sub">Dati destagionalizzati · Q2 2025–Q2 2026 · crescita acquisita 2026: +0,8%</div></header>
-      <div class="legend"></div>
-      <div class="chart" id="c-gdp"></div>
-      <p class="read"><b>Quattro trimestri di crescita lenta dopo lo stallo del Q2 2025</b>, trainata da servizi e consumi. La crescita già acquisita (<b>0,8%</b>) supera la previsione Istat di giugno (0,7%): <b>rischio al rialzo sull'anno</b>, se l'energia non peggiora.</p></div>
-<div class="panel card" data-src="Istat, conti economici trimestrali, Q2 2026" data-title="Spesa delle famiglie per tipo di bene, var. % sul trimestre precedente"><header><h3>Spesa delle famiglie per tipo di bene, var. % sul trimestre precedente</h3><div class="sub">Q2 2026 su Q1 2026</div></header>
-      <div class="legend"></div>
-      <div class="chart" id="c-hh"></div>
-      <p class="read">Tengono <b>durevoli (+0,9%) e servizi (+0,4%)</b>, fermi i <b>beni non durevoli</b> (alimentari, cura casa e persona): proprio <b>il perimetro del largo consumo</b>.</p></div>
-    <div class="panel card" data-src="Eurostat une_rt_m" data-title="Tasso di disoccupazione, Italia e area euro, %"><header><h3>Tasso di disoccupazione, Italia e area euro, %</h3><div class="sub">Gennaio 2025–luglio 2026 · destagionalizzato</div></header>
-      <div class="legend"><span><i class="sw box" style="background:var(--val)"></i>Italia</span><span><i class="sw box" style="background:var(--s4)"></i>Area euro</span></div>
-      <div class="chart" id="c-it-un"></div>
-      <p class="read"><b>Il lavoro tiene</b>: disoccupazione italiana sotto la media dell'area euro. Il freno ai consumi non è l'occupazione ma <b>il potere d'acquisto e la fiducia</b>.</p></div>
-
-<div class="panel card" data-src="BCE, decisioni del 30 aprile, 11 giugno, 23 luglio e 10 settembre 2026" data-title="Tasso BCE sui depositi, %"><header><h3>Tasso BCE sui depositi, %</h3><div class="sub">Fine mese, gennaio–settembre 2026</div></header>
-      <div class="legend"></div>
-      <div class="chart" id="c-ecb"></div>
-      <p class="read"><b>Due rialzi da 25 punti base</b> (giugno e settembre) contro l'inflazione energetica. Rate di mutui variabili e credito al consumo più cari: <b>frena soprattutto i beni durevoli finanziati a rate</b>.</p></div>
-<div class="panel card" data-src="Istat (5 giugno 2026), Banca d'Italia (12 giugno 2026), BCE (10 settembre 2026)" data-title="Previsioni ufficiali"><header><h3>Previsioni ufficiali, var. % annua</h3><div class="sub">Pil, consumi e inflazione 2026–2027 · Italia salvo BCE (area euro) · Istat e Banca d'Italia a giugno, prima del rialzo BCE di settembre</div></header>
-      <div class="legend" id="lg-fc"></div>
-      <div class="chart" id="c-fc"></div>
-      <p class="read">Consenso su <b>Pil tra 0,5% e 0,7% nel 2026</b> e consumi in rallentamento a +0,6%. Lo spartiacque è l'inflazione: <b>2,9–3,1% nel 2026, verso il 2% nel 2027</b>. Budget 2027 su <b>volumi piatti e prezzi in normalizzazione</b>.</p></div>
-<div class="panel card" data-src="Istat, Banca d'Italia, BCE (giugno–settembre 2026)" data-title="Tabella delle previsioni"><header><h3>Tabella delle previsioni</h3><div class="sub">Valori in var. % annua</div></header>
-      <div class="legend"></div>
-      <div class="chart tblbox" id="fc-tblbox"><table class="fct"><thead><tr><th>Indicatore</th><th>2025</th><th>2026</th><th>2027</th><th>Fonte</th></tr></thead><tbody id="fc-tbl"></tbody></table></div>
-      <p class="read">La <b>crescita acquisita dell'Italia (0,8%)</b> è già sopra la stima Istat: il rischio sulle previsioni 2026 è <b>al rialzo sulla crescita e sull'inflazione</b>.</p></div>
-  </div>
-  <h3 class="subh">Abitudini e intenzioni di acquisto, settembre 2026</h3>
-  <div class="stats" id="stats"></div>
-  <p class="note2">Fonte: <a href="https://www.osservatoriofindomestic.it/osservatorio-mensile/barometro.html" target="_blank" rel="noopener">Osservatorio Findomestic, Barometro di settembre 2026</a>. Indagine mensile sulle intenzioni di acquisto degli italiani.</p>
-</section>
-
-<section id="digitale" aria-labelledby="h-dig">
-  <div class="sec-h"><h2 id="h-dig">Il consumatore digitale</h2><p class="srcl">Fonti: Eurostat, ONS, Netcomm–PoliMi, Casaleggio Associati.</p></div>
-  <div class="grid2">
-    <div class="panel card" data-src="Eurostat sts_trtu_m (G4791 e G47_X_G473)" data-title="Vendite online contro vendite totali, var. % annua a volume"><header><h3>Vendite online contro vendite totali, var. % annua a volume</h3><div class="sub">Media maggio–luglio 2026 su stesso periodo 2025 (Francia: aprile–giugno)</div></header>
-      <div class="legend"><span><i class="sw box" style="background:var(--val)"></i>Online</span><span><i class="sw box" style="background:var(--s4)"></i>Totale commercio al dettaglio, esclusi carburanti</span></div>
-      <div class="chart" id="c-dg-vol"></div>
-      <p class="read"><b>L'online cresce ovunque molto più del totale.</b> In Italia <b>+12,4% contro +0,4%</b>: la domanda non sparisce, <b>cambia canale</b>.</p></div>
-
-    <div class="panel card" data-src="Eurostat isoc_ec_ib20" data-title="Persone che hanno comprato online negli ultimi 12 mesi, %"><header><h3>Persone che hanno comprato online negli ultimi 12 mesi, %</h3><div class="sub">2025 · individui tra 16 e 74 anni</div></header>
-      <div class="legend"></div>
-      <div class="chart" id="c-dg-buy"></div>
-      <p class="read"><b>L'Italia è ancora indietro di 17 punti</b> rispetto alla media UE (56% contro 74%), ma recupera: <b>+7 punti dal 2022</b>. È il bacino di crescita più ampio tra i grandi Paesi.</p></div>
-
-    <div class="panel card" data-src="Casaleggio Associati, E-commerce in Italia 2026" data-title="E-commerce in Italia per categoria, var. % annua"><header><h3>E-commerce in Italia per categoria, var. % annua</h3><div class="sub">2025 su 2024 · mercato online totale 90,6 mld €, +6%</div></header>
-      <div class="legend"></div>
-      <div class="chart" id="c-dg-cat"></div>
-      <p class="read">Vincono <b>salute e bellezza (+24%) e marketplace (+16%)</b>; arretrano casa e animali. La crescita si concentra dove <b>assortimento e prezzo si confrontano facilmente</b>.</p></div>
-
-    <div class="panel card" data-title="Numeri chiave dell'online" data-src="Osservatorio eCommerce B2c Netcomm–PoliMi (maggio 2026); ONS J4MC; Eurostat isoc_ec_ib20"><header><h3>Numeri chiave dell'online</h3><div class="sub">Italia e confronto con il Regno Unito</div></header>
-      <div class="legend"></div>
-      <dl class="dgk"><div><dt>Acquisti online di prodotti, Italia</dt><dd>42,6 mld €<small>stima 2026, +6% (Netcomm–PoliMi)</small></dd></div>
-        <div><dt>Penetrazione dell'online sul retail di prodotto, Italia</dt><dd>11,5%<small>stima 2026 (Netcomm–PoliMi)</small></dd></div>
-        <div><dt>Quota online sulle vendite al dettaglio, Regno Unito</dt><dd>27,3%<small>agosto 2026, era 26,1% un anno fa (ONS)</small></dd></div>
-        <div><dt>Italiani che comprano online</dt><dd>56%<small>2025, contro 74% UE (Eurostat)</small></dd></div></dl>
-      <p class="read">Il Regno Unito mostra il punto di arrivo: <b>oltre un quarto delle vendite al dettaglio passa dall'online</b>. L'Italia, con una misura non identica ma comparabile, è a meno della metà.</p></div>
-  </div>
-  <div class="take card" data-title="La lettura del mese" data-src="strategica21"><div class="sigbar"></div><h3>La lettura del mese</h3>
-    <p>Mentre le vendite totali crescono poco, <b>l'online cresce a doppia cifra in Italia e tra il 4% e l'8% negli altri grandi Paesi dell'area euro</b>. Per chi guida un brand consumer il tema non è se investire nel digitale, ma <b>dove si sposta il margine</b>: i marketplace catturano la crescita, i costi di acquisizione salgono e la visibilità nei cataloghi letti dagli assistenti AI diventa una nuova leva di distribuzione. <b>Chi presidia oggi il canale diretto e i dati di prima parte difende il margine domani.</b></p>
-    <p class="by">© 2026 Alberto Maria Gizzi</p></div>
-</section>
-
-<section id="usacn" aria-labelledby="h-uscn">
-  <div class="sec-h"><h2 id="h-uscn">Stati Uniti e Cina</h2><p class="srcl">Fonti: Census Bureau, BLS, Università del Michigan, Federal Reserve, NBS.</p></div>
-  <div class="uscn" id="uscn"></div>
-  <p class="note2"><b>Note.</b> USA: vendite al dettaglio a valore, a prezzi correnti (il Census non pubblica il dato a volume); fiducia Università del Michigan. Cina: vendite al dettaglio a prezzi correnti, disoccupazione urbana da indagine. Tasso cinese non pubblicato finché non verificato sulla fonte ufficiale.</p>
-</section>
-
-<section id="mercati" aria-labelledby="h-mk">
-  <div class="sec-h"><h2 id="h-mk">Cambi e titoli di Stato</h2><p class="srcl">Fonti: BCE, Deutsche Bundesbank, Tesoro degli Stati Uniti.</p></div>
-  <div class="crit card" data-title="Perché contano per i consumi" data-src="strategica21; Documento programmatico di finanza pubblica (2 ottobre 2026)"><h3>Perché contano per i consumi</h3>
-    <p><b>Rendimenti.</b> Quando i rendimenti dei titoli di Stato salgono, soprattutto sulle scadenze lunghe, lo Stato paga più interessi sul debito che rinnova: restano meno risorse per investimenti e per misure di sostegno alle famiglie. Con un debito al 138,1% del Pil nel 2026<sup class="ast">*</sup>, per l'Italia ogni aumento pesa più che altrove. <b>Cambi.</b> Un euro più debole rende più care le importazioni in dollari e in yuan (energia, materie prime, prodotti finiti) e più competitivo l'export europeo; un euro più forte fa il contrario.</p></div>
-  <div class="grid2" style="margin-top:20px">
-    <div class="panel card" data-src="BCE, tassi di interesse a lungo termine armonizzati (IRS)" data-title="Rendimento dei titoli di Stato a 10 anni, %"><header><h3>Rendimento dei titoli di Stato a 10 anni, %</h3><div class="sub">Media mensile, gennaio 2025–agosto 2026</div></header>
-      <div class="legend" id="lg-mk-y"></div>
-      <div class="chart" id="c-mk-y"></div>
-      <p class="read"><b>In un anno i rendimenti a 10 anni sono saliti di circa mezzo punto in tutta l'area euro.</b> Italia 3,99% (da 3,54%), Francia 4,00% (da 3,42%): <b>la Francia ha raggiunto l'Italia</b>. La distanza tra Italia e Germania è di 0,80 punti (0,86 un anno fa).</p></div>
-    <div class="panel card" data-src="BCE, cambi di riferimento dell'euro (EXR)" data-title="Euro contro le principali valute, var. % a un anno"><header><h3>Euro contro le principali valute, var. % a un anno</h3><div class="sub">2 ottobre 2026 su 2 ottobre 2025 · valori negativi = euro più debole</div></header>
-      <div class="legend"></div>
-      <div class="chart" id="c-mk-fx"></div>
-      <p class="read"><b>L'euro si è indebolito contro dollaro (−4,5%) e yuan (−10,1%)</b>: un euro vale 1,12 dollari e 7,53 yuan. <b>Importare dalla Cina e in dollari costa di più</b>; chi esporta fuori dall'area euro guadagna competitività.</p></div>
-  </div>
-  <div class="tbl-wrap card" style="margin-top:20px" data-title="Rendimenti dei titoli di Stato a 10 e 30 anni" data-src="BCE (IRS e curve dei rendimenti), Deutsche Bundesbank, Tesoro degli Stati Uniti"><table class="eut" id="mk-tbl"></table></div>
-  <p class="note2">Rendimenti in % annua; variazioni in punti percentuali rispetto a un anno prima. Italia, Francia e Spagna: media mensile di agosto 2026, ultimo dato armonizzato BCE. Italia a 30 anni: non riportato, perché il Tesoro pubblica solo i rendimenti d'asta e non una serie giornaliera accessibile. <sup class="ast">*</sup> Debito/Pil: Documento programmatico di finanza pubblica approvato il 2 ottobre 2026; doppio riscontro, in attesa del testo ufficiale.</p>
-</section>
 
 <section id="categorie" aria-labelledby="h-cat">
   <div class="sec-h"><h2 id="h-cat">Implicazioni per categoria</h2></div>
@@ -931,46 +829,169 @@ html,body{overflow-x:clip}
   </div>
 </section>
 
+<section id="europa" aria-labelledby="h-eu">
+  <div class="sec-h"><h2 id="h-eu">Il consumatore europeo</h2><p class="srcl">Fonti: Eurostat, Commissione europea; Regno Unito: ONS.</p></div>
+  <div class="tbl-wrap card" data-title="Il consumatore europeo, tabella di confronto" data-src="Eurostat, Commissione europea, ONS (luglio–agosto 2026)"><table class="eut" id="eu-tbl"></table></div>
+  <p class="note2" id="eu-note"></p>
+  <div class="grid2" style="margin-top:20px">
+    <div class="panel card" data-src="Eurostat sts_trtu_m (G47_X_G473, NETTUR e VOL_SLS, dati corretti per i giorni lavorativi)" data-title="Vendite al dettaglio esclusi carburanti: valore contro volume, var. % annua"><header class="ah"><h3 class="atitle">Al netto dei carburanti l'effetto prezzo è di 1,2 punti nell'area euro e di 1,5 in Italia.</h3><div class="metric">Vendite al dettaglio esclusi carburanti: valore contro volume, var. % annua</div><div class="sub">Media maggio–luglio 2026 su stesso periodo 2025 · la distanza tra i punti è l'effetto prezzo</div></header>
+      <div class="legend"><span><i class="sw box" style="background:var(--val)"></i>Valore</span><span><i class="sw box" style="border:2.5px solid var(--vol)"></i>Volume</span><span><i class="sw box" style="background:var(--gap)"></i>Effetto prezzo</span></div>
+      <div class="chart" id="c-eu-vv"></div>
+      <p class="read">In Italia <b>+1,9% a valore contro +0,4% a volume</b>: circa metà di quanto indica il dato complessivo. <b>In Francia la crescita è tutta quantità.</b></p></div>
+    <div class="panel card" data-src="Eurostat sts_trtu_m (G47_FOOD e G47_NFOOD_X_G473)" data-title="Alimentari contro non alimentari, var. % annua a volume"><header class="ah"><h3 class="atitle">In Italia calano gli alimentari (−0,5%) e crescono i non alimentari (+1,1%).</h3><div class="metric">Alimentari contro non alimentari, var. % annua a volume</div><div class="sub">Media maggio–luglio 2026 su stesso periodo 2025</div></header>
+      <div class="legend"><span><i class="sw box" style="background:var(--val)"></i>Alimentari</span><span><i class="sw box" style="background:var(--vol)"></i>Non alimentari</span></div>
+      <div class="chart" id="c-eu-fnf"></div>
+      <p class="read">In Germania entrambi fermi, in Francia crescono entrambi. <b>L'italiano risparmia sulla spesa di tutti i giorni, non sul discrezionale.</b></p></div>
+    <div class="panel card" data-src="Eurostat prc_hicp_minr (ECOICOP ver. 2)" data-title="Prezzi per categoria di consumo, var. % annua"><header class="ah"><h3 class="atitle">Fuori dall'energia i prezzi sono quasi fermi: poco spazio per rincari di listino.</h3><div class="metric">Prezzi per categoria di consumo, var. % annua</div><div class="sub">Agosto 2026 su agosto 2025 · Italia e area euro, energia esclusa</div></header>
+      <div class="legend"><span><i class="sw box" style="background:var(--val)"></i>Italia</span><span><i class="sw box" style="background:var(--s4)"></i>Area euro</span></div>
+      <div class="chart" id="c-eu-cat"></div>
+      <p class="read">Abbigliamento <b>+0,1%</b> in Italia, cura della persona <b>+1,3%</b>. Fanno eccezione le marche con vantaggio distintivo.</p></div>
+    <div class="panel card" data-src="Commissione europea via Eurostat ei_bsco_m" data-title="Fiducia dei consumatori, saldo"><header class="ah"><h3 class="atitle">La fiducia è tornata a scendere a settembre; l'Italia resta la più pessimista.</h3><div class="metric">Fiducia dei consumatori, saldo</div><div class="sub">Gennaio 2025–agosto 2026 · Commissione europea</div></header>
+      <div class="legend"><span id="lg-cc"></span></div>
+      <div class="chart" id="c-eu-cc"></div>
+      <p class="read">Lo shock di <b>marzo–aprile 2026</b> è comune; il recupero no. La stima flash di settembre per l'area euro (<b>−16,5</b>) interrompe quattro mesi di recupero.</p></div>
+    <div class="panel card" data-src="Eurostat prc_hicp_minr (ECOICOP ver. 2)" data-title="Energia contro alimentari, var. % annua"><header class="ah"><h3 class="atitle">Il rincaro arriva dalle bollette, non dal carrello.</h3><div class="metric">Energia contro alimentari, var. % annua</div><div class="sub">Agosto 2026 su agosto 2025 · indice armonizzato</div></header>
+      <div class="legend"><span><i class="sw box" style="background:var(--neg)"></i>Energia</span><span><i class="sw box" style="background:var(--vol)"></i>Alimentari</span></div>
+      <div class="chart" id="c-eu-px"></div>
+      <p class="read"><b>Energia a doppia cifra ovunque tranne in Germania</b>, alimentari sotto il 2,5%.</p></div>
+    <div class="panel card" data-src="Eurostat nasq_10_ki; ONS NRJS" data-title="Propensione al risparmio delle famiglie, %"><header class="ah"><h3 class="atitle">Italiani e spagnoli risparmiano l'11% del reddito, tedeschi e francesi il 17–19%.</h3><div class="metric">Propensione al risparmio delle famiglie, %</div><div class="sub">Q1 2026 · % del reddito disponibile lordo (Regno Unito: definizione ONS)</div></header>
+      <div class="legend"></div>
+      <div class="chart" id="c-eu-sv"></div>
+      <p class="read">A parità di shock, chi ha meno risparmio ha <b>meno margine per assorbire i rincari</b>.</p></div>
+  </div>
+</section>
+
+<section id="italia" aria-labelledby="h-italia">
+  <div class="sec-h"><h2 id="h-italia">Focus Italia</h2><p class="srcl">Fonti: Eurostat, Commissione europea, Istat, BCE.</p></div>
+  <div class="kpi" id="kpi"></div>
+  <div class="grid2" style="margin-top:20px">
+<div class="panel card" data-src="Istat, conti economici trimestrali; Q1 2026 come rivisto (OCSE, 26 agosto 2026); trimestri 2025 da elaborazioni Confcommercio su dati Istat" data-title="Pil, variazione % sul trimestre precedente"><header class="ah"><h3 class="atitle">Italia: quattro trimestri di crescita lenta dopo lo stallo del Q2 2025.</h3><div class="metric">Pil, variazione % sul trimestre precedente</div><div class="sub">Dati destagionalizzati · Q2 2025–Q2 2026 · crescita acquisita 2026: +0,8%</div></header>
+      <div class="legend"></div>
+      <div class="chart" id="c-gdp"></div>
+      <p class="read">Trainata da servizi e consumi. La crescita già acquisita (<b>0,8%</b>) supera la previsione Istat di giugno (0,7%): <b>rischio al rialzo sull'anno</b>, se l'energia non peggiora.</p></div>
+<div class="panel card" data-src="Istat, conti economici trimestrali, Q2 2026" data-title="Spesa delle famiglie per tipo di bene, var. % sul trimestre precedente"><header class="ah"><h3 class="atitle">Fermi i beni non durevoli: è il perimetro del largo consumo.</h3><div class="metric">Spesa delle famiglie per tipo di bene, var. % sul trimestre precedente</div><div class="sub">Q2 2026 su Q1 2026</div></header>
+      <div class="legend"></div>
+      <div class="chart" id="c-hh"></div>
+      <p class="read">Tengono <b>durevoli (+0,9%) e servizi (+0,4%)</b>; fermi alimentari, cura della casa e della persona.</p></div>
+    <div class="panel card" data-src="Eurostat une_rt_m" data-title="Tasso di disoccupazione, Italia e area euro, %"><header class="ah"><h3 class="atitle">Il lavoro tiene, ma la disoccupazione italiana è risalita al 5,8%.</h3><div class="metric">Tasso di disoccupazione, Italia e area euro, %</div><div class="sub">Gennaio 2025–luglio 2026 · destagionalizzato</div></header>
+      <div class="legend"><span><i class="sw box" style="background:var(--val)"></i>Italia</span><span><i class="sw box" style="background:var(--s4)"></i>Area euro</span></div>
+      <div class="chart" id="c-it-un"></div>
+      <p class="read">Era al 5,4% a maggio; resta sotto la media dell'area euro (6,4%). Il freno ai consumi non è l'occupazione ma <b>il potere d'acquisto e la fiducia</b>.</p></div>
+
+<div class="panel card" data-src="BCE, decisioni del 30 aprile, 11 giugno, 23 luglio e 10 settembre 2026" data-title="Tasso BCE sui depositi, %"><header class="ah"><h3 class="atitle">Due rialzi BCE da 25 punti base: rate più care, frenano i durevoli a credito.</h3><div class="metric">Tasso BCE sui depositi, %</div><div class="sub">Fine mese, gennaio–settembre 2026</div></header>
+      <div class="legend"></div>
+      <div class="chart" id="c-ecb"></div>
+      <p class="read">Giugno e settembre, contro l'inflazione energetica. Mutui variabili e credito al consumo costano di più: <b>pesa soprattutto sui beni durevoli finanziati a rate</b>.</p></div>
+<div class="panel card" data-src="Istat (5 giugno 2026), Banca d'Italia (12 giugno 2026), BCE (10 settembre 2026)" data-title="Previsioni ufficiali"><header class="ah"><h3 class="atitle">Previsioni: Pil tra 0,5% e 0,7% nel 2026, inflazione verso il 2% nel 2027.</h3><div class="metric">Previsioni ufficiali, var. % annua</div><div class="sub">Pil, consumi e inflazione 2026–2027 · Italia salvo BCE (area euro) · Istat e Banca d'Italia a giugno, prima del rialzo BCE di settembre</div></header>
+      <div class="legend" id="lg-fc"></div>
+      <div class="chart" id="c-fc"></div>
+      <p class="read">Consumi in rallentamento a +0,6%. Lo spartiacque è l'inflazione: <b>2,9–3,1% nel 2026</b>. Budget 2027 su <b>volumi piatti e prezzi in normalizzazione</b>.</p></div>
+<div class="panel card" data-src="Istat, Banca d'Italia, BCE (giugno–settembre 2026)" data-title="Tabella delle previsioni"><header class="ah"><h3 class="atitle">La crescita acquisita dell'Italia (0,8%) è già sopra la stima Istat.</h3><div class="metric">Tabella delle previsioni</div><div class="sub">Valori in var. % annua</div></header>
+      <div class="legend"></div>
+      <div class="chart tblbox" id="fc-tblbox"><table class="fct"><thead><tr><th>Indicatore</th><th>2025</th><th>2026</th><th>2027</th><th>Fonte</th></tr></thead><tbody id="fc-tbl"></tbody></table></div>
+      <p class="read">Il rischio sulle previsioni 2026 è <b>al rialzo sulla crescita e sull'inflazione</b>.</p></div>
+  </div>
+  <h3 class="subh">Abitudini e intenzioni di acquisto, settembre 2026</h3>
+  <div class="stats" id="stats"></div>
+  <p class="note2">Fonte: <a href="https://www.osservatoriofindomestic.it/osservatorio-mensile/barometro.html" target="_blank" rel="noopener">Osservatorio Findomestic, Barometro di settembre 2026</a>. Indagine mensile sulle intenzioni di acquisto degli italiani.</p>
+</section>
+
+<section id="digitale" aria-labelledby="h-dig">
+  <div class="sec-h"><h2 id="h-dig">Il consumatore digitale</h2><p class="srcl">Fonti: Eurostat, ONS, Netcomm–PoliMi, Casaleggio Associati.</p></div>
+  <div class="grid2">
+    <div class="panel card" data-src="Eurostat sts_trtu_m (G4791 e G47_X_G473)" data-title="Vendite online contro vendite totali, var. % annua a volume"><header class="ah"><h3 class="atitle">L'online cresce ovunque più del totale: in Italia +12,4% contro +0,4%.</h3><div class="metric">Vendite online contro vendite totali, var. % annua a volume</div><div class="sub">Media maggio–luglio 2026 su stesso periodo 2025 (Francia: aprile–giugno)</div></header>
+      <div class="legend"><span><i class="sw box" style="background:var(--val)"></i>Online</span><span><i class="sw box" style="background:var(--s4)"></i>Totale commercio al dettaglio, esclusi carburanti</span></div>
+      <div class="chart" id="c-dg-vol"></div>
+      <p class="read">La domanda non sparisce, <b>cambia canale</b>.</p></div>
+
+    <div class="panel card" data-src="Eurostat isoc_ec_ib20" data-title="Persone che hanno comprato online negli ultimi 12 mesi, %"><header class="ah"><h3 class="atitle">Compra online il 56% degli italiani, contro il 74% della media UE.</h3><div class="metric">Persone che hanno comprato online negli ultimi 12 mesi, %</div><div class="sub">2025 · individui tra 16 e 74 anni</div></header>
+      <div class="legend"></div>
+      <div class="chart" id="c-dg-buy"></div>
+      <p class="read"><b>Il ritardo è di 17 punti</b>, ma l'Italia recupera: <b>+7 punti dal 2022</b>. È il bacino di crescita più ampio tra i grandi Paesi.</p></div>
+
+    <div class="panel card" data-src="Casaleggio Associati, E-commerce in Italia 2026" data-title="E-commerce in Italia per categoria, var. % annua"><header class="ah"><h3 class="atitle">Online in Italia: vincono salute e bellezza (+24%) e marketplace (+16%).</h3><div class="metric">E-commerce in Italia per categoria, var. % annua</div><div class="sub">2025 su 2024 · mercato online totale 90,6 mld €, +6%</div></header>
+      <div class="legend"></div>
+      <div class="chart" id="c-dg-cat"></div>
+      <p class="read">Arretrano casa e animali. La crescita si concentra dove <b>assortimento e prezzo si confrontano facilmente</b>.</p></div>
+
+    <div class="panel card" data-title="Numeri chiave dell'online" data-src="Osservatorio eCommerce B2c Netcomm–PoliMi (maggio 2026); ONS J4MC; Eurostat isoc_ec_ib20"><header class="ah"><h3 class="atitle">Nel Regno Unito oltre un quarto delle vendite passa dall'online; in Italia meno della metà.</h3><div class="metric">Numeri chiave dell'online</div><div class="sub">Italia e confronto con il Regno Unito</div></header>
+      <div class="legend"></div>
+      <dl class="dgk"><div><dt>Acquisti online di prodotti, Italia</dt><dd>42,6 mld €<small>stima 2026, +6% (Netcomm–PoliMi)</small></dd></div>
+        <div><dt>Penetrazione dell'online sul retail di prodotto, Italia</dt><dd>11,5%<small>stima 2026 (Netcomm–PoliMi)</small></dd></div>
+        <div><dt>Quota online sulle vendite al dettaglio, Regno Unito</dt><dd>27,3%<small>agosto 2026, era 26,1% un anno fa (ONS)</small></dd></div>
+        <div><dt>Italiani che comprano online</dt><dd>56%<small>2025, contro 74% UE (Eurostat)</small></dd></div></dl>
+      <p class="read"><b>27,3% contro 11,5%</b>, con misure non identiche ma comparabili: il Regno Unito mostra il punto di arrivo.</p></div>
+  </div>
+  <div class="take card" data-title="La lettura del mese" data-src="strategica21"><div class="sigbar"></div><h3>La lettura del mese</h3>
+    <p>Mentre le vendite totali crescono poco, <b>l'online cresce a doppia cifra in Italia e tra il 4% e l'8% negli altri grandi Paesi dell'area euro</b>. Per chi guida un brand consumer il tema non è se investire nel digitale, ma <b>dove si sposta il margine</b>: i marketplace catturano la crescita, i costi di acquisizione salgono e la visibilità nei cataloghi letti dagli assistenti AI diventa una nuova leva di distribuzione. <b>Chi presidia oggi il canale diretto e i dati di prima parte difende il margine domani.</b></p>
+    <p class="by">© 2026 Alberto Maria Gizzi</p></div>
+</section>
+
+<section id="usacn" aria-labelledby="h-uscn">
+  <div class="sec-h"><h2 id="h-uscn">Stati Uniti e Cina</h2><p class="srcl">Fonti: Census Bureau, BLS, Università del Michigan, Federal Reserve, NBS.</p></div>
+  <div class="uscn" id="uscn"></div>
+  <p class="note2"><b>Note.</b> USA: vendite al dettaglio a valore, a prezzi correnti (il Census non pubblica il dato a volume); fiducia Università del Michigan. Cina: vendite al dettaglio a prezzi correnti, disoccupazione urbana da indagine. Tasso cinese non pubblicato finché non verificato sulla fonte ufficiale.</p>
+</section>
+
+<section id="mercati" aria-labelledby="h-mk">
+  <div class="sec-h"><h2 id="h-mk">Cambi e titoli di Stato</h2><p class="srcl">Fonti: BCE, Deutsche Bundesbank, Tesoro degli Stati Uniti.</p></div>
+  <div class="crit card" data-title="Perché contano per i consumi" data-src="strategica21; Documento programmatico di finanza pubblica (2 ottobre 2026)"><h3>Perché contano per i consumi</h3>
+    <p><b>Rendimenti.</b> Quando i rendimenti dei titoli di Stato salgono, soprattutto sulle scadenze lunghe, lo Stato paga più interessi sul debito che rinnova: restano meno risorse per investimenti e per misure di sostegno alle famiglie. Con un debito al 138,1% del Pil nel 2026<sup class="ast">*</sup>, per l'Italia ogni aumento pesa più che altrove. <b>Cambi.</b> Un euro più debole rende più care le importazioni in dollari e in yuan (energia, materie prime, prodotti finiti) e più competitivo l'export europeo; un euro più forte fa il contrario.</p></div>
+  <div class="grid2" style="margin-top:20px">
+    <div class="panel card" data-src="BCE, tassi di interesse a lungo termine armonizzati (IRS)" data-title="Rendimento dei titoli di Stato a 10 anni, %"><header class="ah"><h3 class="atitle">In un anno i rendimenti a 10 anni sono saliti di circa mezzo punto in tutta l'area euro.</h3><div class="metric">Rendimento dei titoli di Stato a 10 anni, %</div><div class="sub">Media mensile, gennaio 2025–agosto 2026</div></header>
+      <div class="legend" id="lg-mk-y"></div>
+      <div class="chart" id="c-mk-y"></div>
+      <p class="read">Italia 3,99% (da 3,54%), Francia 4,00% (da 3,42%): <b>la Francia ha raggiunto l'Italia</b>. La distanza tra Italia e Germania è di 0,80 punti (0,86 un anno fa).</p></div>
+    <div class="panel card" data-src="BCE, cambi di riferimento dell'euro (EXR)" data-title="Euro contro le principali valute, var. % a un anno"><header class="ah"><h3 class="atitle">L'euro si è indebolito contro dollaro (−4,5%) e yuan (−10,1%).</h3><div class="metric">Euro contro le principali valute, var. % a un anno</div><div class="sub">2 ottobre 2026 su 2 ottobre 2025 · valori negativi = euro più debole</div></header>
+      <div class="legend"></div>
+      <div class="chart" id="c-mk-fx"></div>
+      <p class="read">Un euro vale 1,12 dollari e 7,53 yuan. <b>Importare dalla Cina e in dollari costa di più</b>; chi esporta fuori dall'area euro guadagna competitività.</p></div>
+  </div>
+  <div class="tbl-wrap card" style="margin-top:20px" data-title="Rendimenti dei titoli di Stato a 10 e 30 anni" data-src="BCE (IRS e curve dei rendimenti), Deutsche Bundesbank, Tesoro degli Stati Uniti"><table class="eut" id="mk-tbl"></table></div>
+  <p class="note2">Rendimenti in % annua; variazioni in punti percentuali rispetto a un anno prima. Italia, Francia e Spagna: media mensile di agosto 2026, ultimo dato armonizzato BCE. Italia a 30 anni: non riportato, perché il Tesoro pubblica solo i rendimenti d'asta e non una serie giornaliera accessibile. <sup class="ast">*</sup> Debito/Pil: Documento programmatico di finanza pubblica approvato il 2 ottobre 2026; doppio riscontro, in attesa del testo ufficiale.</p>
+</section>
+
+
 <section id="aziende" aria-labelledby="h-az">
   <div class="sec-h"><h2 id="h-az">Aziende europee</h2><p class="srcl">Fonti: comunicati e relazioni finanziarie delle società, link in tabella.</p></div>
   <h3 class="subh">Consumer staples: prezzo/mix contro volumi</h3>
   <div class="grid2">
-    <div class="panel card" data-src="Comunicati e bilanci di Nestlé, Unilever, Danone, AB InBev, Heineken" data-title="Crescita organica dei ricavi scomposta, var. % annua"><header><h3>Crescita organica dei ricavi scomposta, var. % annua</h3><div class="sub">H1 2026 su H1 2025 · dato di gruppo, tutti i mercati</div></header>
+    <div class="panel card" data-src="Comunicati e bilanci di Nestlé, Unilever, Danone, AB InBev, Heineken" data-title="Crescita organica dei ricavi scomposta, var. % annua"><header class="ah"><h3 class="atitle">A livello di gruppo il prezzo pesa più dei volumi in 4 casi su 5.</h3><div class="metric">Crescita organica dei ricavi scomposta, var. % annua</div><div class="sub">H1 2026 su H1 2025 · dato di gruppo, tutti i mercati</div></header>
       <div class="legend"><span><i class="sw box" style="background:var(--val)"></i>Prezzo/mix</span><span><i class="sw box" style="background:var(--vol)"></i>Volumi</span></div>
       <div class="chart" id="c-st"></div>
-      <p class="read"><b>A livello di gruppo il prezzo pesa più dei volumi in 4 casi su 5</b>, ma il dato include i mercati emergenti. <b>In Europa il quadro è più debole</b>: Nestlé +2,7% con volumi +0,5%, Unilever −0,9% con prezzi −0,6% e volumi −0,2%.</p></div>
+      <p class="read">Ma il dato include i mercati emergenti. <b>In Europa il quadro è più debole</b>: Nestlé +2,7% con volumi +0,5%, Unilever −0,9% con prezzi −0,6% e volumi −0,2%.</p></div>
 
-    <div class="panel card" data-title="Consumer staples, tabella" data-src="Comunicati e relazioni semestrali delle società (luglio–agosto 2026)"><header><h3>Consumer staples, dettaglio</h3><div class="sub">H1 2026 su H1 2025 · var. % organica dei ricavi, totale ed Europa dove dichiarata</div></header>
+    <div class="panel card" data-title="Consumer staples, tabella" data-src="Comunicati e relazioni semestrali delle società (luglio–agosto 2026)"><header class="ah"><h3 class="atitle">In Europa crescere è più difficile che nel resto del mondo.</h3><div class="metric">Consumer staples, dettaglio</div><div class="sub">H1 2026 su H1 2025 · var. % organica dei ricavi, totale ed Europa dove dichiarata</div></header>
       <div class="legend"></div>
       <div class="chart tblbox" id="st-tblbox"><table class="fct" id="st-tbl"></table></div>
-      <p class="read"><b>In Europa crescere è più difficile che nel resto del mondo</b>: Nestlé +2,7% contro +3,6% di gruppo, Unilever −0,9% contro +4,8%, Campari +1,9% contro +2,7%.</p></div>
+      <p class="read">Nestlé <b>+2,7%</b> contro +3,6% di gruppo, Unilever <b>−0,9%</b> contro +4,8%, Campari <b>+1,9%</b> contro +2,7%.</p></div>
   </div>
   <h3 class="subh">Lusso: l'Europa contro le Americhe</h3>
   <div class="grid2">
-    <div class="panel card" data-src="Comunicati delle società" data-title="Ricavi in Europa, var. % organica annua"><header><h3>Ricavi in Europa, var. % organica annua</h3><div class="sub">H1 2026 su H1 2025 (gennaio–giugno)</div></header>
+    <div class="panel card" data-src="Comunicati delle società" data-title="Ricavi in Europa, var. % organica annua"><header class="ah"><h3 class="atitle">Lusso in Europa: crescono Hermès e Cucinelli, calano Moncler, Prada e Ferragamo.</h3><div class="metric">Ricavi in Europa, var. % organica annua</div><div class="sub">H1 2026 su H1 2025 (gennaio–giugno)</div></header>
       <div class="legend"></div>
       <div class="chart" id="c-lx-eu"></div>
-      <p class="read"><b>In Europa crescono Hermès</b> (+8,8%, Francia esclusa) <b>e Cucinelli</b> (+5,3%); <b>Zegna è quasi ferma</b> (+1,5%); <b>calano Moncler e Prada</b> (−4%) <b>e Ferragamo</b> (−8,6%).</p></div>
+      <p class="read">Hermès <b>+8,8%</b> (Francia esclusa), Cucinelli <b>+5,3%</b>, Zegna quasi ferma (+1,5%); Moncler e Prada <b>−4%</b>, Ferragamo <b>−8,6%</b>.</p></div>
 
-    <div class="panel card" data-src="Comunicati delle società" data-title="Crescita organica dei ricavi: Europa meno Americhe, punti percentuali"><header><h3>Crescita organica dei ricavi: Europa meno Americhe, punti percentuali</h3><div class="sub">H1 2026 su H1 2025 · valori negativi = Europa più debole</div></header>
+    <div class="panel card" data-src="Comunicati delle società" data-title="Crescita organica dei ricavi: Europa meno Americhe, punti percentuali"><header class="ah"><h3 class="atitle">In tutte e 6 le società del lusso l'Europa cresce meno delle Americhe.</h3><div class="metric">Crescita organica dei ricavi: Europa meno Americhe, punti percentuali</div><div class="sub">H1 2026 su H1 2025 · valori negativi = Europa più debole</div></header>
       <div class="legend"></div>
       <div class="chart" id="c-lx-gap"></div>
-      <p class="read"><b>In tutte e 6 le società del lusso che pubblicano entrambi i dati l'Europa cresce meno delle Americhe</b>, con distanze fino a 24 punti (Ferragamo). Vale anche per Adidas (−9 punti) e Hugo Boss (−8). Perimetri diversi: vedi la nota sotto.</p></div>
+      <p class="read">Sono le società che pubblicano entrambi i dati; distanze fino a 24 punti (Ferragamo). Vale anche per Adidas (−9 punti) e Hugo Boss (−8). Perimetri diversi: vedi la nota sotto.</p></div>
 
   </div>
   <div class="tbl-wrap card" style="margin-top:20px" data-title="Lusso e moda, tabella" data-src="Comunicati delle società (luglio–agosto 2026)"><table class="eut" id="lx-tbl"></table></div>
   <p class="note2">— = dato per area non riportato nel comunicato sui risultati; i documenti completi sono nella sezione investor relations di ciascuna società. <sup class="ast">*</sup> Doppio riscontro: comunicato ufficiale non accessibile; cifra pubblicata perché due testate autorevoli riportano valori identici.</p>
   <h3 class="subh">Automotive: immatricolazioni in Europa, gennaio–agosto 2026</h3>
   <div class="grid2">
-    <div class="panel card" data-src="ACEA, comunicato del 24 settembre 2026 (cumulato gennaio–agosto)" data-title="Immatricolazioni per Paese, var. % annua"><header><h3>Immatricolazioni per Paese, var. % annua</h3><div class="sub">Gennaio–agosto 2026 su stesso periodo 2025</div></header>
+    <div class="panel card" data-src="ACEA, comunicato del 24 settembre 2026 (cumulato gennaio–agosto)" data-title="Immatricolazioni per Paese, var. % annua"><header class="ah"><h3 class="atitle">Auto: crescono tutti i grandi mercati, Italia (+8,5%) sopra la media europea.</h3><div class="metric">Immatricolazioni per Paese, var. % annua</div><div class="sub">Gennaio–agosto 2026 su stesso periodo 2025</div></header>
       <div class="legend"></div>
       <div class="chart" id="c-car-cty"></div>
-      <p class="read"><b>Crescono tutti i grandi mercati</b>: Regno Unito +9,8% e Italia +8,5%, sopra la media europea (+5,8%); la Francia è la più debole (+3,0%). Nell'UE le ibride sono il 36,6% delle immatricolazioni, le elettriche il 21,7%.</p></div>
+      <p class="read">Regno Unito <b>+9,8%</b>, media europea +5,8%; la Francia è la più debole (+3,0%). Nell'UE le ibride sono il 36,6% delle immatricolazioni, le elettriche il 21,7%.</p></div>
 
-    <div class="panel card" data-src="ACEA, comunicato del 24 settembre 2026 (cumulato gennaio–agosto)" data-title="Immatricolazioni per gruppo, var. % annua"><header><h3>Immatricolazioni per gruppo, var. % annua</h3><div class="sub">Gennaio–agosto 2026 su stesso periodo 2025 · UE, EFTA e Regno Unito</div></header>
+    <div class="panel card" data-src="ACEA, comunicato del 24 settembre 2026 (cumulato gennaio–agosto)" data-title="Immatricolazioni per gruppo, var. % annua"><header class="ah"><h3 class="atitle">I costruttori cinesi crescono a tre cifre, da quote ancora piccole.</h3><div class="metric">Immatricolazioni per gruppo, var. % annua</div><div class="sub">Gennaio–agosto 2026 su stesso periodo 2025 · UE, EFTA e Regno Unito</div></header>
       <div class="legend"></div>
       <div class="chart" id="c-car-grp"></div>
-      <p class="read"><b>I costruttori cinesi crescono a tre cifre, da quote ancora piccole</b>: BYD +144% (quota 2,5%), Chery +280% (2,3%). Tra i gruppi storici crescono Stellantis (+4,7%) e BMW (+4,0%); Volkswagen è quasi ferma (+0,9%), calano Renault (−3,3%) e Hyundai (−1,9%).</p></div>
+      <p class="read">BYD <b>+144%</b> (quota 2,5%), Chery <b>+280%</b> (2,3%). Tra i gruppi storici crescono Stellantis (+4,7%) e BMW (+4,0%); Volkswagen è quasi ferma (+0,9%), calano Renault (−3,3%) e Hyundai (−1,9%).</p></div>
 
   </div>
   <div class="perim card" data-title="Come leggere i confronti tra società" data-src="strategica21"><h3>Come leggere i confronti tra società</h3>
@@ -981,13 +1002,13 @@ html,body{overflow-x:clip}
   <div class="sec-h"><h2 id="h-ag">Agenda</h2><p class="srcl">Fonti: calendari degli istituti; testata indicata per ogni notizia.</p></div>
   <h3 class="subh">Prossimi rilasci</h3>
   <ol class="cal2">
-    <li><time>Fine settembre</time><div><b>Fiducia dei consumatori di settembre</b>: Istat e Commissione europea. <span class="mut">Data indicativa, secondo il calendario abituale.</span></div></li>
-    <li><time>Inizio ottobre</time><div><b>Stima flash dell'inflazione di settembre</b>, area euro: Eurostat. <span class="mut">Data indicativa.</span></div></li>
-    <li><time>5 ottobre</time><div><b>Reddito e risparmio delle famiglie, Q2 2026</b>: Istat.</div></li>
-    <li><time>15 ottobre</time><div><b>Vendite al dettaglio USA di settembre</b>: Census Bureau.</div></li>
-    <li><time>Da metà ottobre</time><div><b>Conti del Q3 2026</b> di staples e lusso europei. <span class="mut">Date da calendari societari.</span></div></li>
-    <li><time>29 ottobre</time><div><b>Riunione di politica monetaria della BCE</b>. Il mercato prezza una probabilità vicina al 50% di un nuovo rialzo. <span class="mut">Fonte: calendario BCE, attese di mercato riportate da investingLive.</span></div></li>
-    <li><time>Fine ottobre</time><div><b>Immatricolazioni di settembre</b>: ACEA. <span class="mut">Data indicativa.</span></div></li>
+    <li data-d="2026-09-30"><time>Fine settembre</time><div><b>Fiducia dei consumatori di settembre</b>: Istat e Commissione europea. <span class="mut">Data indicativa, secondo il calendario abituale.</span></div></li>
+    <li data-d="2026-10-02"><time>Inizio ottobre</time><div><b>Stima flash dell'inflazione di settembre</b>, area euro: Eurostat. <span class="mut">Data indicativa.</span></div></li>
+    <li data-d="2026-10-05"><time>5 ottobre</time><div><b>Reddito e risparmio delle famiglie, Q2 2026</b>: Istat.</div></li>
+    <li data-d="2026-10-15"><time>15 ottobre</time><div><b>Vendite al dettaglio USA di settembre</b>: Census Bureau.</div></li>
+    <li data-d="2026-10-15"><time>Da metà ottobre</time><div><b>Conti del Q3 2026</b> di staples e lusso europei. <span class="mut">Date da calendari societari.</span></div></li>
+    <li data-d="2026-10-29"><time>29 ottobre</time><div><b>Riunione di politica monetaria della BCE</b>. Il mercato prezza una probabilità vicina al 50% di un nuovo rialzo. <span class="mut">Fonte: calendario BCE, attese di mercato riportate da investingLive.</span></div></li>
+    <li data-d="2026-10-31"><time>Fine ottobre</time><div><b>Immatricolazioni di settembre</b>: ACEA. <span class="mut">Data indicativa.</span></div></li>
   </ol>
   <h3 class="subh" id="h-news">Notizie dell'ultimo mese</h3>
   <p class="note2" style="margin:4px 0 14px">Aggiornate al 26 settembre 2026. Selezionate per impatto su consumi e decisioni commerciali.</p>
@@ -1669,7 +1690,7 @@ new MutationObserver(()=>{drawCharts(); drawEU(); drawEU2(); drawDigital(); draw
 
 function padHeaders(){
   const mob = matchMedia('(max-width:980px)').matches;
-  document.querySelectorAll('.card').forEach(c=>{ const t=c.querySelector(':scope > .tools'); const h=c.querySelector(':scope > header, :scope > h3'); if(!t||!h) return;
+  document.querySelectorAll('.card').forEach(c=>{ const t=c.querySelector(':scope > .tools'); const h=c.querySelector(':scope > header, :scope > h3'); if(!t||!h) return; if(h.classList.contains('ah')){ h.style.paddingRight=''; return; }
     h.style.paddingRight = mob ? '' : (t.getBoundingClientRect().width + 14)+'px'; });
 }
 /* titolo: ogni frase su una riga; se lo schermo è troppo stretto torna al testo continuo */
@@ -1697,7 +1718,7 @@ equalize(); window.addEventListener('load',equalize); let eqt; window.addEventLi
 
 /* ---------- navigazione laterale ---------- */
 (() => {
-  const groups = {tesi:'quadro',europa:'quadro',italia:'quadro',digitale:'quadro',usacn:'quadro',mercati:'quadro',autore:'strumenti',categorie:'aziende',aziende:'aziende',agenda:'mercato',note:'strumenti',fonti:'strumenti'};
+  const groups = {tesi:'quadro',categorie:'aziende',europa:'quadro',italia:'quadro',digitale:'quadro',usacn:'quadro',mercati:'quadro',aziende:'aziende',agenda:'mercato',autore:'strumenti',note:'strumenti',fonti:'strumenti'};
   Object.entries(groups).forEach(([id,g]) => { const el=document.getElementById(id); if(el) el.style.setProperty('--tone',`var(--g-${g})`); const a=document.querySelector(`#sidenav a[data-sec="${id}"]`); if(a) a.style.setProperty('--tone',`var(--g-${g})`); });
   const links = [...document.querySelectorAll('#sidenav a')], cur = document.getElementById('curSec');
   const setActive = id => { links.forEach(a => { const on = a.dataset.sec===id; a.classList.toggle('active', on); if(on){ a.setAttribute('aria-current','true'); cur.textContent = a.querySelector('span').textContent; } else a.removeAttribute('aria-current'); }); };
@@ -1771,6 +1792,22 @@ equalize(); window.addEventListener('load',equalize); let eqt; window.addEventLi
   o.addEventListener('click', () => { if (d.showModal) d.showModal(); else d.setAttribute('open',''); });
   c.addEventListener('click', () => { if (d.close) d.close(); else d.removeAttribute('open'); });
   d.addEventListener('click', e => { if (e.target === d && d.close) d.close(); });
+})();
+</script>
+<script>
+/* agenda: stato di ogni uscita rispetto alla data di consultazione */
+(() => { const t=new Date(); t.setHours(0,0,0,0); let next=false;
+  document.querySelectorAll('.cal2 li[data-d]').forEach(li => { const d=new Date(li.dataset.d+'T00:00:00'); const b=document.createElement('span'); b.className='st';
+    if (d < t) { li.classList.add('past'); b.textContent='Uscito'; }
+    else if (!next) { next=true; li.classList.add('next'); b.textContent='Prossimo'; }
+    else b.textContent='In calendario';
+    li.appendChild(b); });
+})();
+/* menu: minuti di lettura per sezione */
+(() => { document.querySelectorAll('#sidenav a[data-sec]').forEach(a => { const sec=document.getElementById(a.dataset.sec); if(!sec) return;
+    const c=sec.cloneNode(true); c.querySelectorAll('svg,script,style,dialog,.tools,details:not([open]) > :not(summary)').forEach(x=>x.remove());
+    const words=(c.textContent.trim().match(/\S+/g)||[]).length; const charts=sec.querySelectorAll('.chart').length;
+    const m=Math.max(1, Math.round(words/200 + charts*0.25)); const e=document.createElement('em'); e.className='rt'; e.textContent=m+' min'; e.setAttribute('aria-label', m+' minuti di lettura'); a.appendChild(e); });
 })();
 </script>
 </body>
