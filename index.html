@@ -85,7 +85,7 @@ h3{margin:0;font-size:16px;font-weight:700}
 .chart{position:relative;margin-top:4px}
 .chart > svg{display:block;width:100%;height:auto;overflow:visible}
 .chart > svg svg{overflow:hidden}
-.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12.5px;color:var(--muted);padding:2px 4px 6px}
+.legend{display:flex;gap:6px 14px;flex-wrap:wrap;font-size:12.5px;color:var(--muted);padding:2px 4px 6px}
 .legend span{display:inline-flex;align-items:center;gap:6px}
 .sw{width:14px;height:3px;border-radius:2px;display:inline-block}
 .sw.dash{background:none;border-top:2px dashed currentColor;height:0}
@@ -1221,7 +1221,7 @@ function holt(y, h, a=.6, b=.3, phi=.8){
 function vchart(host, cfg){
   if(!host) return;
   const W = Math.max(300, host.clientWidth), small = W<560;
-  const H = CHART_H;
+  const H = CHART_H + (+host.dataset.xh||0);
   const m = {l:small?44:54, r:cfg.rpad ?? (small?10:16), t:18, b:52};
   const X = [...cfg.x, ...(cfg.fcx||[])], n = X.length;
   const fs = small ? 11 : 12.5;
@@ -1332,7 +1332,7 @@ function hchart(host, items, o={}){
   if(!host) return;
   items = items.map(it => ({...it, s: it.s || SHORTN[it.n]}));
   const W = Math.max(280, host.clientWidth), small = W<560, fs = small?11.5:13;
-  const labW = small ? Math.min(o.labW || 210, Math.round(W*0.36)) : Math.min(o.labW || 210, W*0.30), H = Math.max(CHART_H, items.length*40 + 56);
+  const labW = small ? Math.min(o.labW || 210, Math.round(W*0.36)) : Math.min(o.labW || 210, W*0.30), H = Math.max(CHART_H + (+host.dataset.xh||0), items.length*40 + 56);
   const m = {l:labW+10, r:small?46:52, t:8, b:44}, rowH = (H - m.t - m.b)/items.length, pw = W-m.l-m.r, barH = Math.min(28, rowH-10);
   const fw = small?20:24, fh = small?13:16;
   let lo = Math.min(o.min ?? 0, ...items.map(i=>i.g)), hi = Math.max(0, ...items.map(i=>i.g));
@@ -1723,15 +1723,21 @@ function fitTitle(){
 }
 fitTitle(); window.addEventListener('resize', fitTitle); document.fonts && document.fonts.ready.then(fitTitle);
 function equalize(){
-  padHeaders();
+  padHeaders(); const want=new Map();
   /* commento sotto il numero: sempre su una riga */
   { const ems=[...document.querySelectorAll('.s60k em')]; let f=13; const set=v=>ems.forEach(e=>e.style.fontSize=v+'px'); set(f); while(ems.some(e=>e.scrollWidth>e.clientWidth+0.5) && f>11.5){ f-=0.25; set(f); } }
   const sets=[['.grid2 > .panel',['header > h3.atitle','header > .metric','header > .sub','header','.legend']],['.exec > article',['header']],['.cats > .cat',['h3','p']],['#kpi > div',['span']],['.s60k > div',['span','.s60p','em']],['.uscn dl > div',['dt']],['.dgk > div',['dt']]];
   sets.forEach(([sel,parts])=>{ const els=[...document.querySelectorAll(sel)];
     parts.forEach(pt=>els.forEach(e=>{const x=e.querySelector(':scope > '+pt); if(x) x.style.minHeight='';}));
     const rows={}; els.forEach(e=>{ const k=Math.round(e.getBoundingClientRect().top+scrollY); (rows[k]=rows[k]||[]).push(e); });
-    Object.values(rows).forEach(r=>{ if(r.length<2) return; parts.forEach(pt=>{ const xs=r.map(e=>e.querySelector(':scope > '+pt)).filter(Boolean); const h=Math.max(...xs.map(x=>x.getBoundingClientRect().height)); xs.forEach(x=>x.style.minHeight=h+'px'); }); });
+    Object.values(rows).forEach(r=>{ if(r.length<2) return; parts.forEach(pt=>{ let xs=r.map(e=>e.querySelector(':scope > '+pt)).filter(Boolean);
+      /* legende: una scheda senza legenda non lascia un vuoto, il suo grafico o la sua tabella occupa quello spazio */
+      if(pt==='.legend'){ const full=xs.filter(x=>x.childElementCount||x.textContent.trim()); const lh=full.length?Math.max(...full.map(x=>x.getBoundingClientRect().height)):0;
+        xs.forEach(x=>{ if(full.includes(x)) return; x.style.minHeight='0px'; const c=x.parentElement.querySelector(':scope > .chart'); if(c) want.set(c,lh); }); xs=full; if(!xs.length) return; }
+      const h=Math.max(...xs.map(x=>x.getBoundingClientRect().height)); xs.forEach(x=>x.style.minHeight=h+'px'); }); });
   });
+  let redraw=false; document.querySelectorAll('.grid2 > .panel > .chart').forEach(c=>{ const v=Math.round(want.get(c)||0), cur=+c.dataset.xh||0; if(v===cur) return; if(v) c.dataset.xh=v; else delete c.dataset.xh; if(c.classList.contains('tblbox')) c.style.minHeight=v?(CHART_H+v)+'px':''; else redraw=true; });
+  if(redraw){ drawCharts(); drawEU(); drawEU2(); drawDigital(); drawMK(); drawAz(); }
 }
 equalize(); window.addEventListener('load',equalize); let eqt; window.addEventListener('resize',()=>{clearTimeout(eqt);eqt=setTimeout(equalize,180);}); document.fonts&&document.fonts.ready.then(equalize);
 
