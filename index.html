@@ -1828,8 +1828,8 @@ equalize(); window.addEventListener('load',equalize); let eqt; window.addEventLi
     else b.textContent='In calendario';
     li.appendChild(b); });
 })();
-/* menu: minuti di lettura per sezione */
-(() => { document.querySelectorAll('#sidenav a[data-sec]').forEach(a => { const sec=document.getElementById(a.dataset.sec); if(!sec) return;
+/* menu: minuti di lettura per sezione, esclusi i riferimenti */
+(() => { document.querySelectorAll('#sidenav a[data-sec]').forEach(a => { if(['autore','note','fonti'].includes(a.dataset.sec)) return; const sec=document.getElementById(a.dataset.sec); if(!sec) return;
     const c=sec.cloneNode(true); c.querySelectorAll('svg,script,style,dialog,.tools,details:not([open]) > :not(summary)').forEach(x=>x.remove());
     const words=(c.textContent.trim().match(/\S+/g)||[]).length; const charts=sec.querySelectorAll('.chart').length;
     const m=Math.max(1, Math.round(words/200 + charts*0.25)); const e=document.createElement('em'); e.className='rt'; e.textContent=m+' min'; e.setAttribute('aria-label', m+' minuti di lettura'); a.appendChild(e); });
