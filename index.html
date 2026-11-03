@@ -647,6 +647,17 @@ html,body{overflow-x:clip}
 .sog td:nth-child(4){min-width:120px}
 .sog td.az{min-width:220px}
 .crit{background:var(--panel);border:1px solid var(--rule);padding:18px 22px}.crit h3{margin:0 0 8px}.crit p{margin:0;max-width:95ch;line-height:1.6}
+/* cosa è cambiato rispetto al mese scorso */
+.chg{margin:0 0 4px;background:var(--panel);border:1px solid var(--rule);padding:18px 22px 14px}
+.chg h3{font-family:var(--serif);font-size:18px;font-weight:600;margin:0 0 10px;padding-right:44px}
+.chg ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border-top:1px solid var(--rule)}
+.chg li{padding:12px 12px 4px 0;min-width:0}
+.chg li+li{padding-left:12px;border-left:1px solid var(--rule)}
+.chg-k{display:block;font-size:12.5px;font-weight:650;line-height:1.3;min-height:2.6em}
+.chg-v{display:block;font-size:21px;font-weight:600;color:var(--muted);font-variant-numeric:tabular-nums;margin:6px 0 2px;white-space:nowrap}
+.chg-v b{color:var(--ink);font-weight:700}
+.chg-p{display:block;font-size:11.5px;color:var(--muted);line-height:1.35}
+@media (max-width:1240px){ .chg ul{grid-template-columns:1fr} .chg li,.chg li+li{padding:10px 0;border-left:0} .chg li+li{border-top:1px solid var(--rule)} .chg-k{min-height:0} }
 
 /* ===== revisione 26/9 ===== */
 .hero h1{font-size:clamp(30px,3.7vw,50px);max-width:none;line-height:1.08}
@@ -765,34 +776,44 @@ html,body{overflow-x:clip}
 <div class="wrap">
 
 <div class="hero" id="tesi">
-  <div class="kick"><span class="wm big">strategica<b>21</b></span><span class="kdiv"></span>Osservatorio sul consumatore europeo · edizione di ottobre 2026, aggiornata al 30 ottobre</div>
+  <div class="kick"><span class="wm big">strategica<b>21</b></span><span class="kdiv"></span>Osservatorio sul consumatore europeo · edizione di novembre 2026, aggiornata al 1° novembre</div>
   <h1><span class="h1l">Il consumatore europeo è più prudente.</span> <span class="h1l">L'Italia è ferma sui beni.</span></h1>
   <p class="byline"><b>Alberto Maria Gizzi</b><span>Strategy executive, consumer e luxury</span><span>Dati da fonti primarie · <a href="#fonti">Metodo</a></span></p>
   <div class="s60 card" data-title="strategica21 in 60 secondi" data-src="Eurostat, Commissione europea (giugno–ottobre 2026)">
     <div class="s60h">In 60 secondi</div>
     <div class="s60k">
       <div><span>Vendite al dettaglio a volume, esclusi carburanti</span><i class="s60p">Area euro · media giu–ago 2026 su stesso periodo 2025</i><strong>+1,4%</strong><em>a valore <b>+2,6%</b>: effetto prezzo 1,2 punti</em></div>
-      <div><span>Fiducia dei consumatori, saldo</span><i class="s60p">Area euro · ottobre 2026, stima flash · saldo tra risposte positive e negative</i><strong>−17,9</strong><em>−1,1 su settembre: <b>secondo calo di fila</b></em></div>
+      <div><span>Fiducia dei consumatori, saldo</span><i class="s60p">Area euro · ottobre 2026 · saldo tra risposte positive e negative</i><strong>−17,9</strong><em>−1,1 su settembre: <b>secondo calo di fila</b></em></div>
       <div><span>Vendite online a volume</span><i class="s60p">Area euro · media giu–ago 2026 su stesso periodo 2025</i><strong>+4,4%</strong><em>contro <b>+1,4%</b> del totale vendite al dettaglio</em></div>
     </div>
-    <p class="s60t"><b>Commento.</b> <b>Il consumatore europeo è diventato più prudente.</b> Con l'inflazione al 3,8%, spinta dai costi dell'energia, una parte rilevante della crescita delle vendite è <b>prezzo e non quantità</b>: in <b>Italia e Germania</b>, i due mercati più deboli, tutta a valore, con volumi in lieve calo (in Italia <b>+1,3% a valore contro −0,1% a volume</b>, esclusi i carburanti). La <b>fiducia</b>, crollata in primavera, è <b>tornata a scendere a settembre</b>, con l'Italia la più pessimista. E dove si risparmia meno, in Italia e Spagna (tra il 9,5% e l'11% del reddito, contro il 17–19% di Francia e Germania), c'è <b>meno margine per assorbire i rincari</b>.</p>
-    <p class="s60t"><b>In Italia la crescita è quasi piatta</b>: la spesa delle famiglie sale poco e i <b>beni non durevoli sono fermi</b>; la disoccupazione resta sotto la media dell'area euro (6,5%), ma è risalita al 6,3% dal 5,6% di maggio. Intanto <b>la domanda cambia canale</b>: l'online cresce oltre tre volte più del totale, con salute e bellezza e marketplace in testa nel 2025, e la concorrenza tra marche aumenta.</p>
-    <p class="s60t">Il rincaro dell'energia ha appena iniziato a trasferirsi ai prezzi alimentari, non ancora agli altri beni, ma ha già spinto <b>BCE e Fed ad alzare i tassi</b>, e i <b>rendimenti dei titoli di Stato</b> sono saliti di circa mezzo punto in un anno: più interessi sul debito, <b>meno risorse pubbliche</b> per sostenere famiglie e investimenti. Black Friday e Natale dovrebbero sostenere gli acquisti di fine anno; <b>il conto può arrivare nel 2027</b>. Per le aziende <b>la priorità diventa la marginalità</b>. Sul fronte pubblico è ragionevole attendersi sostegni alle famiglie a basso reddito e alle imprese energivore e, nel medio periodo, <b>investimenti in efficienza energetica</b>, anche con capitale privato, per ridurre l'esposizione a shock come quello che stiamo attraversando in questo 2026.</p>
+    <p class="s60t"><b>Commento.</b> <b>Il consumatore europeo è diventato più prudente.</b> Con l'inflazione al 3,8%, spinta dai costi dell'energia, una parte rilevante della crescita delle vendite è <b>prezzo e non quantità</b>: in <b>Italia e Germania</b>, i due mercati più deboli, tutta a valore, con volumi in lieve calo (in Italia <b>+1,3% a valore contro −0,1% a volume</b>, esclusi i carburanti). La <b>fiducia</b>, crollata in primavera, è <b>tornata a scendere a settembre e di nuovo a ottobre</b>, con l'Italia la più pessimista (−23,3). E dove si risparmia meno, in Italia e Spagna (tra il 9,5% e l'11% del reddito, contro il 16,9–19% di Francia e Germania), c'è <b>meno margine per assorbire i rincari</b>.</p>
+    <p class="s60t"><b>In Italia la crescita si è fermata</b> (Pil del terzo trimestre 0,0%): la spesa delle famiglie sale poco e i <b>beni non durevoli sono fermi</b>; la disoccupazione resta sotto la media dell'area euro (6,5%), ma è risalita al 6,3% dal 5,6% di maggio.</p>
+    <p class="s60t">Il rincaro dell'energia ha appena iniziato a trasferirsi ai prezzi alimentari, non ancora agli altri beni, ma ha già spinto <b>BCE e Fed ad alzare i tassi</b>, e i <b>rendimenti dei titoli di Stato</b> sono saliti di circa 0,8 punti in un anno: più interessi sul debito, <b>meno risorse pubbliche</b> per sostenere famiglie e investimenti. Black Friday e Natale dovrebbero sostenere gli acquisti di fine anno; <b>il conto può arrivare nel 2027</b>. Per le aziende <b>la priorità diventa la marginalità</b>. Sul fronte pubblico è ragionevole attendersi sostegni alle famiglie a basso reddito e alle imprese energivore e, nel medio periodo, <b>investimenti in efficienza energetica</b>, anche con capitale privato, per ridurre l'esposizione a shock come quello che stiamo attraversando in questo 2026.</p>
     <p class="by s60by">© 2026 Alberto Maria Gizzi</p>
   </div>
+  <div class="chg card" data-title="Cosa è cambiato rispetto al mese scorso" data-src="Commissione europea, BCE, Eurostat, Osservatorio Findomestic (agosto–ottobre 2026)">
+    <h3>Cosa è cambiato rispetto al mese scorso</h3>
+    <ul>
+      <li><span class="chg-k">Fiducia dei consumatori, Italia</span><span class="chg-v">−20,2 → <b>−23,3</b></span><span class="chg-p">Saldo · agosto → ottobre 2026 · Commissione europea</span></li>
+      <li><span class="chg-k">Fiducia dei consumatori, Francia</span><span class="chg-v">−18,5 → <b>−21,9</b></span><span class="chg-p">Saldo · settembre → ottobre 2026 · Commissione europea</span></li>
+      <li><span class="chg-k">Rendimento dei titoli di Stato a 10 anni, Italia</span><span class="chg-v">3,99% → <b>4,36%</b></span><span class="chg-p">Media mensile · agosto → settembre 2026 · BCE</span></li>
+      <li><span class="chg-k">Vendite al dettaglio a volume, Spagna</span><span class="chg-v">+1,2% → <b>+0,6%</b></span><span class="chg-p">Esclusi carburanti · var. % annua · media giu–ago → lug–set 2026 · Eurostat</span></li>
+      <li><span class="chg-k">Famiglie italiane che riescono a risparmiare</span><span class="chg-v">55% → <b>59%</b></span><span class="chg-p">Settembre → ottobre 2026 · Findomestic; intenzioni d'acquisto −4,4% sul mese</span></li>
+    </ul>
+  </div>
   <div class="exec">
-    <article class="ex it card" data-title="Tesi del mese: evidenze" data-src="Eurostat, Commissione europea, Istat, comunicati delle società (giugno–ottobre 2026)">
+    <article class="ex it card" data-title="Tesi del mese: evidenze" data-src="Eurostat, Commissione europea, Istat, Osservatorio Findomestic, comunicati delle società (giugno–ottobre 2026)">
       <header><div class="flags" data-flags="EA,IT,DE,FR,ES,UK"></div><h3>Tre evidenze</h3></header>
       <div class="blk"><ul>
-        <li><b>Crescita debole in Europa, ferma in Italia.</b> Al netto dei carburanti, nella media giugno–agosto 2026 le vendite al dettaglio dell'area euro crescono su base annua del <b>2,6% a valore e dell'1,4% a volume</b>; in Italia <b>+1,3% contro −0,1%</b>, in Germania +1,5% contro −0,5%. In Francia i volumi crescono quanto il valore (+3,1% entrambi).</li>
-        <li><b>Shock energetico, non alimentare.</b> A settembre l'energia sale del <b>18,9%</b> su base annua nell'area euro (22,6% in Italia) e porta l'inflazione al 3,8%; alimentari (+1,0%), abbigliamento (0,0%) e casa (+0,5%) restano quasi fermi. Includendo i carburanti la distanza tra valore e volume delle vendite più che raddoppia (2,7 punti nell'area euro, 3,4 in Italia). La fiducia dell'area euro scende a <b>−17,9 a ottobre</b> (stima flash); in Italia l'indice Istat di ottobre scende a 90,3 da 91,2.</li>
-        <li><b>Le aziende confermano, con differenze.</b> In Europa Nestlé cresce del <b>2,7%</b> quasi tutto con il prezzo (volumi +0,5%), mentre Unilever arretra (<b>−0,9%</b>) con prezzi in calo. Nel lusso l'Europa cresce meno delle Americhe in tutte e <b>6 le società</b> che pubblicano entrambi i dati per il primo semestre 2026; lo stesso vale per Adidas e Hugo Boss.</li></ul></div>
+        <li><b>Crescita debole in Europa, ferma in Italia.</b> Al netto dei carburanti, nella media giugno–agosto 2026 le vendite al dettaglio dell'area euro crescono su base annua del <b>2,6% a valore e dell'1,4% a volume</b>; in Italia <b>+1,3% contro −0,1%</b>, in Germania +1,5% contro −0,5%. Nel terzo trimestre il Pil italiano è fermo (<b>0,0%</b> sul trimestre precedente), quello dell'area euro cresce dello 0,4%; in Spagna i volumi rallentano a +0,6% (media luglio–settembre).</li>
+        <li><b>Fiducia in calo, intenzioni d'acquisto al minimo dell'anno.</b> A ottobre la fiducia dei consumatori scende a <b>−17,9</b> nell'area euro (−1,1 punti su settembre), a −21,9 in Francia (da −18,5) e a <b>−23,3 in Italia</b>, il saldo più basso tra i grandi Paesi. In Italia l'indice Findomestic delle intenzioni d'acquisto perde il <b>4,4%</b> su settembre, al minimo dell'ultimo anno, e le famiglie che riescono a risparmiare salgono al 59% dal 55%.</li>
+        <li><b>In Europa il prezzo spinge meno.</b> Nel terzo trimestre Nestlé cresce in Europa dell'<b>1,2%</b> con prezzi quasi fermi (+0,2%), Unilever arretra (<b>−1,7%</b>) con prezzi in calo (−1,3%). Nel lusso, nel primo semestre 2026, l'Europa cresce meno delle Americhe in tutte e <b>6 le società</b> che pubblicano entrambi i dati; lo stesso vale per Adidas e Hugo Boss.</li></ul></div>
     </article>
     <article class="ex g7 card" data-title="Tesi del mese: implicazioni" data-src="Elaborazioni strategica21 sui dati della pagina">
       <header><div class="flags" data-flags="EA"></div><h3>Tre implicazioni per le aziende consumer</h3></header>
       <div class="blk"><ul>
-        <li><b>Il prezzo regge dove la marca è forte: un indizio, non una regola.</b> In Europa Nestlé cresce con il prezzo (+2,2%) e tiene i volumi (+0,5%); Unilever, con prezzi in calo (−0,6%), non recupera volumi (−0,2%). Due casi non fanno una legge, ma con prezzi alimentari intorno all'1% nell'area euro (+1,0% a settembre) un rincaro di listino rischia di pagarsi in volumi: meglio lavorare su <b>architettura di prezzo e formati</b>.</li>
-        <li><b>Riallocare per canale, verificare per Paese.</b> L'online cresce ovunque più del totale. Nella media giugno–agosto, esclusi i carburanti, i volumi crescono in Francia (+3,1%) e Spagna (+1,2%) e calano leggermente in Italia (−0,1%) e Germania (−0,5%): un segnale da confermare con la stagione natalizia prima di spostare budget tra Paesi. Tra i canali, invece, <b>il budget va riallocato, non ridotto</b>.</li>
+        <li><b>In Europa la leva prezzo si sta esaurendo: un indizio, non una regola.</b> Nel terzo trimestre la crescita dei prezzi di Nestlé in Europa scende allo 0,2%, dal 2,2% del primo semestre, con volumi a +1,0%; Unilever cala con prezzi in diminuzione (−1,3%) e volumi ancora negativi (−0,4%). Due casi non fanno una legge, ma con prezzi alimentari intorno all'1% nell'area euro (+1,0% a settembre) e intenzioni d'acquisto in calo, un rincaro di listino rischia di pagarsi in volumi: meglio lavorare su <b>architettura di prezzo e formati</b>.</li>
+        <li><b>Riallocare per canale, verificare per Paese.</b> L'online cresce ovunque più del totale. Esclusi i carburanti, i volumi crescono in Francia (+3,4%, media luglio–settembre) e rallentano in Spagna (+0,6%), mentre calano leggermente in Italia (−0,1%) e Germania (−0,5%, media giugno–agosto): un segnale da confermare con la stagione natalizia prima di spostare budget tra Paesi. Tra i canali, invece, <b>il budget va riallocato, non ridotto</b>.</li>
         <li><b>Nel lusso il marchio sembra contare più del mercato.</b> In Europa crescono Hermès (+8,8%, Francia esclusa) e Cucinelli (+5,3%), Zegna è quasi ferma (+1,5%); calano Moncler e Prada (−4%) e Ferragamo (−8,6%). Sei società con perimetri diversi: un'indicazione di tendenza, non una classifica.</li></ul></div>
     </article>
   </div>
@@ -802,14 +823,14 @@ html,body{overflow-x:clip}
   <div class="sec-h"><h2 id="h-cat">Implicazioni per categoria</h2></div>
   <p class="note2 catdef"><b>Come leggere.</b> Per ogni categoria: il contesto nei dati, le tre leve su cui agire nei prossimi tre mesi (prezzo, offerta, canale) e la soglia che cambierebbe la raccomandazione.</p>
   <div class="cats">
-    <article class="cat card" data-title="Implicazioni: food e bevande" data-src="Eurostat; Istat; comunicati Nestlé, Danone, Unilever, Campari, Heineken, AB InBev (2026)"><h3>Food e bevande</h3>
-      <p><b>Contesto.</b> Prezzi alimentari +1,7% in Italia a settembre, dall'1,1% di agosto (il carrello della spesa Istat sale al 2,5% a ottobre, stima preliminare), volumi alimentari −0,6% nella media giugno–agosto. In Europa Nestlé cresce con il prezzo (+2,2%), Unilever arretra con prezzi in calo (−0,6%).</p>
+    <article class="cat card" data-title="Implicazioni: food e bevande" data-src="Eurostat; Istat; comunicati Nestlé, Danone, Unilever, Campari, Heineken, AB InBev (H1 e terzo trimestre 2026)"><h3>Food e bevande</h3>
+      <p><b>Contesto.</b> Prezzi alimentari +1,7% in Italia a settembre, dall'1,1% di agosto (a ottobre, stima preliminare Istat: carrello della spesa +2,5%, alimentari non lavorati +7,5%), volumi alimentari −0,6% nella media giugno–agosto. In Europa, nel terzo trimestre, Nestlé cresce dell'1,2% con prezzi quasi fermi (+0,2%), Unilever arretra dell'1,7% con prezzi in calo (−1,3%).</p>
       <h4>Prezzo</h4><p>Con prezzi alimentari a +1,0% nell'area euro a settembre, un listino che corre più della categoria si paga in volumi: crescere con <b>mix e innovazione</b>, non con aumenti generalizzati.</p>
       <h4>Offerta</h4><p><b>Formati d'ingresso e multipack</b> per recuperare i volumi alimentari italiani (−0,6%); ridurre la promozione dove non genera volumi incrementali.</p>
       <h4>Canale</h4><p>La marca del distributore compete ormai anche sulla qualità: <b>la differenza di marca va dimostrata a scaffale</b>, non solo dichiarata.</p>
       <h4>Soglia da monitorare</h4><p>Inflazione alimentare area euro sopra il 2% (oggi 1,0%): si riaprirebbe lo spazio per adeguare i listini.</p></article>
     <article class="cat card" data-title="Implicazioni: beauty e cura persona" data-src="Eurostat; comunicati L'Oréal, Unilever; Casaleggio Associati; Cosmetics Business (2026)"><h3>Beauty e cura persona</h3>
-      <p><b>Contesto.</b> È la categoria più resiliente: L'Oréal +6,8% nel semestre, prezzi della cura della persona +1,1% in Italia, salute e bellezza la prima categoria online (+24% nel 2025).</p>
+      <p><b>Contesto.</b> È la categoria più resiliente: L'Oréal +6,8% nel semestre e +7,2% nel terzo trimestre (Europa +9,9%), prezzi della cura della persona +1,1% in Italia, salute e bellezza la prima categoria online (+24% nel 2025).</p>
       <h4>Prezzo</h4><p>Il premium con <b>beneficio dimostrato</b> sostiene prezzo e mix (L'Oréal +6,8% nel semestre).</p>
       <h4>Offerta</h4><p>Investire in <b>efficacia e comunicazione scientifica</b>, che giustificano il prezzo più della confezione.</p>
       <h4>Canale</h4><p>Presidiare <b>marketplace e social commerce</b>: salute e bellezza è la prima categoria online in Italia (+24% nel 2025).</p>
@@ -819,13 +840,13 @@ html,body{overflow-x:clip}
       <h4>Prezzo</h4><p>Prezzi dell'abbigliamento fermi (0,0% in Italia): <b>spazio ridotto per rincari</b> fuori dal lusso.</p>
       <h4>Offerta</h4><p><b>Rivedere l'assortimento verso il prezzo d'ingresso</b> della fascia, dove si concentra la domanda che resta.</p>
       <h4>Canale e mercati</h4><p><b>Stati Uniti prima dell'Europa</b>: le Americhe crescono più dell'Europa in tutte le società del lusso che pubblicano il dato. Ridurre la dipendenza dal wholesale, dove si concentrano i cali (Ferragamo).</p>
-      <h4>Soglia da monitorare</h4><p>Fiducia dei consumatori area euro sotto −18 per due mesi (oggi −17,9, stima flash di ottobre): stagione natalizia da pianificare su volumi prudenti.</p></article>
-    <article class="cat card" data-title="Implicazioni: beni durevoli e auto" data-src="ACEA (gennaio–settembre 2026); BCE; Istat (Q2 2026)"><h3>Beni durevoli e auto</h3>
-      <p><b>Contesto.</b> Durevoli in crescita in Italia (+0,9% nel Q2), immatricolazioni europee +6,3% tra gennaio e settembre (Italia +8,6%), con i marchi cinesi in forte crescita, ma la BCE è al 2,50% e può salire ancora, e il potere d'acquisto delle famiglie italiane è sceso dello 0,9% nel Q2.</p>
+      <h4>Soglia da monitorare</h4><p>Fiducia dei consumatori area euro sotto −18 per due mesi (oggi −17,9 a ottobre, dopo −16,8 a settembre): stagione natalizia da pianificare su volumi prudenti.</p></article>
+    <article class="cat card" data-title="Implicazioni: beni durevoli e auto" data-src="ACEA (gennaio–settembre 2026); BCE; Istat (Q2 2026); Osservatorio Findomestic (ottobre 2026)"><h3>Beni durevoli e auto</h3>
+      <p><b>Contesto.</b> Durevoli in crescita in Italia (+0,9% nel Q2), immatricolazioni europee +6,3% tra gennaio e settembre (Italia +8,6%), con i marchi cinesi in forte crescita; ma a ottobre scendono le intenzioni d'acquisto di auto nuove (12%, −0,7 punti) e mobili (22%, −2,1), la BCE è al 2,50% e può salire ancora, e il potere d'acquisto delle famiglie italiane è sceso dello 0,9% nel Q2.</p>
       <h4>Prezzo</h4><p>Difendere il <b>rapporto prezzo-dotazioni</b> contro i nuovi entranti cinesi (BYD +135% tra gennaio e settembre, quota 2,7%), senza rincorrerli sul prezzo.</p>
       <h4>Offerta</h4><p><b>Finanziamento al consumo e pagamenti dilazionati</b> per compensare il costo del credito, con la BCE al 2,50%.</p>
       <h4>Canale e mercati</h4><p>In Italia i durevoli sono i beni che crescono di più nella spesa delle famiglie (+0,9% nel Q2): <b>mercato da presidiare</b>, non da ridimensionare.</p>
-      <h4>Soglia da monitorare</h4><p>Nuovo rialzo BCE il 29 ottobre: rivedere subito le condizioni di finanziamento offerte ai clienti.</p></article>
+      <h4>Soglia da monitorare</h4><p>Nuovo rialzo BCE alla riunione di dicembre: rivedere subito le condizioni di finanziamento offerte ai clienti.</p></article>
   </div>
 </section>
 
@@ -834,27 +855,27 @@ html,body{overflow-x:clip}
   <div class="tbl-wrap card" data-title="Il consumatore europeo, tabella di confronto" data-src="Eurostat, Commissione europea, ONS (giugno–settembre 2026)"><table class="eut" id="eu-tbl"></table></div>
   <p class="note2" id="eu-note"></p>
   <div class="grid2" style="margin-top:20px">
-    <div class="panel card" data-src="Eurostat sts_trtu_m (G47_X_G473, NETTUR e VOL_SLS, dati corretti per i giorni lavorativi)" data-title="Vendite al dettaglio esclusi carburanti: valore contro volume, var. % annua"><header class="ah"><h3 class="atitle">Al netto dei carburanti l'effetto prezzo è di 1,2 punti nell'area euro e di 1,4 in Italia.</h3><div class="metric">Vendite al dettaglio esclusi carburanti: valore contro volume, var. % annua</div><div class="sub">Media giugno–agosto 2026 su stesso periodo 2025 · la distanza tra i punti è l'effetto prezzo</div></header>
+    <div class="panel card" data-src="Eurostat sts_trtu_m (G47_X_G473, NETTUR e VOL_SLS, dati corretti per i giorni lavorativi)" data-title="Vendite al dettaglio esclusi carburanti: valore contro volume, var. % annua"><header class="ah"><h3 class="atitle">Al netto dei carburanti l'effetto prezzo è di 1,2 punti nell'area euro e di 1,4 in Italia.</h3><div class="metric">Vendite al dettaglio esclusi carburanti: valore contro volume, var. % annua</div><div class="sub">Media giugno–agosto 2026 su stesso periodo 2025 (Francia e Spagna: luglio–settembre) · la distanza tra i punti è l'effetto prezzo</div></header>
       <div class="legend"><span><i class="sw box" style="background:var(--val)"></i>Valore</span><span><i class="sw box" style="border:2.5px solid var(--vol)"></i>Volume</span><span><i class="sw box" style="background:var(--gap)"></i>Effetto prezzo</span></div>
       <div class="chart" id="c-eu-vv"></div>
-      <p class="read">In Italia <b>+1,3% a valore contro −0,1% a volume</b>, in Germania +1,5% contro −0,5%: nei due Paesi la crescita è solo prezzo. <b>In Francia è tutta quantità</b> (+3,1% entrambi).</p></div>
-    <div class="panel card" data-src="Eurostat sts_trtu_m (G47_FOOD e G47_NFOOD_X_G473)" data-title="Alimentari contro non alimentari, var. % annua a volume"><header class="ah"><h3 class="atitle">In Italia calano gli alimentari (−0,6%) e i non alimentari sono quasi fermi (+0,3%).</h3><div class="metric">Alimentari contro non alimentari, var. % annua a volume</div><div class="sub">Media giugno–agosto 2026 su stesso periodo 2025</div></header>
+      <p class="read">In Italia <b>+1,3% a valore contro −0,1% a volume</b>, in Germania +1,5% contro −0,5%: nei due Paesi la crescita è solo prezzo. <b>In Francia è tutta quantità</b> (+3,3% a valore, +3,4% a volume); in Spagna i volumi rallentano a +0,6%, con 2,2 punti di effetto prezzo.</p></div>
+    <div class="panel card" data-src="Eurostat sts_trtu_m (G47_FOOD e G47_NFOOD_X_G473)" data-title="Alimentari contro non alimentari, var. % annua a volume"><header class="ah"><h3 class="atitle">In Italia calano gli alimentari (−0,6%) e i non alimentari sono quasi fermi (+0,3%).</h3><div class="metric">Alimentari contro non alimentari, var. % annua a volume</div><div class="sub">Media giugno–agosto 2026 su stesso periodo 2025 (Francia e Spagna: luglio–settembre)</div></header>
       <div class="legend"><span><i class="sw box" style="background:var(--val)"></i>Alimentari</span><span><i class="sw box" style="background:var(--vol)"></i>Non alimentari</span></div>
       <div class="chart" id="c-eu-fnf"></div>
-      <p class="read">In Germania calano entrambi, in Francia crescono entrambi di oltre il 3%. <b>In Italia e in Spagna si risparmia prima sulla spesa di tutti i giorni</b>: il discrezionale tiene meglio.</p></div>
+      <p class="read">In Germania calano entrambi, in Francia crescono entrambi di oltre il 3% (Spagna: alimentari −0,5%, non alimentari +1,6%). <b>In Italia e in Spagna si risparmia prima sulla spesa di tutti i giorni</b>: il discrezionale tiene meglio.</p></div>
     <div class="panel card" data-src="Eurostat prc_hicp_minr (ECOICOP ver. 2)" data-title="Prezzi per categoria di consumo, var. % annua"><header class="ah"><h3 class="atitle">Fuori dall'energia i prezzi sono quasi fermi: poco spazio per rincari di listino.</h3><div class="metric">Prezzi per categoria di consumo, var. % annua</div><div class="sub">Settembre 2026 su settembre 2025 · Italia e area euro, energia esclusa</div></header>
       <div class="legend"><span><i class="sw box" style="background:var(--val)"></i>Italia</span><span><i class="sw box" style="background:var(--s4)"></i>Area euro</span></div>
       <div class="chart" id="c-eu-cat"></div>
       <p class="read">Abbigliamento <b>0,0%</b> in Italia, cura della persona <b>+1,1%</b>; alimentari <b>+1,7%</b>, in accelerazione da agosto. Fanno eccezione le marche con vantaggio distintivo.</p></div>
-    <div class="panel card" data-src="Commissione europea via Eurostat ei_bsco_m e stima flash di ottobre (22 ottobre 2026); Istat, fiducia dei consumatori (29 ottobre 2026)" data-title="Fiducia dei consumatori, saldo"><header class="ah"><h3 class="atitle">A ottobre la fiducia dell'area euro scende ancora, a −17,9: secondo calo di fila.</h3><div class="metric">Fiducia dei consumatori, saldo</div><div class="sub">Gennaio 2025–ottobre 2026 · Commissione europea · area euro a ottobre (stima flash), Germania, Francia e Spagna a settembre, Italia ad agosto</div></header>
+    <div class="panel card" data-src="Commissione europea via Eurostat ei_bsco_m (ottobre 2026); Istat, fiducia dei consumatori (29 ottobre 2026)" data-title="Fiducia dei consumatori, saldo"><header class="ah"><h3 class="atitle">A ottobre la fiducia scende in tutti i grandi Paesi tranne la Spagna: Italia a −23,3.</h3><div class="metric">Fiducia dei consumatori, saldo</div><div class="sub">Gennaio 2025–ottobre 2026 · Commissione europea · saldo tra risposte positive e negative</div></header>
       <div class="legend"><span id="lg-cc"></span></div>
       <div class="chart" id="c-eu-cc"></div>
-      <p class="read">Lo shock di <b>marzo–aprile 2026</b> è comune; il recupero no: si interrompe a settembre dopo quattro mesi e a ottobre la stima flash segna un nuovo calo (−1,1 punti). Per l'Italia il saldo di settembre non è ancora pubblicato: ad agosto era il più basso tra i grandi Paesi (<b>−20,3</b>) e l'indice Istat di ottobre scende ancora, a 90,3 da 91,2.</p></div>
-    <div class="panel card" data-src="Eurostat prc_hicp_minr (ECOICOP ver. 2); Istat, prezzi al consumo (30 settembre 2026)" data-title="Energia contro alimentari, var. % annua"><header class="ah"><h3 class="atitle">Energia a +18,9% nell'area euro: il rincaro arriva dalle bollette, non ancora dal carrello.</h3><div class="metric">Energia contro alimentari, var. % annua</div><div class="sub">Settembre 2026 su settembre 2025 · var. % annua, indice armonizzato</div></header>
+      <p class="read">Lo shock di <b>marzo–aprile 2026</b> è comune; il recupero no: si interrompe a settembre e a ottobre l'area euro scende ancora, a −17,9 (−1,1 punti). <b>La Francia perde 3,4 punti in un mese</b>, a −21,9; l'Italia resta la più pessimista, vicina al minimo di aprile (−23,8), e anche l'indice Istat scende, a 90,3 da 91,2.</p></div>
+    <div class="panel card" data-src="Eurostat prc_hicp_minr (ECOICOP ver. 2); Istat, prezzi al consumo (30 settembre 2026)" data-title="Energia contro alimentari, var. % annua"><header class="ah"><h3 class="atitle">A settembre energia a +18,9% nell'area euro, alimentari ancora all'1,0%.</h3><div class="metric">Energia contro alimentari, var. % annua</div><div class="sub">Settembre 2026 su settembre 2025 · var. % annua, indice armonizzato</div></header>
       <div class="legend"><span><i class="sw box" style="background:var(--neg)"></i>Energia</span><span><i class="sw box" style="background:var(--vol)"></i>Alimentari</span></div>
       <div class="chart" id="c-eu-px"></div>
-      <p class="read"><b>Energia a doppia cifra in tutti i grandi Paesi</b>, dal +13,4% della Germania al +22,6% dell'Italia. Gli alimentari restano tra lo 0,4% e il 2,7%, ma salgono ovunque rispetto ad agosto: in Italia +1,7% dall'1,1%.</p></div>
-    <div class="panel card" data-src="Eurostat nasq_10_ki; ONS NRJS" data-title="Propensione al risparmio delle famiglie, %"><header class="ah"><h3 class="atitle">In Italia il risparmio scende al 9,5% del reddito; in Germania e Francia è al 17–19%.</h3><div class="metric">Propensione al risparmio delle famiglie, %</div><div class="sub">Q2 2026 (Francia: Q1 2026) · % del reddito disponibile lordo (Regno Unito: definizione ONS)</div></header>
+      <p class="read"><b>Energia a doppia cifra in tutti i grandi Paesi</b>, dal +13,4% della Germania al +22,6% dell'Italia. Gli alimentari restano tra lo 0,4% e il 2,7%, ma salgono ovunque rispetto ad agosto: in Italia +1,7% dall'1,1%, e la stima preliminare Istat di ottobre segna <b>alimentari non lavorati +7,5% e carrello +2,5%</b>.</p></div>
+    <div class="panel card" data-src="Eurostat nasq_10_ki; ONS NRJS" data-title="Propensione al risparmio delle famiglie, %"><header class="ah"><h3 class="atitle">In Italia il risparmio scende al 9,5% del reddito, contro il 16,9% della Francia e il 19,0% della Germania.</h3><div class="metric">Propensione al risparmio delle famiglie, %</div><div class="sub">Q2 2026 · % del reddito disponibile lordo (Regno Unito: definizione ONS)</div></header>
       <div class="legend"></div>
       <div class="chart" id="c-eu-sv"></div>
       <p class="read">In un trimestre la quota italiana perde 1,2 punti (era 10,7%): la spesa regge intaccando il risparmio. A parità di shock, chi ha meno risparmio ha <b>meno margine per assorbire i rincari</b>.</p></div>
@@ -891,15 +912,15 @@ html,body{overflow-x:clip}
       <div class="chart tblbox" id="fc-tblbox"><table class="fct"><thead><tr><th>Indicatore</th><th>2025</th><th>2026</th><th>2027</th><th>Fonte</th></tr></thead><tbody id="fc-tbl"></tbody></table></div>
       <p class="read">Il rischio sulle previsioni 2026 è <b>al rialzo soprattutto sull'inflazione</b>; sulla crescita si riduce dopo il Q3 fermo. Il quadro del Governo (DPFP del 2 ottobre: +1,0% nel 2026, +0,8% nel 2027) è riportato con doppio riscontro.</p></div>
   </div>
-  <h3 class="subh">Abitudini e intenzioni di acquisto, settembre 2026</h3>
+  <h3 class="subh">Abitudini e intenzioni di acquisto, ottobre 2026</h3>
   <div class="stats" id="stats"></div>
-  <p class="note2">Fonte: <a href="https://www.osservatoriofindomestic.it/osservatorio-mensile/barometro.html" target="_blank" rel="noopener">Osservatorio Findomestic, Barometro di settembre 2026</a>. Indagine mensile sulle intenzioni di acquisto degli italiani.</p>
+  <p class="note2">Fonte: <a href="https://www.osservatoriofindomestic.it/osservatorio-mensile/barometro.html" target="_blank" rel="noopener">Osservatorio Findomestic, Barometro di ottobre 2026</a> (27 ottobre 2026). Indagine mensile sulle intenzioni di acquisto degli italiani a tre mesi; variazioni in punti percentuali su settembre. <sup class="ast">*</sup> Doppio riscontro: cifre riportate in modo identico da Radiocor e Ore12, perché il documento dell'Osservatorio non è accessibile.</p>
 </section>
 
 <section id="digitale" aria-labelledby="h-dig">
   <div class="sec-h"><h2 id="h-dig">Il consumatore digitale</h2><p class="srcl">Fonti: Eurostat, ONS, Netcomm–PoliMi, Casaleggio Associati.</p></div>
   <div class="grid2">
-    <div class="panel card" data-src="Eurostat sts_trtu_m (G4791 e G47_X_G473)" data-title="Vendite online contro vendite totali, var. % annua a volume"><header class="ah"><h3 class="atitle">L'online cresce ovunque più del totale: in Italia +9,0% contro −0,1%.</h3><div class="metric">Vendite online contro vendite totali, var. % annua a volume</div><div class="sub">Media giugno–agosto 2026 su stesso periodo 2025 (Francia, online: maggio–luglio)</div></header>
+    <div class="panel card" data-src="Eurostat sts_trtu_m (G4791 e G47_X_G473)" data-title="Vendite online contro vendite totali, var. % annua a volume"><header class="ah"><h3 class="atitle">L'online cresce ovunque più del totale: in Italia +9,0% contro −0,1%.</h3><div class="metric">Vendite online contro vendite totali, var. % annua a volume</div><div class="sub">Media giugno–agosto 2026 su stesso periodo 2025 (Spagna: luglio–settembre)</div></header>
       <div class="legend"><span><i class="sw box" style="background:var(--val)"></i>Online</span><span><i class="sw box" style="background:var(--s4)"></i>Totale commercio al dettaglio, esclusi carburanti</span></div>
       <div class="chart" id="c-dg-vol"></div>
       <p class="read">La domanda non sparisce, <b>cambia canale</b>. Nell'area euro +4,4% contro +1,4%: una distanza di 3,0 punti.</p></div>
@@ -918,9 +939,9 @@ html,body{overflow-x:clip}
       <div class="legend"></div>
       <dl class="dgk"><div><dt>Acquisti online di prodotti, Italia</dt><dd>42,6 mld €<small>stima 2026, +6% (Netcomm–PoliMi)</small></dd></div>
         <div><dt>Penetrazione dell'online sul retail di prodotto, Italia</dt><dd>11,5%<small>stima 2026 (Netcomm–PoliMi)</small></dd></div>
-        <div><dt>Quota online sulle vendite al dettaglio, Regno Unito</dt><dd>27,3%<small>agosto 2026, era 26,1% un anno fa (ONS)</small></dd></div>
+        <div><dt>Quota online sulle vendite al dettaglio, Regno Unito</dt><dd>28,3%<small>settembre 2026, era 27,3% un anno fa (ONS)</small></dd></div>
         <div><dt>Italiani che comprano online</dt><dd>56%<small>2025, contro 74% UE (Eurostat)</small></dd></div></dl>
-      <p class="read"><b>27,3% contro 11,5%</b>, con misure non identiche ma comparabili: il Regno Unito mostra il punto di arrivo.</p></div>
+      <p class="read"><b>28,3% contro 11,5%</b>, con misure non identiche ma comparabili: il Regno Unito mostra il punto di arrivo.</p></div>
   </div>
   <div class="take card" data-title="La lettura del mese" data-src="strategica21"><div class="sigbar"></div><h3>La lettura del mese</h3>
     <p>Mentre le vendite totali crescono poco, <b>l'online cresce del 9% in Italia e tra il 3% e il 7% negli altri grandi Paesi dell'area euro</b>. Per chi guida un brand consumer il tema non è se investire nel digitale, ma <b>dove si sposta il margine</b>: i marketplace catturano la crescita, i costi di acquisizione salgono e la visibilità nei cataloghi letti dagli assistenti AI diventa una nuova leva di distribuzione. <b>Chi presidia oggi il canale diretto e i dati di prima parte difende il margine domani.</b></p>
@@ -938,17 +959,17 @@ html,body{overflow-x:clip}
   <div class="crit card" data-title="Perché contano per i consumi" data-src="strategica21; Documento programmatico di finanza pubblica (2 ottobre 2026)"><h3>Perché contano per i consumi</h3>
     <p><b>Rendimenti.</b> Quando i rendimenti dei titoli di Stato salgono, soprattutto sulle scadenze lunghe, lo Stato paga più interessi sul debito che rinnova: restano meno risorse per investimenti e per misure di sostegno alle famiglie. Con un debito al 138,1% del Pil nel 2026<sup class="ast">*</sup>, per l'Italia ogni aumento pesa più che altrove. <b>Cambi.</b> Un euro più debole rende più care le importazioni in dollari e in yuan (energia, materie prime, prodotti finiti) e più competitivo l'export europeo; un euro più forte fa il contrario.</p></div>
   <div class="grid2" style="margin-top:20px">
-    <div class="panel card" data-src="BCE, tassi di interesse a lungo termine armonizzati (IRS)" data-title="Rendimento dei titoli di Stato a 10 anni, %"><header class="ah"><h3 class="atitle">In un anno i rendimenti a 10 anni sono saliti di circa mezzo punto in tutta l'area euro.</h3><div class="metric">Rendimento dei titoli di Stato a 10 anni, %</div><div class="sub">Media mensile, gennaio 2025–agosto 2026</div></header>
+    <div class="panel card" data-src="BCE, tassi di interesse a lungo termine armonizzati (IRS)" data-title="Rendimento dei titoli di Stato a 10 anni, %"><header class="ah"><h3 class="atitle">A settembre i rendimenti a 10 anni salgono ancora: +0,8 punti in un anno in Italia, +0,9 in Francia.</h3><div class="metric">Rendimento dei titoli di Stato a 10 anni, %</div><div class="sub">Media mensile, gennaio 2025–settembre 2026</div></header>
       <div class="legend" id="lg-mk-y"></div>
       <div class="chart" id="c-mk-y"></div>
-      <p class="read">Italia 3,99% (da 3,54%), Francia 4,00% (da 3,42%): <b>la Francia ha raggiunto l'Italia</b>. La distanza tra Italia e Germania è di 0,80 punti (0,86 un anno fa).</p></div>
-    <div class="panel card" data-src="BCE, cambi di riferimento dell'euro (EXR)" data-title="Euro contro le principali valute, var. % a un anno"><header class="ah"><h3 class="atitle">L'euro si è indebolito contro dollaro (−3,5%) e yuan (−9,1%).</h3><div class="metric">Euro contro le principali valute, var. % a un anno</div><div class="sub">6 ottobre 2026 su 6 ottobre 2025 · valori negativi = euro più debole</div></header>
+      <p class="read">Italia 4,36% (da 3,56% a settembre 2025), Francia 4,44% (da 3,51%): <b>la Francia paga più dell'Italia</b>. La distanza tra Italia e Germania è di 0,89 punti (0,87 un anno fa); la Spagna sale meno (+0,67 punti, al 3,93%).</p></div>
+    <div class="panel card" data-src="BCE, cambi di riferimento dell'euro (EXR)" data-title="Euro contro le principali valute, var. % a un anno"><header class="ah"><h3 class="atitle">In un anno l'euro si è indebolito contro tutte le principali valute, soprattutto lo yuan (−9,5%).</h3><div class="metric">Euro contro le principali valute, var. % a un anno</div><div class="sub">30 ottobre 2026 su 30 ottobre 2025 · valori negativi = euro più debole</div></header>
       <div class="legend"></div>
       <div class="chart" id="c-mk-fx"></div>
-      <p class="read">Un euro vale 1,13 dollari e 7,56 yuan. <b>Importare dalla Cina e in dollari costa di più</b>; chi esporta fuori dall'area euro guadagna competitività.</p></div>
+      <p class="read">Un euro vale 1,12 dollari e 7,43 yuan; contro la sterlina perde il 5,3%. <b>Importare dalla Cina e in dollari costa di più</b>; chi esporta fuori dall'area euro guadagna competitività.</p></div>
   </div>
   <div class="tbl-wrap card" style="margin-top:20px" data-title="Rendimenti dei titoli di Stato a 10 e 30 anni" data-src="BCE (IRS e curve dei rendimenti), Deutsche Bundesbank, Tesoro degli Stati Uniti"><table class="eut" id="mk-tbl"></table></div>
-  <p class="note2">Rendimenti in % annua; variazioni in punti percentuali rispetto a un anno prima (dati giornalieri: stessa data o ultima seduta precedente). Italia, Francia e Spagna: media mensile di agosto 2026, ultimo dato armonizzato BCE. Italia a 30 anni: non riportato, perché il Tesoro pubblica solo i rendimenti d'asta e non una serie giornaliera accessibile. <sup class="ast">*</sup> Debito/Pil: Documento programmatico di finanza pubblica approvato il 2 ottobre 2026; doppio riscontro (AGI, Avvenire).</p>
+  <p class="note2">Rendimenti in % annua; variazioni in punti percentuali rispetto a un anno prima (dati giornalieri: stessa data o ultima seduta precedente). Italia, Francia e Spagna: media mensile di settembre 2026, ultimo dato armonizzato BCE. Italia a 30 anni: non riportato, perché il Tesoro pubblica solo i rendimenti d'asta e non una serie giornaliera accessibile. <sup class="ast">*</sup> Debito/Pil: Documento programmatico di finanza pubblica approvato il 2 ottobre 2026; doppio riscontro (AGI, Avvenire).</p>
 </section>
 
 
@@ -1002,22 +1023,22 @@ html,body{overflow-x:clip}
   <div class="sec-h"><h2 id="h-ag">Agenda</h2><p class="srcl">Fonti: calendari degli istituti; testata indicata per ogni notizia.</p></div>
   <h3 class="subh">Prossimi rilasci</h3>
   <ol class="cal2">
-    <li data-d="2026-09-30"><time>29–30 settembre</time><div><b>Fiducia dei consumatori di settembre</b>: Commissione europea (area euro confermata a −16,5) e Istat (91,2 da 94,5).</div></li>
-    <li data-d="2026-10-01"><time>1 ottobre</time><div><b>Disoccupazione di agosto</b>: Istat ed Eurostat. Italia 6,2%, area euro 6,4%.</div></li>
-    <li data-d="2026-10-02"><time>2 ottobre</time><div><b>Stima flash dell'inflazione di settembre</b>, area euro: Eurostat. 3,8% su base annua, energia +18,8%.</div></li>
-    <li data-d="2026-10-05"><time>5 ottobre</time><div><b>Reddito e risparmio delle famiglie, Q2 2026</b>: Istat. Potere d'acquisto −0,9% sul trimestre precedente.</div></li>
-    <li data-d="2026-10-06"><time>2 e 6 ottobre</time><div><b>Vendite al dettaglio di agosto</b>: Istat (2 ottobre) ed Eurostat (6 ottobre).</div></li>
-    <li data-d="2026-10-28"><time>Dal 12 ottobre</time><div><b>Conti del Q3 2026</b> di lusso e staples europei: LVMH il 12, Nestlé il 22, Unilever il 28 ottobre. <span class="mut">Date dai calendari delle società.</span></div></li>
-    <li data-d="2026-10-15"><time>14–15 ottobre</time><div><b>Stati Uniti, prezzi al consumo e vendite al dettaglio di settembre</b>: BLS il 14 (inflazione al 3,7% dal 3,4%), Census Bureau il 15 (vendite esclusi carburanti +4,1% a/a nella media luglio–settembre).</div></li>
-    <li data-d="2026-10-16"><time>16 ottobre</time><div><b>Inflazione di settembre, dati definitivi per categoria</b>: Istat ed Eurostat. <span class="mut">Eurostat: data indicativa.</span></div></li>
-    <li data-d="2026-10-22"><time>22 ottobre</time><div><b>Fiducia dei consumatori di ottobre</b>, stima flash: Commissione europea (area euro −17,9). <b>Immatricolazioni di settembre</b>: ACEA (Europa +6,3% da inizio anno).</div></li>
+    <li data-d="2026-10-22"><time>22 ottobre</time><div><b>Fiducia dei consumatori di ottobre</b>, stima flash: Commissione europea (area euro −17,9, poi confermata). <b>Immatricolazioni di settembre</b>: ACEA (Europa +6,3% da inizio anno).</div></li>
+    <li data-d="2026-10-28"><time>22–28 ottobre</time><div><b>Conti del terzo trimestre</b> dei grandi gruppi del largo consumo: Nestlé il 22 (Europa +1,2%), Unilever il 28 (Europa −1,7%).</div></li>
     <li data-d="2026-10-29"><time>28–29 ottobre</time><div><b>Riunioni di Fed e BCE</b>: tassi invariati (Fed 3,75–4,00%, BCE sui depositi 2,50%). Il 29 anche Istat: fiducia dei consumatori di ottobre a 90,3 da 91,2; occupati di settembre.</div></li>
     <li data-d="2026-10-30"><time>30 ottobre</time><div><b>Pil del Q3 2026</b>, stima preliminare: Istat (Italia 0,0% sul trimestre) ed Eurostat (area euro +0,4%). <b>Inflazione di ottobre</b>, stima preliminare Istat: 5,6% l'indice armonizzato, 5,4% il NIC. <b>Disoccupazione di settembre</b>, Eurostat: area euro 6,5%.</div></li>
-    <li data-d="2026-11-03"><time>Inizio novembre</time><div><b>Stima flash dell'inflazione di ottobre</b>, area euro: Eurostat. <span class="mut">Data indicativa.</span></div></li>
-    <li data-d="2026-11-05"><time>5 novembre</time><div><b>Vendite al dettaglio di settembre</b>: Istat. <span class="mut">Eurostat negli stessi giorni, data indicativa.</span></div></li>
+    <li data-d="2026-11-03"><time>3 novembre</time><div><b>Hugo Boss, conti del terzo trimestre.</b> <span class="mut">Data indicativa.</span></div></li>
+    <li data-d="2026-11-04"><time>4 novembre</time><div><b>Stima flash dell'inflazione di ottobre</b>, area euro: Eurostat.</div></li>
+    <li data-d="2026-11-05"><time>5 novembre</time><div><b>Vendite al dettaglio di settembre</b>: Istat.</div></li>
+    <li data-d="2026-11-06"><time>Entro il 6 novembre</time><div><b>Vendite al dettaglio di settembre</b>, area euro: Eurostat. Il 6 anche <b>Stati Uniti, occupati e disoccupazione di ottobre</b>: BLS. <span class="mut">Eurostat: data indicativa.</span></div></li>
+    <li data-d="2026-11-10"><time>9–10 novembre</time><div><b>Prezzi al consumo di ottobre</b>: Cina (NBS, il 9) e Stati Uniti (BLS, il 10).</div></li>
+    <li data-d="2026-11-18"><time>17–18 novembre</time><div><b>Inflazione di ottobre, dati definitivi</b>: Istat il 17, Eurostat negli stessi giorni. <b>Stati Uniti, vendite al dettaglio di ottobre</b>: Census Bureau. <span class="mut">Eurostat e Census Bureau: date indicative.</span></div></li>
+    <li data-d="2026-11-20"><time>Entro il 20 novembre</time><div><b>Fiducia dei consumatori di novembre</b>, stima flash: Commissione europea. <span class="mut">Data indicativa.</span></div></li>
+    <li data-d="2026-11-30"><time>Fine novembre</time><div><b>Fiducia di consumatori e imprese di novembre</b>: Istat. <b>Immatricolazioni di ottobre</b>: ACEA. <span class="mut">Date indicative.</span></div></li>
+    <li data-d="2026-12-04"><time>Inizio dicembre</time><div><b>Inflazione di novembre</b>, stime preliminari di Istat ed Eurostat; <b>disoccupazione di ottobre</b>, Istat ed Eurostat. <span class="mut">Date indicative.</span></div></li>
   </ol>
   <h3 class="subh" id="h-news">Notizie dell'ultimo mese</h3>
-  <p class="note2" style="margin:4px 0 14px">Aggiornate al 30 ottobre 2026. Selezionate per impatto su consumi e decisioni commerciali.</p>
+  <p class="note2" style="margin:4px 0 14px">Aggiornate al 1° novembre 2026. Selezionate per impatto su consumi e decisioni commerciali.</p>
   <div class="chips" id="chips" role="group" aria-label="Filtra per tema"></div>
   <ul class="news" id="news"></ul>
   <div class="more" id="news-more"></div>
@@ -1082,7 +1103,7 @@ html,body{overflow-x:clip}
 
 <script>
 const D = {
-  asOf:"2026-10-15",
+  asOf:"2026-11-01",
   gdp:{x:["II 25","III 25","IV 25","I 26","II 26","III 26"], v:[0.0,0.2,0.3,0.3,0.2,0.0]},
   unemp:{x:["Feb","Mar","Apr","Mag","Giu","Lug"], v:[5.3,5.2,5.1,5.3,5.9,5.8], fcx:["Ago","Set","Ott","Nov","Dic"]},
   ecb:{x:["Gen","Feb","Mar","Apr","Mag","Giu","Lug","Ago","Set","Ott"], v:[2.00,2.00,2.00,2.00,2.00,2.25,2.25,2.25,2.50,2.50]},
@@ -1096,12 +1117,12 @@ const D = {
   pools:[{n:"Beauty & pharma online (2026)",g:8.0},{n:"Marca del distributore (2025)",g:6.8},{n:"E-commerce di prodotto (2026)",g:6.0},{n:"Largo consumo in GDO (2025)",g:3.0},{n:"Supermercati, parità di rete (2026)",g:2.4},{n:"Spesa totale in GDO (2025)",g:2.0},{n:"Discount, parità di rete (2026)",g:0.5}],
   conf:{x:["Dic","Gen","Feb","Mar","Apr","Mag","Giu","Lug","Ago"], v:[96.6,96.8,97.4,92.6,90.8,93.4,92.4,94.2,94.5], fcx:["Set","Ott","Nov","Dic"]},
   stats:[
-    {v:"45%", t:"delle famiglie dichiara difficoltà nella gestione del bilancio, in aumento dal 41% della rilevazione precedente"},
-    {v:"60%", t:"teme l'inflazione; circa il 40% percepisce i prezzi come «molto in crescita»"},
-    {v:"25%", t:"ritiene favorevole il momento per programmare acquisti importanti, in risalita dal 21%"},
-    {v:"38%", t:"intende acquistare piccoli elettrodomestici, il livello più alto dell'ultimo anno"},
-    {v:"28,4%", t:"intende acquistare uno smartphone, il massimo da aprile"},
-    {v:"14%", t:"sta valutando una ristrutturazione della casa, contro circa il 19% di un anno fa"}
+    {v:"−4,4%", t:"l'indice delle intenzioni d'acquisto a tre mesi su settembre, il minimo dell'ultimo anno<sup class=\"ast\">*</sup>"},
+    {v:"59%", t:"delle famiglie riesce a risparmiare, dal 55% di settembre<sup class=\"ast\">*</sup>"},
+    {v:"65%", t:"indica l'inflazione come prima preoccupazione; l'85% percepisce prezzi in crescita<sup class=\"ast\">*</sup>"},
+    {v:"48%", t:"intende fare un viaggio nei prossimi tre mesi, +2,8 punti su settembre<sup class=\"ast\">*</sup>"},
+    {v:"26%", t:"intende acquistare prodotti di telefonia, −2,6 punti; PC e TV al 22%<sup class=\"ast\">*</sup>"},
+    {v:"22%", t:"intende acquistare mobili, −2,1 punti; auto nuova al 12%, −0,7 punti<sup class=\"ast\">*</sup>"}
   ],
   basket:[{n:"Kefir",g:51.2},{n:"Semi",g:26.3},{n:"Ingredienti vegani",g:15.3}],
   ecat:[{n:"Salute e bellezza",g:24.2},{n:"Marketplace",g:15.7},{n:"Sport",g:10.4},{n:"Moda",g:8.8},{n:"Casa e arredamento",g:-1.1},{n:"Gioielli",g:-2.6},{n:"Animali",g:-3.3}],
@@ -1299,8 +1320,8 @@ function vchart(host, cfg){
         let lv1=yv+4, lq1=yq+4, lx1=cx(i)+13, la1='start';
         if (small){ const up=Math.min(yv,yq)-11, dn=Math.max(yv,yq)+19; lx1=cx(i); la1='middle'; if (yv<=yq){ lv1=up; lq1=dn; } else { lq1=up; lv1=dn; } }
         else if (Math.abs(yq-yv) < 14){ const mid=(yv+yq)/2; if (yv<=yq){ lv1=mid-3; lq1=mid+11; } else { lq1=mid-3; lv1=mid+11; } }
-        s += `<text x="${lx1}" y="${lv1}" text-anchor="${la1}" font-size="${fs}" font-weight="${last?700:500}" fill="${css('--val')}">${sgn(v)}%</text>`;
-        s += `<text x="${lx1}" y="${lq1}" text-anchor="${la1}" font-size="${fs}" font-weight="${last?700:500}" fill="${q<0?css('--neg'):css('--vol')}">${sgn(q)}%</text>`;
+        s += `<text x="${lx1}" y="${lv1}" text-anchor="${la1}" font-size="${fs}" stroke="${css('--panel')}" stroke-width="4" paint-order="stroke" stroke-linejoin="round" font-weight="${last?700:500}" fill="${css('--val')}">${sgn(v)}%</text>`;
+        s += `<text x="${lx1}" y="${lq1}" text-anchor="${la1}" font-size="${fs}" stroke="${css('--panel')}" stroke-width="4" paint-order="stroke" stroke-linejoin="round" font-weight="${last?700:500}" fill="${q<0?css('--neg'):css('--vol')}">${sgn(q)}%</text>`;
       });
     }
   });
@@ -1366,7 +1387,7 @@ function drawKpi(){
     ["Spesa delle famiglie, Q2 2026, var. sul trimestre","+0,4%","<span class='mut'>dopo +0,5% nel Q1</span>","Istat"],
     ["Inflazione armonizzata, ottobre 2026, var. annua, stima preliminare","5,6%","<span class='warn'>da 4,2% a settembre</span>","Istat"],
     ["Vendite a volume esclusi carburanti, media giu–ago 2026, var. annua","−0,1%","<span class='mut'>valore +1,3%</span>","Eurostat"],
-    ["Fiducia consumatori, saldo, agosto 2026 (ultimo dato)","−20,3","<span class='down'>area euro −15,5</span>","Commissione europea"],
+    ["Fiducia consumatori, saldo, ottobre 2026","−23,3","<span class='down'>area euro −17,9</span>","Commissione europea"],
     ["Disoccupazione, settembre 2026","6,3%","<span class='up'>area euro 6,5%</span>","Istat, Eurostat"],
     ["Tasso BCE depositi, dopo il 29 ottobre 2026","2,50%","<span class='warn'>invariato; +50 pb da giugno</span>","BCE"],
     ["Risparmio lordo delle famiglie, Q2 2026","9,5%","<span class='mut'>area euro 14,2%</span>","Eurostat"]
@@ -1495,30 +1516,30 @@ $("pf-reg")?.addEventListener("click", e=>{ const b=e.target.closest("button"); 
 
 /* ---------- edizione europea: dati (Eurostat, ONS, BLS, Census, NBS, ACEA, società) ---------- */
 const EU = {
-  cols: [["vv","Vendite al dettaglio a valore, esclusi carburanti","media giu–ago 2026",true],["rv","Vendite al dettaglio a volume, esclusi carburanti","media giu–ago 2026",true],["hi","Inflazione armonizzata","set 2026",false],["en","Inflazione energia","set 2026",false],["fo","Inflazione alimentari","set 2026",false],["cc","Fiducia consumatori (saldo)","set 2026",true],["un","Disoccupazione","set 2026",false],["sv","Risparmio famiglie","Q2 2026",false]],
+  cols: [["vv","Vendite al dettaglio a valore, esclusi carburanti","media giu–ago 2026",true],["rv","Vendite al dettaglio a volume, esclusi carburanti","media giu–ago 2026",true],["hi","Inflazione armonizzata","set 2026",false],["en","Inflazione energia","set 2026",false],["fo","Inflazione alimentari","set 2026",false],["cc","Fiducia consumatori (saldo)","ott 2026",true],["un","Disoccupazione","set 2026",false],["sv","Risparmio famiglie","Q2 2026",false]],
   rows: [
-    {c:"IT",n:"Italia",vv:1.3,rv:-0.1,hi:4.2,en:22.6,fo:1.7,cc:-20.3,un:6.3,sv:9.5,note:{cc:"ago 2026"}},
-    {c:"DE",n:"Germania",vv:1.5,rv:-0.5,hi:3.3,en:13.4,fo:0.4,cc:-14.5,un:4.0,sv:19.0,note:{un:"ago 2026"}},
-    {c:"FR",n:"Francia",vv:3.1,rv:3.1,hi:3.4,en:21.1,fo:1.5,cc:-18.4,un:8.2,sv:17.4,note:{sv:"Q1 2026",un:"ago 2026"}},
-    {c:"ES",n:"Spagna",vv:3.2,rv:1.2,hi:5.0,en:22.1,fo:2.7,cc:-4.7,un:10.0,sv:11.0,note:{un:"ago 2026"}},
-    {c:"UK",n:"Regno Unito",vv:null,rv:2.3,hi:3.1,en:null,fo:null,cc:null,un:4.9,sv:9.0,note:{rv:"media giu–ago 2026, carburanti inclusi",un:"3 mesi a giugno",hi:"CPI ONS, agosto"}},
-    {c:"EA",n:"Area euro",vv:2.6,rv:1.4,hi:3.8,en:18.9,fo:1.0,cc:-17.9,un:6.5,sv:14.2,note:{cc:"ott 2026, stima flash"}}
+    {c:"IT",n:"Italia",vv:1.3,rv:-0.1,hi:4.2,en:22.6,fo:1.7,cc:-23.3,un:6.3,sv:9.5},
+    {c:"DE",n:"Germania",vv:1.5,rv:-0.5,hi:3.3,en:13.4,fo:0.4,cc:-14.5,un:4.1,sv:19.0},
+    {c:"FR",n:"Francia",vv:3.3,rv:3.4,hi:3.4,en:21.1,fo:1.5,cc:-21.9,un:8.5,sv:16.9,note:{vv:"media lug–set 2026",rv:"media lug–set 2026"}},
+    {c:"ES",n:"Spagna",vv:2.8,rv:0.6,hi:5.0,en:22.1,fo:2.7,cc:-4.4,un:10.3,sv:11.0,note:{vv:"media lug–set 2026",rv:"media lug–set 2026"}},
+    {c:"UK",n:"Regno Unito",vv:null,rv:1.5,hi:3.5,en:null,fo:null,cc:null,un:4.7,sv:9.0,note:{rv:"media lug–set 2026, carburanti inclusi",un:"3 mesi a luglio",hi:"CPI ONS, settembre"}},
+    {c:"EA",n:"Area euro",vv:2.6,rv:1.4,hi:3.8,en:18.9,fo:1.0,cc:-17.9,un:6.5,sv:14.2}
   ],
   months: ["gen 25","feb","mar","apr","mag","giu","lug","ago","set","ott","nov","dic","gen 26","feb","mar","apr","mag","giu","lug","ago","set","ott"],
   cc: {
-    IT:[-15,-13.9,-16.5,-18.8,-16,-17.2,-17,-16.8,-15.7,-15.4,-16.5,-16.6,-15.6,-15.1,-20.1,-23.8,-21.2,-22.1,-20.2,-20.3],
-    DE:[-11.3,-11.2,-10.3,-10.5,-9.1,-9.8,-8.9,-10.5,-9.2,-10.8,-11.5,-12,-9.9,-11,-13.5,-17.5,-15.9,-14.5,-13.7,-12.7,-14.5],
-    FR:[-14.1,-13.2,-14.8,-16.3,-17.4,-17.4,-16.9,-18.5,-19.3,-15.5,-15.8,-16.2,-15.7,-14.2,-17.1,-21.8,-21.1,-19.3,-16.9,-17.8,-18.4],
-    ES:[0.5,-1.1,-2,-4.2,-2.2,-2.9,-4.5,-2.7,-0.9,-0.1,-0.9,-1.9,-1.8,-1.7,-3,-6.2,-6.3,-5.2,-4.6,-4.5,-4.7],
-    EA:[-12.5,-12.5,-13.2,-15,-13.5,-13.9,-13.5,-14.1,-13.4,-12.6,-12.9,-13.3,-12.5,-12.4,-16.3,-20.5,-18.9,-17.7,-15.9,-15.5,-16.8,-17.9]
+    IT:[-15.1,-13.9,-16.5,-18.8,-16,-17.1,-17,-16.7,-15.8,-15.5,-16.6,-16.6,-15.6,-15.1,-20.1,-23.8,-21.2,-22.1,-20.2,-20.2,-23.2,-23.3],
+    DE:[-11.3,-11.2,-10.3,-10.5,-9.1,-9.8,-8.9,-10.5,-9.2,-10.8,-11.5,-12,-9.9,-11,-13.5,-17.5,-15.9,-14.4,-13.6,-12.5,-14.3,-14.5],
+    FR:[-14.1,-13.2,-14.8,-16.3,-17.5,-17.4,-17,-18.6,-19.3,-15.4,-15.8,-16.2,-15.7,-14.2,-17.1,-21.8,-21.1,-19.3,-17,-17.8,-18.5,-21.9],
+    ES:[0.5,-1.1,-2,-4.2,-2.2,-2.9,-4.5,-2.7,-0.9,-0.1,-1,-1.9,-1.8,-1.7,-3,-6.2,-6.3,-5.3,-4.6,-4.6,-4.8,-4.4],
+    EA:[-12.5,-12.4,-13.2,-15,-13.5,-13.9,-13.5,-14.1,-13.4,-12.6,-12.9,-13.2,-12.5,-12.3,-16.3,-20.5,-18.9,-17.7,-15.9,-15.6,-16.8,-17.9]
   }
 };
 const USCN = {
-  US: [["Vendite al dettaglio esclusi carburanti, lug–set, a/a","+4,1%","a valore, media 3 mesi (Census); con carburanti +5,5%"],["Inflazione, set, a/a","3,7%","CPI BLS (ago: 3,4%)"],["Energia, set, a/a","+20,4%","CPI BLS (ago: +16,3%)"],["Alimentari a casa, set, a/a","+1,8%","CPI BLS (ago: +2,2%)"],["Disoccupazione, set","4,2%","BLS (ago: 4,1%)"],["Fiducia, set","48,1","Univ. del Michigan, definitivo (ago: 51,7)"]],
+  US: [["Vendite al dettaglio esclusi carburanti, lug–set, a/a","+4,1%","a valore, media 3 mesi (Census); con carburanti +5,5%"],["Inflazione, set, a/a","3,7%","CPI BLS (ago: 3,4%)"],["Energia, set, a/a","+20,4%","CPI BLS (ago: +16,3%)"],["Alimentari a casa, set, a/a","+1,8%","CPI BLS (ago: +2,2%)"],["Disoccupazione, set","4,2%","BLS (ago: 4,1%)"],["Fiducia, ott","48,0","Univ. del Michigan, definitivo (set: 48,1)"]],
   USrate: "Fed: 3,75–4,00%, invariato il 28 ottobre 2026 (10 voti contro 2: Cook e Hammack per un rialzo di 25 pb), dopo il rialzo del 16 settembre",
-  CN: [["Vendite al dettaglio, ago, a/a","+0,4%","a valore (NBS)"],["Inflazione, ago, a/a","0,8%","CPI (NBS)"],["Disoccupazione urbana, ago","5,3%","NBS"]],
+  CN: [["Vendite al dettaglio, set, a/a","+1,1%","a valore, NBS (ago: +0,4%)"],["Inflazione, set, a/a","0,9%","CPI, NBS (ago: 0,8%)"],["Disoccupazione urbana, set","5,2%","NBS (ago: 5,3%)"]],
   src: {US:[["Census Bureau","https://www.census.gov/retail/sales.html"],["BLS","https://www.bls.gov/cpi/"],["Univ. del Michigan","https://www.sca.isr.umich.edu/"],["Federal Reserve","https://www.federalreserve.gov/newsevents/pressreleases/monetary20261028a.htm"]],
-        CN:[["NBS, vendite e disoccupazione","https://www.stats.gov.cn/english/PressRelease/202609/t20260915_1965305.html"],["NBS, prezzi","https://www.stats.gov.cn/english/PressRelease/202609/t20260910_1965275.html"]]}
+        CN:[["NBS, economia nazionale nei primi tre trimestri","https://www.stats.gov.cn/english/PressRelease/202610/t20261019_1965619.html"],["NBS, vendite al dettaglio di settembre","https://www.stats.gov.cn/english/PressRelease/202610/t20261020_1965662.html"]]}
 };
 const ST = [
   {id:"NESN",n:"Nestlé",c:"CH",p:"H1 2026",og:3.6,pm:2.1,vo:1.5,eu:"+2,7% (prezzo +2,2%, volumi +0,5%)",u:"https://www.nestle.com/media/pressreleases/allpressreleases/half-year-results-2026",t:"OG, pricing, RIG"},
@@ -1553,35 +1574,35 @@ function drawEU(){
   const t = $("eu-tbl"); if(!t) return;
   t.innerHTML = `<thead><tr><th>Paese</th>${EU.cols.map(c=>`<th>${c[1]}<span class="per2">${c[2]}</span></th>`).join('')}</tr></thead><tbody>` +
     EU.rows.map(r=>`<tr class="${r.c==='EA'?'ea':''}"><td>${flag(r.c,20)}${r.n}</td>${EU.cols.map(([k,,,sg])=>{ const v=r[k]; const note=r.note&&r.note[k]?`<span class="per2">${r.note[k]}</span>`:''; if(v==null) return `<td><span class="mut">n.d.</span></td>`; const cls = (k==='rv'||k==='vv')? (v>0?'up':'down') : ''; const txt = k==='cc'? (v<0?'−':'')+num(v) : ((k==='rv'||k==='vv')? sgn(v) : num(v))+'%'; return `<td><span class="${cls}">${txt}</span>${note}</td>`; }).join('')}</tr>`).join('') + `</tbody>`;
-  $("eu-note").innerHTML = "<b>Fonti.</b> Eurostat (vendite sts_trtu_m al netto dei carburanti, G47_X_G473; inflazione prc_hicp_minr, disoccupazione une_rt_m, risparmio nasq_10_ki), Commissione europea (fiducia), ONS per il Regno Unito. Risparmio lordo, non confrontabile con il dato netto Istat. Inflazione generale, energia e alimentari: settembre 2026, dati definitivi. Fiducia: area euro a ottobre, stima flash della Commissione europea (22 ottobre 2026), con settembre rivisto al ribasso; Italia: saldo di settembre non ancora pubblicato, in tabella il dato di agosto. Disoccupazione: settembre 2026 per Italia e area euro (Istat, 29 ottobre; Eurostat, 30 ottobre), agosto per gli altri Paesi. Regno Unito: componenti dell'inflazione e fiducia non armonizzate, non riportate.";
+  $("eu-note").innerHTML = "<b>Fonti.</b> Eurostat (vendite sts_trtu_m al netto dei carburanti, G47_X_G473; inflazione prc_hicp_minr, disoccupazione une_rt_m, risparmio nasq_10_ki), Commissione europea (fiducia), ONS per il Regno Unito. Vendite: media degli ultimi tre mesi disponibili, giugno–agosto 2026 per Italia, Germania e area euro, luglio–settembre per Francia e Spagna. Risparmio lordo, non confrontabile con il dato netto Istat. Inflazione generale, energia e alimentari: settembre 2026, dati definitivi. Fiducia: ottobre 2026, saldo della Commissione europea. Disoccupazione: settembre 2026. Regno Unito: componenti dell'inflazione e fiducia non armonizzate, non riportate.";
   hchart($("c-eu-rv"), EU.rows.map(r=>({n:r.n, flag:r.c, g:r.rv, bold:r.c==='IT', color: r.c==='EA'?'--s4':(r.rv<0?'--neg':'--vol')})).sort((a,b)=>b.g-a.g), {xTitle:"Var. % annua a volume", labW:150, label:"Vendite a volume per Paese"});
   const cols = {IT:'--val',EA:'--ink',DE:'--vol',FR:'--s3',ES:'--amber'};
   $("lg-cc").innerHTML = Object.entries(cols).map(([k,c])=>`<span><i class="sw" style="background:var(${c})${k==='IT'||k==='EA'?'':';opacity:.6'}"></i>${CN_NAMES[k]}</span>`).join('');
-  vchart($("c-eu-cc"), {x:EU.months, series:Object.entries(cols).map(([k,c])=>({type:'line',name:CN_NAMES[k],values:EU.cc[k],color:c,w:(k==='IT'?3:k==='EA'?2.2:1.5),op:(k==='IT'||k==='EA')?1:.6,dots:false,nolabel:!(k==='IT'||k==='EA'),tag:(k==='IT'?' (ago)':'')})), yTitle:"Saldo", xTitle:"Mese", zero:true, tickD:0, rpad:74, endRight:true, label:"Fiducia dei consumatori"});
+  vchart($("c-eu-cc"), {x:EU.months, series:Object.entries(cols).map(([k,c])=>({type:'line',name:CN_NAMES[k],values:EU.cc[k],color:c,w:(k==='IT'?3:k==='EA'?2.2:1.5),op:(k==='IT'||k==='EA')?1:.6,dots:false,nolabel:!(k==='IT'||k==='EA'),tag:''})), yTitle:"Saldo", xTitle:"Mese", zero:true, tickD:0, rpad:74, endRight:true, label:"Fiducia dei consumatori"});
   const px = EU.rows.filter(r=>r.en!=null);
   vchart($("c-eu-px"), {x:px.map(r=>r.c==='EA'?'Area euro':r.n), series:[{type:'bar',name:"Energia",values:px.map(r=>r.en),color:'--neg'},{type:'bar',name:"Alimentari",values:px.map(r=>r.fo),color:'--vol'}], yTitle:"Var. % annua", xTitle:"Settembre 2026", unitLabel:"%", tickD:0, yMin:0, label:"Energia e alimentari"});
   hchart($("c-eu-sv"), EU.rows.map(r=>({n:r.n, flag:r.c, g:r.sv, bold:r.c==='IT', color: r.c==='EA'?'--s4':'--val'})).sort((a,b)=>b.g-a.g), {xTitle:"% del reddito disponibile", labW:150, signed:false, label:"Risparmio delle famiglie"});
 }
 const MK = {
-  y10: {IT:[3.676,3.575,3.887,3.712,3.629,3.501,3.537,3.538,3.559,3.442,3.459,3.552,3.492,3.388,3.733,3.818,3.839,3.734,3.881,3.986],
-        DE:[2.484,2.405,2.741,2.511,2.562,2.52,2.631,2.674,2.693,2.617,2.657,2.813,2.807,2.744,2.91,3,3.045,2.964,3.07,3.185],
-        FR:[3.32,3.15,3.43,3.26,3.26,3.24,3.36,3.42,3.51,3.44,3.44,3.56,3.53,3.4,3.64,3.73,3.74,3.68,3.85,4],
-        ES:[3.173,3.1,3.391,3.229,3.204,3.164,3.241,3.256,3.262,3.147,3.173,3.271,3.268,3.174,3.385,3.448,3.488,3.413,3.53,3.63]},
-  fx: [{n:"Yen giapponese",g:1.7},{n:"Franco svizzero",g:0.5},{n:"Sterlina",g:-2.4},{n:"Dollaro USA",g:-3.5},{n:"Yuan cinese",g:-9.1}],
+  y10: {IT:[3.676,3.575,3.887,3.712,3.629,3.501,3.537,3.538,3.559,3.442,3.459,3.552,3.492,3.388,3.733,3.818,3.839,3.734,3.881,3.986,4.362],
+        DE:[2.484,2.405,2.741,2.511,2.562,2.52,2.631,2.674,2.693,2.617,2.657,2.813,2.807,2.744,2.91,3,3.045,2.964,3.07,3.185,3.473],
+        FR:[3.32,3.15,3.43,3.26,3.26,3.24,3.36,3.42,3.51,3.44,3.44,3.56,3.53,3.4,3.64,3.73,3.74,3.68,3.85,4,4.44],
+        ES:[3.173,3.1,3.391,3.229,3.204,3.164,3.241,3.256,3.262,3.147,3.173,3.271,3.268,3.174,3.385,3.448,3.488,3.413,3.534,3.635,3.927]},
+  fx: [{n:"Franco svizzero",g:-0.9},{n:"Yen giapponese",g:-1.5},{n:"Dollaro USA",g:-3.3},{n:"Sterlina",g:-5.3},{n:"Yuan cinese",g:-9.5}],
   tbl: [
-    {c:"IT",n:"Italia",y10:3.99,p10:3.54,y30:null,p30:null,d:"agosto 2026, media mensile",f:"BCE"},
-    {c:"FR",n:"Francia",y10:4.00,p10:3.42,y30:null,p30:null,d:"agosto 2026, media mensile",f:"BCE"},
-    {c:"ES",n:"Spagna",y10:3.63,p10:3.26,y30:null,p30:null,d:"agosto 2026, media mensile",f:"BCE"},
-    {c:"DE",n:"Germania",y10:3.49,p10:2.74,y30:3.82,p30:3.23,d:"6 ottobre 2026",f:"Bundesbank"},
-    {c:"EA",n:"Area euro, tutti gli emittenti",y10:4.12,p10:3.24,y30:4.45,p30:3.87,d:"5 ottobre 2026",f:"BCE, curva dei rendimenti"},
-    {c:"US",n:"Stati Uniti",y10:5.27,p10:4.18,y30:5.64,p30:4.76,d:"6 ottobre 2026",f:"Tesoro USA"}
+    {c:"IT",n:"Italia",y10:4.36,p10:3.56,y30:null,p30:null,d:"settembre 2026, media mensile",f:"BCE"},
+    {c:"FR",n:"Francia",y10:4.44,p10:3.51,y30:null,p30:null,d:"settembre 2026, media mensile",f:"BCE"},
+    {c:"ES",n:"Spagna",y10:3.93,p10:3.26,y30:null,p30:null,d:"settembre 2026, media mensile",f:"BCE"},
+    {c:"DE",n:"Germania",y10:3.38,p10:2.67,y30:3.69,p30:3.15,d:"30 ottobre 2026",f:"Bundesbank"},
+    {c:"EA",n:"Area euro, tutti gli emittenti",y10:4.01,p10:3.15,y30:4.38,p30:3.81,d:"29 ottobre 2026",f:"BCE, curva dei rendimenti"},
+    {c:"US",n:"Stati Uniti",y10:4.94,p10:4.11,y30:5.31,p30:4.65,d:"30 ottobre 2026",f:"Tesoro USA"}
   ]
 };
 function drawMK(){
   if(!$("c-mk-y")) return;
   const cols = {IT:'--val',DE:'--vol',FR:'--neg',ES:'--s4'};
   $("lg-mk-y").innerHTML = Object.entries(cols).map(([k,c])=>`<span><i class="sw" style="background:var(${c})"></i>${CN_NAMES[k]}</span>`).join('');
-  vchart($("c-mk-y"), {x:EU.months.slice(0,20), series:Object.entries(cols).map(([k,c])=>({type:'line',name:CN_NAMES[k],values:MK.y10[k],color:c,w:(k==='IT'?3:1.8),dots:false,nolabel:!(k==='IT'||k==='DE')})), yTitle:"% annuo", xTitle:"Mese", zero:false, d:2, tickD:1, rpad:46, endRight:true, label:"Rendimenti a 10 anni"});
+  vchart($("c-mk-y"), {x:EU.months.slice(0,21), series:Object.entries(cols).map(([k,c])=>({type:'line',name:CN_NAMES[k],values:MK.y10[k],color:c,w:(k==='IT'?3:1.8),dots:false,nolabel:!(k==='IT'||k==='DE')})), yTitle:"% annuo", xTitle:"Mese", zero:false, d:2, tickD:1, rpad:46, endRight:true, label:"Rendimenti a 10 anni"});
   hchart($("c-mk-fx"), MK.fx.map(r=>({...r, color:r.g<0?'--neg':'--vol'})), {xTitle:"Var. % dell'euro in un anno", labW:130, label:"Euro contro le principali valute"});
   const f2 = v => v==null ? '<span class="mut" title="Non disponibile da fonte primaria">n.d.</span>' : num(v,2)+'%';
   const dl = (a,b) => (a==null||b==null) ? '' : `<span class="per2">${sgn(a-b,2)} punti</span>`;
@@ -1590,11 +1611,11 @@ function drawMK(){
 }
 function drawUSCN(){
   const h = $("uscn"); if(!h) return;
-  const box = (c, title, cells, extra, read, srcs) => `<div class="panel card" data-title="${title}" data-src="${srcs.map(x=>x[0]).join(', ')}"><header><h3>${flag(c,28)}${title}</h3><div class="sub">Agosto–settembre 2026</div></header>
+  const box = (c, title, cells, extra, read, srcs) => `<div class="panel card" data-title="${title}" data-src="${srcs.map(x=>x[0]).join(', ')}"><header><h3>${flag(c,28)}${title}</h3><div class="sub">Ultimi dati disponibili, settembre–ottobre 2026</div></header>
     <dl>${cells.map(([a,b,d])=>`<div><dt>${a}</dt><dd>${b}<small>${d}</small></dd></div>`).join('')}</dl>${extra?`<p class="read" style="margin-top:6px"><b>${extra}</b></p>`:''}
     <p class="read">${read}</p><p class="src">${srcs.map(([t,u])=>`<a href="${u}" target="_blank" rel="noopener">${esc(t)}</a>`).join(' · ')} <span class="tag2 p">primaria</span></p></div>`;
-  h.innerHTML = box("US","Stati Uniti",USCN.US,USCN.USrate,"<b>Il consumatore spende ma è pessimista</b>: vendite +4,1% a valore tra luglio e settembre (esclusi i carburanti), fiducia scesa a 48,1 a settembre, mercato del lavoro in frenata (29 mila nuovi occupati, disoccupazione al 4,2%) e inflazione risalita al 3,7%, trainata dalla benzina. Resta <b>il mercato di sbocco più dinamico</b> per food premium e lusso, con rischio di frenata se il pessimismo si trasferisce alla spesa.",USCN.src.US)
-    + box("CN","Cina",USCN.CN,null,"<b>La domanda interna si è quasi fermata</b>: vendite +0,4%, prezzi allo 0,8%. Per le aziende europee significa <b>pressione sui prezzi e crescita solo nei segmenti più selettivi</b>; nel lusso l'Asia regge grazie al Giappone (Hermès +11%).",USCN.src.CN);
+  h.innerHTML = box("US","Stati Uniti",USCN.US,USCN.USrate,"<b>Il consumatore spende ma è pessimista</b>: vendite +4,1% a valore tra luglio e settembre (esclusi i carburanti), fiducia ferma a 48,0 a ottobre, mercato del lavoro in frenata (29 mila nuovi occupati, disoccupazione al 4,2%) e inflazione risalita al 3,7%, trainata dalla benzina. Resta <b>il mercato di sbocco più dinamico</b> per food premium e lusso, con rischio di frenata se il pessimismo si trasferisce alla spesa.",USCN.src.US)
+    + box("CN","Cina",USCN.CN,null,"<b>La domanda interna resta debole</b>: vendite +1,1% a settembre, prezzi allo 0,9%, pur con un Pil a +4,5% nel terzo trimestre. Per le aziende europee significa <b>pressione sui prezzi e crescita solo nei segmenti più selettivi</b>; nel lusso l'Asia regge grazie al Giappone (Hermès +11%).",USCN.src.CN);
 }
 function drawAz(){
   if(!$("st-tbl")) return;
@@ -1642,13 +1663,19 @@ D.srcs.push(
  ["Federal Reserve, comunicato FOMC del 16 settembre 2026","https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm"],
  ["Ufficio nazionale di statistica della Cina, comunicati di settembre 2026","https://www.stats.gov.cn/english/"],
  ["ACEA, immatricolazioni di settembre 2026 (22 ottobre 2026)","https://www.acea.auto/files/Press_release_car_registrations_September_2026.pdf"],
+ ["Commissione europea, indagine sui consumatori di ottobre 2026 (dati definitivi)","https://economy-finance.ec.europa.eu/economic-forecast-and-surveys/business-and-consumer-surveys_en"],
+ ["Ufficio nazionale di statistica della Cina, economia nazionale nei primi tre trimestri 2026 (19 ottobre 2026)","https://www.stats.gov.cn/english/PressRelease/202610/t20261019_1965619.html"],
+ ["Nestlé, vendite del terzo trimestre e dei nove mesi 2026 (22 ottobre 2026)","https://www.nestle.com/sites/default/files/2026-10/nine-month-sales-press-release-2026-en.pdf"],
+ ["Unilever, trading statement del terzo trimestre 2026 (28 ottobre 2026)","https://www.unilever.com/files/unilever-q3-2026-results-full-announcement.pdf"],
+ ["Osservatorio Findomestic di ottobre 2026, cifre con doppio riscontro: Radiocor (28 ottobre 2026)","https://www.borsaitaliana.it/borsa/notizie/radiocor/economia/dettaglio/findomestic-intenzioni-d-acquisto-al-minimo-da-un-anno-si-torna-a-risparmiare-nRC_28102026_1124_302944691.html"],
+ ["Osservatorio Findomestic di ottobre 2026, cifre con doppio riscontro: Ore12 (28 ottobre 2026)","https://www.ore12.net/consumi-findomestic-intenzioni-acquisto-calano-italiani-tornano-a-risparmiare/"],
  ["Commissione europea, stima flash della fiducia dei consumatori di ottobre 2026 (22 ottobre 2026)","https://economy-finance.ec.europa.eu/document/download/1e455a38-643d-44ad-81dd-e71f6c17d3a1_en?filename=Flash_consumer_2026_10_en.pdf"],
  ...ST.map(r=>[`${r.n}, risultati ${r.p}`, r.u]), ...LX.filter(r=>r.u).map(r=>[`${r.n}, risultati ${r.p}`, r.u])
 );
 
 
 const DG = {
-  vol: [{n:"Italia",on:9.0,tot:-0.1},{n:"Germania",on:3.2,tot:-0.5},{n:"Francia",on:6.1,tot:3.1},{n:"Spagna",on:7.1,tot:1.2},{n:"Area euro",on:4.4,tot:1.4}],
+  vol: [{n:"Italia",on:9.0,tot:-0.1},{n:"Germania",on:3.2,tot:-0.5},{n:"Francia",on:6.1,tot:3.5},{n:"Spagna",on:3.3,tot:0.6},{n:"Area euro",on:4.4,tot:1.4}],
   buy: [{n:"Germania",flag:"DE",g:81.4},{n:"Francia",flag:"FR",g:80.2},{n:"Media UE",flag:"EA",g:73.6},{n:"Spagna",flag:"ES",g:70.8},{n:"Italia",flag:"IT",g:56.2,bold:true}]
 };
 function drawDigital(){
@@ -1660,27 +1687,21 @@ function drawDigital(){
 
 
 D.news.unshift(
+ {c:"US", d:"29 ott", tema:"Domanda", t:"Stati Uniti: a settembre spesa per consumi +0,5% sul mese a valore e ferma a volume (0,0%); prezzi dei consumi (PCE) +3,6% sull'anno, di fondo +3,1%; tasso di risparmio al 3,8%", src:"BEA", url:"https://bea.gov/news/2026/personal-income-and-outlays-september-2026", imp:-1, so:"Negli Stati Uniti la spesa cresce solo per effetto prezzi e il risparmio è basso: poco cuscinetto per i consumatori prima del Natale, da riflettere nei piani di vendita e nelle scorte per quel mercato."},
+ {c:"IT", d:"29 ott", tema:"Lavoro", t:"Istat: a settembre disoccupazione stabile al 6,3% e tasso di occupazione al 63,0%; occupati +0,8% sull'anno (+198 mila) ma −0,1% nel terzo trimestre sul secondo; persone in cerca di lavoro +7,8% sull'anno", src:"Istat", url:"https://www.istat.it/comunicato-stampa/occupati-e-disoccupati-dati-provvisori-settembre-2026/", imp:-1, so:"L'occupazione smette di crescere mentre l'inflazione sale al 5,4%: un indizio che il reddito da lavoro sosterrà poco i volumi nel quarto trimestre; più peso a primo prezzo, formati convenienza e promozioni mirate."},
+ {c:"DE", d:"30 ott", tema:"Prezzi ed energia", t:"Germania, stima provvisoria: inflazione a ottobre al 2,8% dal 3,3% di settembre (−0,2% sul mese); energia +12,2% sull'anno, alimentari +0,4%, inflazione di fondo al 2,1%", src:"Destatis", url:"https://www.destatis.de/DE/Presse/Pressemitteilungen/2026/10/PD26_382_611.html", imp:1, so:"La Germania rallenta mentre l'Italia accelera al 5,4%: il divario tra Paesi chiede listini, promozioni e piani di volume differenziati per mercato, non una politica unica per l'area euro."},
+ {c:"FR", d:"30 ott", tema:"Domanda", t:"Francia: a settembre consumi delle famiglie in beni −0,5% a volume sul mese, secondo calo di fila; abbigliamento −5,8%, beni manufatti −1,1%; nel terzo trimestre +0,4% sul secondo", src:"Insee", url:"https://www.insee.fr/fr/statistiques/fichier/version-html/9109722/IR264_Biens_sept26.pdf", imp:-1, so:"Il trimestre regge grazie all'energia, ma moda e beni durevoli arretrano proprio mentre la fiducia francese scende a −21,9: in Francia scorte prudenti e riassortimento rapido per il quarto trimestre."},
+ {c:"IT", d:"28 ott", tema:"Conti pubblici", t:"Consiglio dei ministri: approvata la manovra 2027 da circa 26 miliardi di euro; l'aliquota Irpef del 33% si estende ai redditi fino a 55.000 euro (da 50.000)", src:"MySolution e FinanzaeFisco, cifre identiche", url:"https://www.finanzaefisco.com/ddl-di-bilancio-2027-via-libera-del-consiglio-dei-ministri-alla-manovra-2027/", imp:1, so:"Il beneficio dell'Irpef va ai redditi sopra 50.000 euro, al massimo 500 euro l'anno: un aiuto alla fascia premium, non ai consumi di massa. Da non mettere nei piani 2027 prima del testo definitivo."},
+ {c:"EA", d:"29 ott", tema:"Retail", t:"Terzo trimestre in Europa, variazioni sul terzo trimestre 2025: Danone +1,9% a dati comparabili (volumi e mix −1,3%, prezzi +3,2%); Beiersdorf −4,4% organico; adidas −4% a cambi costanti, contro +7% del gruppo", src:"Danone, Beiersdorf, adidas", url:"https://www.globenewswire.com/news-release/2026/10/28/3389878/0/en/danone-solid-performance-in-q3-broad-based-growth-across-categories-and-geographies.html", imp:-1, so:"Dopo Unilever, altri tre gruppi crescono fuori dall'Europa e arretrano in volume dentro: la tendenza suggerisce di gestire l'Europa per margine e mix, non per volumi."},
+ {c:"EA", d:"29 ott", tema:"Domanda", t:"Commissione europea: confermata a −17,9 la fiducia dei consumatori dell'area euro a ottobre; Italia −23,3, Francia −21,9 (da −18,5), Germania −14,5, Spagna −4,4", src:"Commissione europea", url:"https://economy-finance.ec.europa.eu/economic-forecast-and-surveys/business-and-consumer-surveys_en", imp:-1, so:"Il calo di ottobre è ampio e la Francia scende più di tutti: la stagione natalizia va pianificata su volumi prudenti in tutta Europa, non solo in Italia."},
+ {c:"UK", d:"28 ott", tema:"Retail", t:"Unilever: nel terzo trimestre vendite sottostanti +5,2% (volumi +2,9%, prezzi +2,3%); in Europa −1,7%, con volumi −0,4% e prezzi −1,3%", src:"Unilever", url:"https://www.unilever.com/files/unilever-q3-2026-results-full-announcement.pdf", imp:-1, so:"Il gruppo cresce fuori dall'Europa; in Europa taglia i prezzi senza recuperare volumi. Per le marche del largo consumo il mercato europeo resta il più difficile."},
+ {c:"IT", d:"28 ott", tema:"Domanda", t:"Osservatorio Findomestic di ottobre: intenzioni d'acquisto a tre mesi −4,4% su settembre, minimo dell'ultimo anno; il 59% delle famiglie riesce a risparmiare (55% a settembre); l'inflazione è la prima preoccupazione per il 65%", src:"Radiocor e Ore12, cifre identiche", url:"https://www.borsaitaliana.it/borsa/notizie/radiocor/economia/dettaglio/findomestic-intenzioni-d-acquisto-al-minimo-da-un-anno-si-torna-a-risparmiare-nRC_28102026_1124_302944691.html", imp:-1, so:"Gli italiani tornano a risparmiare prima di Natale: domanda di beni durevoli da pianificare su volumi prudenti, con finanziamento e formati d'ingresso come leve."},
  {c:"IT", d:"30 ott", tema:"Prezzi ed energia", t:"Istat, stima preliminare: a ottobre l'inflazione sale al 5,4% dal 4,2% (indice armonizzato al 5,6%); energia +31,4%, di cui regolamentata +59,5%; alimentari non lavorati +7,5%, carrello della spesa +2,5%, inflazione di fondo +2,0%", src:"Istat", url:"https://www.istat.it/comunicato-stampa/prezzi-al-consumo-dati-provvisori-ottobre-2026/", imp:-1, so:"Il rincaro dell'energia comincia a passare agli alimentari freschi e al carrello, a ridosso di Natale: meno margine per assorbire i rincari. Listini da rivedere categoria per categoria, non in blocco."},
  {c:"IT", d:"30 ott", tema:"Domanda", t:"Istat, stima preliminare: Pil del terzo trimestre invariato sul secondo e +0,8% sull'anno; crescono servizi e agricoltura, cala l'industria; crescita acquisita per il 2026 ferma allo 0,8%", src:"Istat", url:"https://www.istat.it/comunicato-stampa/stima-preliminare-del-pil-iii-trimestre-2026/", imp:-1, so:"Crescita ferma e inflazione in salita: il potere d'acquisto resta il vincolo dei consumi nel quarto trimestre."},
  {c:"EA", d:"30 ott", tema:"Domanda", t:"Eurostat, stima flash: Pil dell'area euro +0,4% nel terzo trimestre e +1,3% sull'anno (Germania +0,2%, Spagna +0,6%, Francia −0,1%, Italia 0,0% sul trimestre); disoccupazione dell'area euro a settembre stabile al 6,5%", src:"Eurostat", url:"https://ec.europa.eu/eurostat/web/products-euro-indicators/w/2-30102026-ap", imp:0, so:"L'area euro cresce più dell'Italia: per chi vende in più Paesi la crescita va cercata fuori dal mercato domestico, a partire dalla Spagna."},
  {c:"EA", d:"29 ott", tema:"Tassi", t:"BCE: tassi invariati, depositi al 2,50%, rifinanziamento principale al 2,65%, rifinanziamento marginale al 2,90%, dopo i rialzi di giugno e settembre; Lagarde lascerà la presidenza il 7 febbraio 2027", src:"BCE", url:"https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.mp261029~9a493adf17.en.html", imp:0, so:"Pausa, non svolta: con l'inflazione al 3,8% il costo del credito resta quello di settembre. Per i beni durevoli a rate le condizioni di finanziamento non peggiorano, ma nemmeno migliorano."},
  {c:"IT", d:"29 ott", tema:"Domanda", t:"Istat: a ottobre la fiducia dei consumatori scende a 90,3 da 91,2; clima economico da 88,0 a 82,9, clima personale da 92,4 a 93,0; fiducia delle imprese in aumento, da 95,9 a 96,6", src:"Istat", url:"https://www.istat.it/comunicato-stampa/fiducia-dei-consumatori-e-delle-imprese-ottobre-2026/", imp:-1, so:"Il pessimismo riguarda il Paese più che la propria famiglia: domanda prudente ma non in ritirata. Natale da pianificare su volumi prudenti, con offerte di valore più che sconti generalizzati."},
  {c:"US", d:"28 ott", tema:"Tassi", t:"Fed: tassi invariati al 3,75–4,00% con 10 voti contro 2; Cook e Hammack avrebbero voluto un rialzo di 25 punti base", src:"Federal Reserve", url:"https://www.federalreserve.gov/newsevents/pressreleases/monetary20261028a.htm", imp:0, so:"Pausa con due voti per il rialzo: il rischio di tassi più alti negli Stati Uniti resta aperto, con effetti su dollaro e domanda nel principale mercato di sbocco di food premium e lusso."},
- {c:"US", d:"23 ott", tema:"Domanda", t:"Stati Uniti: fiducia dei consumatori dell'Università del Michigan a 48,0 a ottobre (48,1 a settembre, 53,6 a ottobre 2025); attese d'inflazione a un anno al 4,7% dal 4,6%", src:"Università del Michigan", url:"https://www.sca.isr.umich.edu/", imp:-1, so:"Fiducia ferma su livelli molto bassi e attese d'inflazione in salita nel principale mercato di sbocco: prudenza su volumi e listini per food premium e lusso nel quarto trimestre."},
- {c:"UK", d:"23 ott", tema:"Domanda", t:"Regno Unito: vendite al dettaglio di settembre −0,4% a volume sul mese e +0,8% sull'anno; nel trimestre luglio–settembre +0,7% sul trimestre precedente", src:"ONS", url:"https://www.ons.gov.uk/businessindustryandtrade/retailindustry/bulletins/retailsales/september2026", imp:0, so:"Domanda britannica in tenuta ma senza slancio all'ingresso del quarto trimestre: Natale nel Regno Unito da pianificare su volumi piatti."},
- {c:"FR", d:"22 ott", tema:"Retail", t:"L'Oréal: vendite del terzo trimestre a 11,6 miliardi di euro, +7,2% sul terzo trimestre 2025 a dati comparabili; Europa +9,9%, Nord America +2,2%; nei nove mesi +6,9%", src:"L'Oréal", url:"https://www.loreal-finance.com/eng/press-release/sales-30-september-2026", imp:1, so:"In Europa la bellezza cresce più dei consumi complessivi: un indizio che i piccoli lussi accessibili restano la spesa discrezionale più protetta, con spazio per premiumizzazione e formati d'ingresso."},
- {c:"FR", d:"22 ott", tema:"Retail", t:"Lusso nel terzo trimestre, variazioni sul terzo trimestre 2025: Hermès +4,3% a cambi costanti (Europa esclusa Francia +9,5%, Asia +1,9%); Kering −1% a perimetro comparabile, Gucci −6%", src:"Kering, Hermès", url:"https://www.globenewswire.com/news-release/2026/10/22/3386683/0/en/kering-revenue-for-the-third-quarter-of-2026.html", imp:0, so:"Con LVMH a +1%, i conti indicano un lusso a due velocità: tiene chi ha il posizionamento più alto, arretra chi è in fase di rilancio. Per i marchi intermedi la leva è l'offerta d'ingresso più che il volume."},
- {c:"EA", d:"22 ott", tema:"Domanda", t:"Commissione europea, stima flash: a ottobre la fiducia dei consumatori dell'area euro scende a −17,9, in calo di 1,1 punti su settembre (rivisto al ribasso); UE a −17,3", src:"Commissione europea", url:"https://economy-finance.ec.europa.eu/document/download/1e455a38-643d-44ad-81dd-e71f6c17d3a1_en?filename=Flash_consumer_2026_10_en.pdf", imp:-1, so:"Secondo calo di fila, a ridosso della soglia di −18: stagione natalizia da pianificare su volumi prudenti."},
- {c:"EA", d:"22 ott", tema:"Retail", t:"ACEA: immatricolazioni gennaio–settembre +6,3% in Europa (UE, EFTA e Regno Unito) e +5,7% nell'UE; Italia +8,6%; nell'UE elettriche al 22,7%, ibride al 36,3%; BYD +135%, Chery +256%", src:"ACEA", url:"https://www.acea.auto/pc-registrations/new-car-registrations-5-7-in-september-2026-year-to-date-battery-electric-22-7-market-share/", imp:0, so:"Il mercato auto tiene nonostante i tassi in salita, ma la crescita va soprattutto a elettriche, ibride e marchi cinesi: pressione sui prezzi per i costruttori storici."},
- {c:"UK", d:"21 ott", tema:"Prezzi ed energia", t:"Regno Unito: inflazione al 3,5% a settembre dal 3,1% di agosto (ONS, indice dei prezzi al consumo)", src:"ONS", url:"https://www.ons.gov.uk/economy/inflationandpriceindices/timeseries/d7g7/mm23", imp:-1, so:"Anche fuori dall'area euro lo shock energetico spinge i prezzi: meno margine per i rincari sui mercati di sbocco europei."},
- {c:"CN", d:"19 ott", tema:"Domanda", t:"Cina: Pil del terzo trimestre +4,5% su base annua; vendite al dettaglio di settembre +1,1% (da +0,4% di agosto), prezzi al consumo +0,9%", src:"NBS", url:"https://www.stats.gov.cn/english/PressRelease/202610/t20261019_1965619.html", imp:0, so:"I consumi cinesi restano deboli: per lusso e beni premium la crescita va cercata in Stati Uniti, Europa e Giappone."},
- {c:"EA", d:"14 ott", tema:"Prezzi ed energia", t:"AIE: Brent intorno a 107 dollari, greggio fisico del Mare del Nord intorno a 134; scorte mondiali 509 milioni di barili sotto i livelli prebellici, gasolio vicino al doppio del greggio", src:"IEA, Oil Market Report", url:"https://www.iea.org/reports/oil-market-report-october-2026", imp:-1, so:"Il caro energia non è un picco passeggero: trasporti e logistica pesano sui costi anche nel 2027."},
- {c:"EA", d:"13 ott", tema:"Previsioni", t:"FMI, World Economic Outlook: crescita mondiale al 3,1% nel 2026 e al 3,4% nel 2027; inflazione mondiale al 4,7% nel 2026 e al 4,1% nel 2027", src:"FMI", url:"https://www.imf.org/en/Publications/WEO/Issues/2026/10/13/world-economic-outlook-october-2026", imp:0, so:"La crescita tiene ma l'inflazione scende lentamente: budget 2027 da costruire su prezzi ancora alti e volumi modesti."},
- {c:"FR", d:"12 ott", tema:"Retail", t:"LVMH: ricavi del terzo trimestre +1% a perimetro e cambi costanti (moda e pelletteria −5%); nei nove mesi 57,1 miliardi di euro, +2%", src:"LVMH", url:"https://www.lvmh.com/en/publications/continued-growth-in-the-third-quarter-of-2026", imp:-1, so:"Rallenta anche il leader del lusso: un indizio che la selettività dei clienti si estende oltre i marchi più deboli."},
- {c:"EA", d:"16 ott", tema:"Prezzi ed energia", t:"Eurostat conferma l'inflazione dell'area euro al 3,8% a settembre: energia +18,9%, alimentari, alcol e tabacco +1,3%, servizi +3,2%; Italia al 4,2%", src:"Eurostat", url:"https://ec.europa.eu/eurostat/web/products-euro-indicators", imp:-1, so:"Il dato definitivo conferma lo shock energetico e mostra i primi rincari alimentari: da incorporare nei listini e nei budget 2027."},
- {c:"US", d:"15 ott", tema:"Domanda", t:"Stati Uniti: vendite al dettaglio di settembre +0,8% sul mese e +6,3% sull'anno a valore; esclusi i carburanti +4,5% (media luglio–settembre +4,1%); vendite non in negozio +8,2%", src:"Census Bureau", url:"https://www.census.gov/retail/marts/www/marts_current.pdf", imp:0, so:"La spesa americana tiene, ma una parte della crescita è benzina e prezzo: con l'inflazione al 3,7% i volumi crescono molto meno del valore."},
- {c:"US", d:"14 ott", tema:"Prezzi ed energia", t:"Stati Uniti: inflazione al 3,7% a settembre dal 3,4% di agosto (+0,6% sul mese); energia +20,4%, benzina +34,2%, alimentari a casa +1,8%, inflazione di fondo al 2,6%", src:"BLS", url:"https://www.bls.gov/news.release/archives/cpi_10142026.htm", imp:-1, so:"Lo shock energetico arriva anche negli Stati Uniti, con alimentari e inflazione di fondo ancora contenuti: più pressione sulla Fed prima del 28–29 ottobre e sul potere d'acquisto nel principale mercato di sbocco di food premium e lusso."},
- {c:"EA", d:"6 ott", tema:"Domanda", t:"Eurostat: ad agosto le vendite al dettaglio dell'area euro crescono a volume dello 0,1% sul mese e dello 0,8% sull'anno; carburanti −3,7%", src:"Eurostat", url:"https://ec.europa.eu/eurostat/web/products-euro-indicators/w/4-06102026-ap", imp:0, so:"Volumi quasi fermi anche in Europa: la crescita a valore resta in buona parte prezzo."},
 );
 { const MESI={gen:1,feb:2,mar:3,apr:4,mag:5,giu:6,lug:7,ago:8,set:9,ott:10,nov:11,dic:12}; const ord=n=>{ const p=String(n.d).split(' '); return (MESI[p[1]]||0)*100 + parseInt(p[0]); }; D.news.sort((a,b)=> ord(b)-ord(a)); }
 
@@ -1688,25 +1709,25 @@ D.news.unshift(
 /* ---------- edizione rivista: grafici armonizzati, soglie ---------- */
 const EU2 = {
   geo: ["Italia","Germania","Francia","Spagna","Area euro"],
-  val: [1.3,1.5,3.1,3.2,2.6], vol: [-0.1,-0.5,3.1,1.2,1.4],
-  food: [-0.6,-0.1,3.2,-0.3,1.2], nonfood: [0.3,-0.7,3.4,2.5,1.7],
+  val: [1.3,1.5,3.3,2.8,2.6], vol: [-0.1,-0.5,3.4,0.6,1.4],
+  food: [-0.6,-0.1,3.6,-0.5,1.2], nonfood: [0.3,-0.7,3.3,1.6,1.7],
   cats: ["Alimentari","Alcol e tabacco","Abbigliamento","Casa e arredo","Cura persona"],
   catIT: [1.7,2.3,0.0,1.1,1.1], catEA: [1.0,2.8,0.0,0.5,1.7],
   unIT: [6.5,6.1,6.3,6.2,6.5,5.9,5.9,5.7,6.0,5.8,5.7,5.7,5.5,5.6,5.6,5.6,5.6,6.0,6.0,6.3,6.3],
   unEA: [6.3,6.3,6.3,6.3,6.3,6.3,6.3,6.3,6.3,6.3,6.3,6.3,6.3,6.4,6.4,6.4,6.4,6.4,6.4,6.5,6.5]
 };
 const SOGLIE = [
-  {ind:"Fiducia dei consumatori, area euro", cr:"Fascia storica: rientro nell'area dello shock di aprile–maggio 2026 (−20,5 e −18,9), confermato per due mesi", oggi:"−17,9 (ottobre, stima flash)", soglia:"Sotto −18 per due mesi", stato:"vicina", az:"Pianificare il quarto trimestre su volumi prudenti; spostare budget da promozioni generaliste a formati d'ingresso."},
+  {ind:"Fiducia dei consumatori, area euro", cr:"Fascia storica: rientro nell'area dello shock di aprile–maggio 2026 (−20,5 e −18,9), confermato per due mesi", oggi:"−17,9 (ottobre)", soglia:"Sotto −18 per due mesi", stato:"vicina", az:"Pianificare il quarto trimestre su volumi prudenti; spostare budget da promozioni generaliste a formati d'ingresso."},
   {ind:"Vendite a volume esclusi carburanti, Italia (media 3 mesi)", cr:"Margine di revisione: zero meno 0,5 punti, oltre le normali revisioni del dato", oggi:"−0,1% (giugno–agosto, esclusi carburanti)", soglia:"Sotto −0,5%", stato:"vicina", az:"Nessun aumento di listino oltre la categoria e revisione dell'architettura di prezzo."},
   {ind:"Inflazione energia, area euro", cr:"Dinamica: nuovo aumento oltre il dato di agosto (14,3%), segno che lo shock si allarga", oggi:"18,9% (settembre)", soglia:"Sopra 15%", stato:"superata", az:"Proteggere il budget discrezionale del cliente: formati piccoli, pagamenti dilazionati, offerte di valore."},
   {ind:"Inflazione alimentare, area euro", cr:"Riferimento istituzionale: obiettivo di inflazione BCE del 2%", oggi:"1,0% (settembre)", soglia:"Sopra 2%", stato:"ok", az:"Se superata, si riapre lo spazio per adeguare i listini senza perdere volumi."},
-  {ind:"Tasso BCE sui depositi", cr:"Riferimento istituzionale: qualsiasi rialzo alla prossima riunione", oggi:"2,50% (invariato il 29 ottobre)", soglia:"Nuovo rialzo il 29 ottobre", stato:"ok", az:"Beni durevoli: rafforzare subito le condizioni di finanziamento al consumo."},
+  {ind:"Tasso BCE sui depositi", cr:"Riferimento istituzionale: qualsiasi rialzo alla prossima riunione", oggi:"2,50% (invariato il 29 ottobre)", soglia:"Nuovo rialzo alla riunione di dicembre", stato:"ok", az:"Beni durevoli: rafforzare subito le condizioni di finanziamento al consumo."},
   {ind:"Online contro totale esclusi carburanti, area euro (media 3 mesi)", cr:"Dinamica: dimezzamento del divario attuale (4,0 punti)", oggi:"+3,0 punti (4,4% contro 1,4%)", soglia:"Sotto 2 punti", stato:"vicina", az:"Se il divario si chiude, rivedere il budget di acquisizione digitale e il peso dei marketplace."}
 ];
 function drawEU2(){
   if(!$("c-eu-vv")) return;
-  vchart($("c-eu-vv"), {x:EU2.geo, series:[{type:'dumbbell',name:"Valore",name2:"Volume",values:EU2.val,values2:EU2.vol}], yTitle:"Var. % annua", xTitle:"Media giugno–agosto 2026", signedTicks:true, tickD:0, rpad:44, label:"Valore contro volume per Paese"});
-  vchart($("c-eu-fnf"), {x:EU2.geo, series:[{type:'bar',name:"Alimentari",values:EU2.food,color:'--val'},{type:'bar',name:"Non alimentari",values:EU2.nonfood,color:'--vol'}], yTitle:"Var. % annua a volume", xTitle:"Media giugno–agosto 2026", signed:true, unitLabel:"", tickD:0, label:"Alimentari e non alimentari"});
+  vchart($("c-eu-vv"), {x:EU2.geo, series:[{type:'dumbbell',name:"Valore",name2:"Volume",values:EU2.val,values2:EU2.vol}], yTitle:"Var. % annua", xTitle:"Media di tre mesi, 2026", signedTicks:true, tickD:0, rpad:44, label:"Valore contro volume per Paese"});
+  vchart($("c-eu-fnf"), {x:EU2.geo, series:[{type:'bar',name:"Alimentari",values:EU2.food,color:'--val'},{type:'bar',name:"Non alimentari",values:EU2.nonfood,color:'--vol'}], yTitle:"Var. % annua a volume", xTitle:"Media di tre mesi, 2026", signed:true, unitLabel:"", tickD:0, label:"Alimentari e non alimentari"});
   vchart($("c-eu-cat"), {x:EU2.cats, series:[{type:'bar',name:"Italia",values:EU2.catIT,color:'--val'},{type:'bar',name:"Area euro",values:EU2.catEA,color:'--s4'}], yTitle:"Var. % annua", xTitle:"Settembre 2026", unitLabel:"", tickD:1, yMin:0, label:"Prezzi per categoria"});
   vchart($("c-it-un"), {x:EU.months.slice(0,21), series:[{type:'line',name:"Italia",values:EU2.unIT.slice(0,21),color:'--val',w:3,dots:false},{type:'line',name:"Area euro",values:EU2.unEA.slice(0,21),color:'--s4',w:2,dots:false}], yTitle:"% forza lavoro", xTitle:"Mese", zero:false, tickD:1, rpad:40, endRight:true, label:"Disoccupazione"});
   const st = {ok:['Nessuna allerta','up'], vicina:['Vicina alla soglia','warn'], superata:['Allerta attiva','down']};
