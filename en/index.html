@@ -30,6 +30,13 @@
 @font-face{font-family:'Inter';font-style:normal;font-weight:100 900;font-display:swap;src:url(../fonts/inter-latin-wght-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 @font-face{font-family:'Source Serif 4';font-style:normal;font-weight:200 900;font-display:swap;src:url(../fonts/source-serif-4-latin-ext-opsz-normal.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
 @font-face{font-family:'Source Serif 4';font-style:normal;font-weight:200 900;font-display:swap;src:url(../fonts/source-serif-4-latin-opsz-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+
+/* selettore lingua IT/EN, in alto a destra */
+.langtop{position:fixed;top:14px;right:18px;z-index:60;display:inline-flex;border:1px solid var(--rule);border-radius:999px;background:var(--paper);overflow:hidden;font:650 12.5px/1 Inter,Helvetica Neue,Arial,sans-serif;letter-spacing:.04em;box-shadow:0 1px 6px rgba(0,0,0,.12)!important}
+.langtop a,.langtop span{padding:8px 13px;text-decoration:none;color:var(--ink);display:block}
+.langtop a:hover{background:var(--rule)}
+.langtop .on{background:#1F4FA3;color:#fff}
+@media (max-width:980px){.langtop{top:9px;right:10px}.langtop a,.langtop span{padding:7px 11px}.mbar .cur{display:none}}
 </style>
 <style>
 :root{
@@ -745,6 +752,7 @@ html,body{overflow-x:clip}
 </style>
 </head>
 <body>
+<div class="langtop" role="navigation" aria-label="Lingua / Language"><a href="/" hreflang="it" lang="it" title="Leggi in italiano">IT</a><span class="on" aria-current="true" lang="en">EN</span></div>
 <div class="app">
 <aside class="side" id="side" aria-label="Observatory sections">
   <div class="side-brand"><div class="sigbar"></div><div class="brandrow"><span class="wm">strategica<b>21</b></span></div><div class="d">European Consumer Observatory</div></div>
@@ -767,7 +775,6 @@ html,body{overflow-x:clip}
     <a href="#fonti" data-sec="fonti"><span>Sources and method</span></a>
   </nav>
   <div class="side-foot">
-    <a href="/" hreflang="it" lang="it" class="langsw" style="display:block;margin:0 0 8px;font-size:12.5px;color:var(--muted);text-decoration:none"><span style="text-decoration:underline">Italiano</span> · <b>English</b></a>
     <button type="button" id="themeBtn">Switch to dark theme</button>
   </div>
 </aside>
