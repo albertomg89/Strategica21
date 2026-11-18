@@ -10,6 +10,7 @@ for acc in ("application/vnd.sdmx.data+csv;version=1.0.0;labels=both", "applicat
     print("accept", acc, "->", r.status_code, len(r.text))
     if r.ok: break
 rows = list(csv.DictReader(io.StringIO(r.text)))
+rows = [{k.split(":")[0].strip(): v for k, v in x.items()} for x in rows]
 print("COLS", list(rows[0].keys()))
 for c in ("FREQ", "DATA_TYPE", "MEASURE", "UNIT_MEAS", "UNIT_MULT", "BASE_PER", "OBS_STATUS"):
     print("VALS", c, sorted({x.get(c, "") for x in rows})[:20])
