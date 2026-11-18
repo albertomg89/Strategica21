@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Radar dei prezzi per regione · strategica21</title>
+<meta name="description" content="Dove e come stanno cambiando i prezzi al consumo nelle regioni italiane, per divisione di spesa. Dati ISTAT aggiornati mensilmente.">
+<style>
+@font-face{font-family:'Inter';font-style:normal;font-weight:100 900;font-display:swap;src:url(fonts/inter-latin-wght-normal.woff2) format('woff2')}
+@font-face{font-family:'Source Serif 4';font-style:normal;font-weight:200 900;font-display:swap;src:url(fonts/source-serif-4-latin-opsz-normal.woff2) format('woff2')}
+:root{--paper:#EEF1EC;--panel:#F8F9F6;--ink:#16242A;--muted:#56636A;--rule:#CBD3CE;--val:#2B55A0;--neg:#B42318;--vol:#0E7A6D;
+--c0:#E2EAF6;--c1:#1D3F7C;--sans:Inter,"Helvetica Neue",Arial,sans-serif;--serif:"Source Serif 4",Georgia,"Times New Roman",serif}
+@media(prefers-color-scheme:dark){:root{--paper:#10171A;--panel:#162024;--ink:#E4EBE7;--muted:#9BA8AA;--rule:#2A373B;--val:#86A9EC;--neg:#F08472;--vol:#4FC4B1;--c0:#203556;--c1:#A9C3F4}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 15px/1.5 var(--sans)}
+.wrap{max-width:980px;margin:0 auto;padding:22px 18px 40px}
+.brand{font:650 13px/1 var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:10px}
+.brand i{display:inline-block;width:26px;height:4px;background:var(--val);border-radius:2px}
+h1{font:600 clamp(24px,5.4vw,36px)/1.15 var(--serif);margin:14px 0 8px;letter-spacing:-.01em}
+.lead{font:400 clamp(15px,3.6vw,17px)/1.5 var(--serif);color:var(--ink);margin:0 0 16px;max-width:62ch}
+.lead b{font-weight:650}
+.controls{display:flex;flex-wrap:wrap;gap:10px;align-items:end;margin:6px 0 16px}
+.field{display:flex;flex-direction:column;gap:4px;min-width:0}
+.field label{font:600 11.5px/1 var(--sans);letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+select{font:500 14.5px/1.2 var(--sans);color:var(--ink);background:var(--panel);border:1px solid var(--rule);border-radius:8px;padding:10px 12px;max-width:100%}
+.seg{display:inline-flex;border:1px solid var(--rule);border-radius:8px;overflow:hidden;background:var(--panel)}
+.seg button{font:550 13.5px/1 var(--sans);color:var(--muted);background:none;border:0;padding:11px 12px;cursor:pointer}
+.seg button[aria-pressed=true]{background:var(--val);color:#fff}
+@media(prefers-color-scheme:dark){.seg button[aria-pressed=true]{color:#10171A}}
+.grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:22px;align-items:start}
+@media(max-width:760px){.grid{grid-template-columns:1fr}}
+.card{background:var(--panel);border:1px solid var(--rule);border-radius:12px;padding:14px}
+#map{width:100%;height:auto;display:block}
+#map path{stroke:var(--paper);stroke-width:.9;cursor:pointer;transition:opacity .15s}
+#map path.dim{opacity:.45}
+#map path.sel{stroke:var(--ink);stroke-width:2}
+.legend{display:flex;align-items:center;gap:8px;margin-top:8px;font:500 12px/1 var(--sans);color:var(--muted)}
+.legend .bar{flex:1;height:8px;border-radius:4px;background:linear-gradient(90deg,var(--c0),var(--c1))}
+.detail{min-height:92px}
+.detail h2{font:600 19px/1.2 var(--serif);margin:0 0 4px}
+.detail .big{font:650 30px/1.1 var(--sans);letter-spacing:-.02em}
+.detail .sub{color:var(--muted);font-size:13px;margin-top:2px}
+.rank{list-style:none;margin:0;padding:0}
+.rank li{display:grid;grid-template-columns:128px 1fr 54px;gap:8px;align-items:center;padding:5px 0;border-bottom:1px solid var(--rule);cursor:pointer;font-size:13.5px}
+.rank li:last-child{border-bottom:0}
+.rank .bar{height:10px;background:var(--rule);border-radius:3px;position:relative}
+.rank .bar span{position:absolute;left:0;top:0;bottom:0;border-radius:3px;background:var(--val)}
+.rank li.sel{font-weight:650}
+.rank li.ita{color:var(--muted);font-style:italic}
+.rank .v{text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
+h3{font:650 12px/1 var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0 0 8px}
+svg.spark{width:100%;height:56px;display:block;margin-top:10px}
+.note{color:var(--muted);font-size:12.5px;line-height:1.55;margin-top:18px;max-width:80ch}
+.note b{color:var(--ink)}
+.stack>*+*{margin-top:16px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="brand"><i></i>strategica21 · Radar</div>
+  <h1>Dove e come cambiano i prezzi, regione per regione</h1>
+  <p class="lead" id="lead">Caricamento dei dati…</p>
+
+  <div class="controls">
+    <div class="field"><label for="cat">Divisione di spesa</label><select id="cat"></select></div>
+    <div class="field"><label for="mese">Mese</label><select id="mese"></select></div>
+    <div class="field"><label>Misura</label>
+      <div class="seg" role="group" aria-label="Misura">
+        <button data-m="yoy" aria-pressed="true">Su base annua</button>
+        <button data-m="mom" aria-pressed="false">Sul mese</button>
+        <button data-m="acc" aria-pressed="false">Accelerazione</button>
+      </div></div>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <svg id="map" viewBox="0 0 420 500" role="img" aria-label="Mappa delle regioni italiane colorate per variazione dei prezzi"></svg>
+      <div class="legend"><span id="lmin"></span><div class="bar"></div><span id="lmax"></span></div>
+    </div>
+    <div class="stack">
+      <div class="card detail" id="detail"></div>
+      <div class="card"><h3 id="rtitle">Classifica</h3><ul class="rank" id="rank"></ul></div>
+    </div>
+  </div>
+
+  <p class="note" id="note"></p>
+</div>
+<script>
+(function(){
+var MISURE={yoy:{t:"variazione annua",u:"%"},mom:{t:"variazione sul mese precedente",u:"%"},acc:{t:"accelerazione: variazione annua di oggi meno quella di 3 mesi prima",u:" pt"}};
+var D,G,state={cat:"00",mis:"yoy",i:0,sel:null};
+var $=function(id){return document.getElementById(id)};
+var fmt=function(v,sign){if(v==null||isNaN(v))return"n.d.";var s=v.toFixed(1).replace(".",",");return(sign&&v>0?"+":"")+s};
+var MESI=["gennaio","febbraio","marzo","aprile","maggio","giugno","luglio","agosto","settembre","ottobre","novembre","dicembre"];
+function lab(p){var a=p.split("-");return MESI[+a[1]-1]+" "+a[0]}
+function val(a,c,m,i){var d=D.dati[a][c];if(m==="acc"){var x=d.yoy[i],y=d.yoy[i-3];return(x==null||y==null)?null:Math.round((x-y)*10)/10}return d[m][i]}
+function mix(t){var cs=getComputedStyle(document.documentElement);function p(h){h=h.trim();return[1,3,5].map(function(k){return parseInt(h.substr(k,2),16)})}
+ var a=p(cs.getPropertyValue("--c0")),b=p(cs.getPropertyValue("--c1"));return"rgb("+a.map(function(v,k){return Math.round(v+(b[k]-v)*t)}).join(",")+")"}
+function project(){var pts=[];G.features.forEach(function(f){walk(f.geometry.coordinates,function(c){pts.push(c)})});
+ var k=Math.cos(42*Math.PI/180),xs=pts.map(function(p){return p[0]*k}),ys=pts.map(function(p){return-p[1]}),
+ x0=Math.min.apply(0,xs),x1=Math.max.apply(0,xs),y0=Math.min.apply(0,ys),y1=Math.max.apply(0,ys),s=Math.min(400/(x1-x0),480/(y1-y0));
+ return function(c){return[((c[0]*k-x0)*s+10).toFixed(1),((-c[1]-y0)*s+10).toFixed(1)]}}
+function walk(c,fn){if(typeof c[0]==="number")fn(c);else c.forEach(function(x){walk(x,fn)})}
+function path(g,pr){var polys=g.type==="Polygon"?[g.coordinates]:g.coordinates;
+ return polys.map(function(poly){return poly.map(function(ring){return"M"+ring.map(function(c){return pr(c).join(",")}).join("L")+"Z"}).join("")}).join("")}
+var PR;
+function drawMap(){PR=project();var h="";G.features.forEach(function(f){h+='<path data-c="'+f.properties.code+'" d="'+path(f.geometry,PR)+'"><title>'+f.properties.name+'</title></path>'});$("map").innerHTML=h;
+ $("map").addEventListener("click",function(e){var c=e.target.getAttribute&&e.target.getAttribute("data-c");if(c)select(c)})}
+function render(){
+ var c=state.cat,m=state.mis,i=state.i,codes=Object.keys(D.aree).filter(function(k){return k!=="IT"});
+ var vals={};codes.forEach(function(k){vals[k]=val(k,c,m,i)});var ita=val("IT",c,m,i);
+ var arr=codes.map(function(k){return vals[k]}).filter(function(v){return v!=null});var mn=Math.min.apply(0,arr),mx=Math.max.apply(0,arr);
+ document.querySelectorAll("#map path").forEach(function(p){var v=vals[p.getAttribute("data-c")];p.style.fill=v==null?"var(--rule)":mix(mx>mn?(v-mn)/(mx-mn):.5);p.classList.toggle("sel",p.getAttribute("data-c")===state.sel)});
+ $("lmin").textContent=fmt(mn,1)+MISURE[m].u.trim();$("lmax").textContent=fmt(mx,1)+MISURE[m].u.trim();
+ var order=codes.slice().sort(function(a,b){return(vals[b]==null?-99:vals[b])-(vals[a]==null?-99:vals[a])});
+ var top=Math.max(Math.abs(mn),Math.abs(mx),Math.abs(ita||0),.1);
+ var rows=order.map(function(k){return[k,vals[k]]});var inserted=false,html="";
+ rows.forEach(function(r){if(!inserted&&ita!=null&&r[1]!=null&&r[1]<ita){html+=row("IT",ita,top);inserted=true}html+=row(r[0],r[1],top)});if(!inserted)html+=row("IT",ita,top);
+ $("rank").innerHTML=html;$("rtitle").textContent=D.divisioni[c]+" · "+lab(D.mesi[i]);
+ $("rank").querySelectorAll("li").forEach(function(li){li.addEventListener("click",function(){var k=li.getAttribute("data-c");if(k!=="IT")select(k)})});
+ detail(vals,ita);lead(vals,ita,order);
+}
+function row(k,v,top){var w=v==null?0:Math.max(2,Math.abs(v)/top*100);return'<li data-c="'+k+'" class="'+(k==="IT"?"ita":"")+(k===state.sel?" sel":"")+'"><span>'+D.aree[k]+'</span><span class="bar"><span style="width:'+w+'%;'+(v!=null&&v<0?"background:var(--vol)":"")+'"></span></span><span class="v">'+fmt(v,state.mis!=="yoy")+'</span></li>'}
+function select(k){state.sel=(state.sel===k?null:k);render()}
+function detail(vals,ita){var k=state.sel||"IT",c=state.cat,m=state.mis,i=state.i,v=k==="IT"?ita:vals[k],d=D.dati[k][c];
+ var gap=(k!=="IT"&&v!=null&&ita!=null)?(v-ita):null;
+ var ser=d.yoy.slice(0,i+1),pts=ser.map(function(x,j){return x==null?null:[j,x]}).filter(Boolean);
+ var lo=Math.min.apply(0,pts.map(function(p){return p[1]})),hi=Math.max.apply(0,pts.map(function(p){return p[1]})),n=ser.length-1||1;
+ var sp=pts.map(function(p,j){return(j?"L":"M")+(p[0]/n*300).toFixed(1)+","+(46-(hi>lo?(p[1]-lo)/(hi-lo)*40:20)).toFixed(1)}).join("");
+ var last=pts[pts.length-1];
+ $("detail").innerHTML='<h2>'+D.aree[k]+'</h2><div class="big">'+fmt(v,m!=="yoy")+MISURE[m].u+'</div><div class="sub">'+D.divisioni[c]+" · "+MISURE[m].t+" · "+lab(D.mesi[i])+'</div>'+
+  (gap!=null?'<div class="sub">'+(gap>=0?"+":"")+fmt(gap).replace("+","")+' pt rispetto all\'Italia</div>':'')+
+  '<svg class="spark" viewBox="0 0 300 52" preserveAspectRatio="none" aria-label="Andamento della variazione annua"><path d="'+sp+'" fill="none" stroke="var(--val)" stroke-width="2" vector-effect="non-scaling-stroke"/>'+(last?'<circle cx="'+(last[0]/n*300).toFixed(1)+'" cy="'+(46-(hi>lo?(last[1]-lo)/(hi-lo)*40:20)).toFixed(1)+'" r="3.2" fill="var(--val)"/>':'')+'</svg><div class="sub">Variazione annua, da '+lab(D.mesi[0])+': min '+fmt(lo)+'% · max '+fmt(hi)+'%</div>'}
+function lead(vals,ita,order){var c=state.cat,m=state.mis;var a=order.filter(function(k){return vals[k]!=null});if(!a.length){$("lead").textContent="";return}
+ var hi=a[0],lo=a[a.length-1],sp=(vals[hi]-vals[lo]);
+ var what=m==="yoy"?"i prezzi sono saliti del <b>"+fmt(ita)+"%</b> sull'anno":m==="mom"?"i prezzi sono variati del <b>"+fmt(ita,1)+"%</b> sul mese":"la variazione annua è cambiata di <b>"+fmt(ita,1)+" pt</b> rispetto a tre mesi prima";
+ $("lead").innerHTML="A "+lab(D.mesi[state.i])+", per «"+D.divisioni[c].toLowerCase()+"» in Italia "+what+". Il valore più alto è in <b>"+D.aree[hi]+"</b> ("+fmt(vals[hi],m!=="yoy")+"), il più basso in <b>"+D.aree[lo]+"</b> ("+fmt(vals[lo],m!=="yoy")+"): scarto di "+fmt(sp)+" punti."}
+function init(){
+ var cat=$("cat");Object.keys(D.divisioni).sort().forEach(function(k){var o=document.createElement("option");o.value=k;o.textContent=D.divisioni[k];cat.appendChild(o)});
+ var ms=$("mese");for(var i=D.mesi.length-1;i>=0;i--){if(i<3)continue;var o=document.createElement("option");o.value=i;o.textContent=lab(D.mesi[i]);ms.appendChild(o)}
+ state.i=D.mesi.length-1;ms.value=state.i;
+ cat.onchange=function(){state.cat=cat.value;render()};ms.onchange=function(){state.i=+ms.value;render()};
+ document.querySelectorAll(".seg button").forEach(function(b){b.onclick=function(){state.mis=b.getAttribute("data-m");document.querySelectorAll(".seg button").forEach(function(x){x.setAttribute("aria-pressed",x===b)});render()}});
+ $("note").innerHTML="<b>Come leggere.</b> Gli indici regionali sono costruiti su base propria per ciascun territorio: la mappa confronta le <b>variazioni</b>, non i livelli dei prezzi. L'accelerazione è la differenza tra la variazione annua del mese scelto e quella di tre mesi prima. Trentino-Alto Adige è l'aggregato delle due province autonome. <b>Fonte:</b> ISTAT, indici dei prezzi al consumo per l'intera collettività (NIC), classificazione ECOICOP v2; ultimo dato disponibile: "+lab(D.ultimo_periodo)+". Elaborazione strategica21.";
+ drawMap();render();
+ window.matchMedia("(prefers-color-scheme:dark)").addEventListener&&window.matchMedia("(prefers-color-scheme:dark)").addEventListener("change",render);
+}
+if(window.RADAR_DATA){D=window.RADAR_DATA.d;G=window.RADAR_DATA.g;init()}
+else Promise.all([fetch("data/radar/regioni.json").then(function(r){return r.json()}),fetch("data/radar/regioni.geojson").then(function(r){return r.json()})]).then(function(r){D=r[0];G=r[1];init()}).catch(function(){$("lead").textContent="Dati non disponibili al momento."});
+})();
+</script>
+</body>
+</html>
