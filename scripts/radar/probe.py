@@ -1,14 +1,15 @@
 """Radar della domanda - fase 1: sonda delle fonti (ISTAT SDMX, Eurostat).
 Scopo: scoprire dataflow, dimensioni, copertura territoriale e ultimo periodo.
 Non modifica la pagina. Scrive il report in data/radar/probe.json e nei log."""
-import json, re, sys, time, datetime
+import json, re, sys, time, datetime, os
+os.makedirs("data/radar", exist_ok=True)
 import requests
 
 ISTAT = "https://esploradati.istat.it/SDMXWS/rest"
 EUROSTAT = "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data"
 S = requests.Session()
 S.headers["User-Agent"] = "strategica21-radar/0.1 (+https://strategica21.com)"
-report = {"run_at": datetime.datetime.utcnow().isoformat() + "Z", "istat": {}, "eurostat": {}}
+report = {"run_at": datetime.datetime.now(datetime.timezone.utc).isoformat() + "Z", "istat": {}, "eurostat": {}}
 
 def get(url, accept=None, params=None, timeout=90):
     h = {"Accept": accept} if accept else {}
@@ -27,13 +28,15 @@ flows = []
 if r is not None and r.ok:
     txt = r.text
     print("dataflow bytes:", len(txt))
-    for m in re.finditer(r'<str:Dataflow([^>]*)>(.*?)</str:Dataflow>', txt, re.S):
+    for m in re.finditer(r'<(?:\w+:)?Dataflow\b([^>]*)>(.*?)</(?:\w+:)?Dataflow>', txt, re.S):
         attrs, body = m.group(1), m.group(2)
         fid = re.search(r'\bid="([^"]+)"', attrs)
         ver = re.search(r'\bversion="([^"]+)"', attrs)
-        name = re.search(r'<com:Name xml:lang="it">([^<]+)</com:Name>', body) or re.search(r'<com:Name[^>]*>([^<]+)</com:Name>', body)
+        name = re.search(r'<(?:\w+:)?Name xml:lang="it">([^<]+)</', body) or re.search(r'<(?:\w+:)?Name[^>]*>([^<]+)</', body)
         flows.append({"id": fid and fid.group(1), "version": ver and ver.group(1), "name": name and name.group(1)})
     print("dataflow totali:", len(flows))
+    if not flows:
+        i = txt.find("NIC1B2025"); print("contesto NIC1B2025:", txt[max(0,i-300):i+500] if i>=0 else "assente"); print("inizio XML:", txt[:600])
     nic = [f for f in flows if f["id"] and ("NIC" in f["id"] or (f["name"] and re.search(r"prezzi al consumo|NIC", f["name"], re.I)))]
     report["istat"]["nic_flows"] = nic
     for f in nic:
@@ -90,6 +93,9 @@ def eurostat(code, **params):
 report["eurostat"]["prc_hicp_manr"] = eurostat("prc_hicp_manr", coicop="CP00", sinceTimePeriod="2026-06")
 report["eurostat"]["sts_trtu_m"] = eurostat("sts_trtu_m", sinceTimePeriod="2026-06", s_adj="SCA", unit="I21", nace_r2="G47")
 report["eurostat"]["ei_bsco_m"] = eurostat("ei_bsco_m", sinceTimePeriod="2026-06", indic="BS-CSMCI", s_adj="SA", unit="BAL")
+report["eurostat"]["prc_hicp_manr_IT"] = eurostat("prc_hicp_manr", geo="IT", coicop="CP00")
+for code in ("prc_hicp_minr","prc_hicp_cmon","prc_hicp_ctrb","tour_occ_nim"):
+    report["eurostat"][code] = eurostat(code, geo="IT", sinceTimePeriod="2026-06")
 report["eurostat"]["une_rt_m"] = eurostat("une_rt_m", sinceTimePeriod="2026-06", s_adj="SA", age="TOTAL", sex="T", unit="PC_ACT")
 report["eurostat"]["lfst_r_lfu3rt"] = eurostat("lfst_r_lfu3rt", sinceTimePeriod="2025-Q1", sex="T", age="Y15-74")
 
