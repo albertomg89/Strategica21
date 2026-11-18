@@ -1,0 +1,163 @@
+{
+ "run_at": "2026-11-18T17:02:28.680908+00:00Z",
+ "istat": {
+  "dataflow_status": null,
+  "samples": {}
+ },
+ "eurostat": {
+  "prc_hicp_manr": {
+   "status": 200,
+   "dims": {
+    "freq": 1,
+    "unit": 1,
+    "coicop": 1,
+    "geo": 45,
+    "time": 0
+   },
+   "periodi": null,
+   "updated": "2026-02-06T23:00:00+0100"
+  },
+  "sts_trtu_m": {
+   "status": 200,
+   "dims": {
+    "freq": 1,
+    "indic_bt": 2,
+    "nace_r2": 1,
+    "s_adj": 1,
+    "unit": 1,
+    "geo": 43,
+    "time": 4
+   },
+   "periodi": [
+    "2026-07",
+    "2026-08",
+    "2026-09"
+   ],
+   "updated": "2026-11-17T11:00:00+0100"
+  },
+  "ei_bsco_m": {
+   "status": 200,
+   "dims": {
+    "freq": 1,
+    "indic": 1,
+    "s_adj": 1,
+    "unit": 1,
+    "geo": 35,
+    "time": 5
+   },
+   "periodi": [
+    "2026-08",
+    "2026-09",
+    "2026-10"
+   ],
+   "updated": "2026-10-29T11:00:00+0100"
+  },
+  "prc_hicp_manr_IT": {
+   "status": 200,
+   "dims": {
+    "freq": 1,
+    "unit": 1,
+    "coicop": 1,
+    "geo": 1,
+    "time": 348
+   },
+   "periodi": [
+    "2025-10",
+    "2025-11",
+    "2025-12"
+   ],
+   "updated": "2026-02-06T23:00:00+0100"
+  },
+  "prc_hicp_minr": {
+   "status": 200,
+   "dims": {
+    "freq": 1,
+    "unit": 5,
+    "coicop18": 555,
+    "geo": 1,
+    "time": 5
+   },
+   "periodi": [
+    "2026-08",
+    "2026-09",
+    "2026-10"
+   ],
+   "updated": "2026-11-18T11:00:00+0100"
+  },
+  "prc_hicp_cmon": {
+   "status": 200,
+   "dims": {
+    "freq": 1,
+    "unit": 2,
+    "coicop": 459,
+    "geo": 1,
+    "time": 0
+   },
+   "periodi": null,
+   "updated": "2026-02-06T23:00:00+0100"
+  },
+  "prc_hicp_ctrb": {
+   "status": 200,
+   "dims": {
+    "freq": 1,
+    "unit": 1,
+    "coicop": 421,
+    "geo": 0,
+    "time": 0
+   },
+   "periodi": null,
+   "updated": "2026-02-06T23:00:00+0100"
+  },
+  "tour_occ_nim": {
+   "status": 200,
+   "dims": {
+    "freq": 1,
+    "c_resid": 3,
+    "unit": 4,
+    "nace_r2": 5,
+    "geo": 1,
+    "time": 4
+   },
+   "periodi": [
+    "2026-07",
+    "2026-08",
+    "2026-09"
+   ],
+   "updated": "2026-11-16T11:00:00+0100"
+  },
+  "une_rt_m": {
+   "status": 200,
+   "dims": {
+    "freq": 1,
+    "s_adj": 1,
+    "age": 1,
+    "unit": 1,
+    "sex": 1,
+    "geo": 38,
+    "time": 5
+   },
+   "periodi": [
+    "2026-08",
+    "2026-09",
+    "2026-10"
+   ],
+   "updated": "2026-11-05T23:00:00+0100"
+  },
+  "lfst_r_lfu3rt": {
+   "status": 200,
+   "dims": {
+    "freq": 1,
+    "isced11": 6,
+    "sex": 1,
+    "age": 1,
+    "unit": 1,
+    "geo": 512,
+    "time": 1
+   },
+   "periodi": [
+    "2025"
+   ],
+   "updated": "2026-10-30T23:00:00+0100"
+  }
+ }
+}
