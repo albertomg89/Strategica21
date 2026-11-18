@@ -101,4 +101,10 @@ report["eurostat"]["une_rt_m"] = eurostat("une_rt_m", sinceTimePeriod="2026-06",
 report["eurostat"]["lfst_r_lfu3rt"] = eurostat("lfst_r_lfu3rt", sinceTimePeriod="2025-Q1", sex="T", age="Y15-74")
 
 json.dump(report, open("data/radar/probe.json", "w"), ensure_ascii=False, indent=1)
+for k,v in report["istat"].get("samples",{}).items():
+    print("SUMMARY", k, "righe", v.get("rows"))
+    for c in ("REF_AREA","DATA_TYPE","MEASURE","TIME_PERIOD","ECOICOP_2"):
+        x=v.get(c)
+        if isinstance(x,list): print("SUMMARY  ",c,len(x),x[:40])
+        else: print("SUMMARY  ",c,x)
 print("report scritto")
