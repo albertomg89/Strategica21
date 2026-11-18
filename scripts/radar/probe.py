@@ -59,17 +59,18 @@ def istat_sample(fid, ver):
     try:
         import csv, io
         rows = list(csv.DictReader(io.StringIO(r.text)))
-        keycols = [c for c in head if c in ("REF_AREA", "TIME_PERIOD", "DATA_TYPE", "ECOICOP_2", "MEASURE", "COICOP", "ECOICOP")]
+        keycols = [c for c in head if c in ("REF_AREA", "TIME_PERIOD", "DATA_TYPE", "MEASURE", "ECOICOP_2", "ECOICOP", "COICOP", "TIPO_DATO", "TIPO_INDICE") or c.startswith("ECOICOP") or c.startswith("DATA_TYPE")]
         for c in keycols:
             vals = sorted({x[c] for x in rows})
-            out[c] = vals if len(vals) <= 60 else {"n": len(vals), "first": vals[:8], "last": vals[-8:]}
+            out[c] = vals if len(vals) <= 40 else {"n": len(vals), "first": vals[:8], "last": vals[-8:]}
         open(f"data/radar/sample_{fid}.csv", "w").write("\n".join(lines[:2000]))
     except Exception as e:
         out["parse_error"] = str(e)
     return out
 
 report["istat"]["samples"] = {}
-for f in (report["istat"].get("nic_flows") or [])[:6]:
+TARGET = ["167_745_DF_DCSP_NIC1B2025_2","167_745_DF_DCSP_NIC1B2025_3","167_745_DF_DCSP_NIC1B2025_4","167_745_DF_DCSP_NIC1B2025_6"]
+for f in [x for x in (report["istat"].get("nic_flows") or []) if x["id"] in TARGET]:
     print("== ISTAT dati:", f["id"], f["version"])
     report["istat"]["samples"][f["id"]] = istat_sample(f["id"], f["version"])
 
