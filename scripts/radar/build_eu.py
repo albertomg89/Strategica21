@@ -17,7 +17,7 @@ PAESI = {  # codice Eurostat -> (nome, ISO2)
     "SI": ("Slovenia", "SI"), "ES": ("Spagna", "ES"), "SE": ("Svezia", "SE"),
     "NO": ("Norvegia", "NO"), "CH": ("Svizzera", "CH"), "IS": ("Islanda", "IS"),
 }
-AGGR = {"EU27_2020": "UE27", "EA20": "Area euro", "EA": "Area euro"}
+AGGR = {"EU27_2020": "UE27", "EA20": "Area euro"}
 GEO = list(PAESI) + ["EU27_2020", "EA20"]
 
 DIVISIONI = {"00": "Indice generale", "01": "Alimentari e bevande analcoliche", "02": "Bevande alcoliche, tabacco e narcotici",
