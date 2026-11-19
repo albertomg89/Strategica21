@@ -156,7 +156,7 @@ res = {
     "vendite": {g: {"yoy": yoy(d), "idx": arr(d)} for g, d in series["vendite"].items()},
     "fiducia": {g: arr(d) for g, d in series["fiducia"].items()},
 }
-json.dump(res, open(f"{OUT}/europa.json", "w", separators=(",", ":"), ensure_ascii=False))
+json.dump(res, open(f"{OUT}/europa.json", "w"), separators=(",", ":"), ensure_ascii=False)
 print("europa.json", os.path.getsize(f"{OUT}/europa.json"), "bytes; mesi", mesi[0], mesi[-1],
       "| prezzi div", len(res["prezzi"]), "| vendite paesi", len(res["vendite"]), "| fiducia paesi", len(res["fiducia"]))
 if ultimo_prezzi:
