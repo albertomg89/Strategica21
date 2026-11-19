@@ -188,10 +188,10 @@ try:
         m = mapping(g)
         feats.append({"type": "Feature", "properties": {"code": iso2eu[iso], "name": PAESI[iso2eu[iso]][0]},
                       "geometry": {"type": m["type"], "coordinates": rnd(m["coordinates"])}})
-    json.dump({"type": "FeatureCollection", "features": feats}, open(f"{OUT}/europa.geojson", "w", separators=(",", ":")))
+    json.dump({"type": "FeatureCollection", "features": feats}, open(f"{OUT}/europa.geojson", "w"), separators=(",", ":"))
     print("europa.geojson", os.path.getsize(f"{OUT}/europa.geojson"), "bytes;", len(feats), "paesi su", len(PAESI))
     report["geojson"] = {"paesi": len(feats), "mancanti": sorted(set(PAESI) - {x["properties"]["code"] for x in feats})}
 except Exception as e:
     print("ERRORE geometrie", repr(e)); report["geojson"] = {"errore": repr(e)}
 
-json.dump(report, open(f"{OUT}/europa_report.json", "w", indent=1))
+json.dump(report, open(f"{OUT}/europa_report.json", "w"), indent=1)
