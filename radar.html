@@ -54,6 +54,26 @@ svg.spark{width:100%;height:56px;display:block;margin-top:10px}
 .note b{color:var(--ink)}
 .stack>*+*{margin-top:16px}
 .modes{margin:10px 0 2px}
+.mxw{overflow-x:auto;border:1px solid var(--rule);border-radius:12px;background:var(--panel)}
+table.mx{border-collapse:separate;border-spacing:0;font-size:12.5px;width:100%;min-width:780px}
+table.mx th,table.mx td{padding:6px 7px;text-align:right;white-space:nowrap}
+table.mx th{font:600 10.5px/1.2 var(--sans);letter-spacing:.03em;text-transform:uppercase;color:var(--muted);cursor:pointer;border-bottom:1px solid var(--rule);background:var(--panel);vertical-align:bottom}
+table.mx th.sel{color:var(--ink);box-shadow:inset 0 -2px 0 var(--val)}
+table.mx th small{display:block;font-weight:500;text-transform:none;letter-spacing:0;opacity:.8}
+table.mx td.n,table.mx th.n{text-align:left;position:sticky;left:0;z-index:1;background:var(--panel);font-weight:500;color:var(--ink);cursor:pointer;min-width:112px}
+table.mx tr.ref td.n{font-style:italic;color:var(--muted)}
+table.mx tr.sel td.n{font-weight:700}
+table.mx td.v{font-variant-numeric:tabular-nums;border-left:1px solid var(--paper);border-top:1px solid var(--paper);cursor:pointer}
+svg.chart{width:100%;height:auto;display:block}
+svg.chart text{font:500 11.5px var(--sans);fill:var(--muted)}
+svg.chart text.l{fill:var(--ink)}
+svg.chart text.b{font-weight:700;fill:var(--ink)}
+svg.chart .g{stroke:var(--rule);stroke-width:1}
+svg.chart .row{cursor:pointer}
+svg.chart .row:hover rect.hit{fill:var(--rule);opacity:.35}
+.vh{display:none}
+.hint{color:var(--muted);font-size:12px;margin:8px 2px 0}
+.below{margin-top:16px}
 </style>
 </head>
 <body>
@@ -69,6 +89,19 @@ svg.spark{width:100%;height:56px;display:block;margin-top:10px}
   <div class="controls">
     <div class="field"><label for="cat">Indicatore</label><select id="cat"></select></div>
     <div class="field"><label for="mese">Mese</label><select id="mese"></select></div>
+    <div class="field"><label>Vista</label>
+      <div class="seg" role="group" aria-label="Vista" id="views">
+        <button data-v="map" aria-pressed="true">Mappa</button>
+        <button data-v="dots" aria-pressed="false">Punti</button>
+        <button data-v="mx" aria-pressed="false">Matrice</button>
+        <button data-v="sc" aria-pressed="false">Dispersione</button>
+      </div></div>
+    <div class="field" id="sortf"><label for="sort">Ordina per</label><select id="sort">
+      <option value="desc">Valore, dal più alto</option>
+      <option value="asc">Valore, dal più basso</option>
+      <option value="acc">Accelerazione maggiore</option>
+      <option value="dec">Rallentamento maggiore</option>
+      <option value="az">Alfabetico</option></select></div>
     <div class="field"><label>Misura</label>
       <div class="seg" role="group" aria-label="Misura" id="mis">
         <button data-m="yoy" aria-pressed="true">Su base annua</button>
@@ -77,16 +110,20 @@ svg.spark{width:100%;height:56px;display:block;margin-top:10px}
       </div></div>
   </div>
 
-  <div class="grid">
+  <div class="grid" id="v-map">
     <div class="card">
       <svg id="map" viewBox="0 0 420 500" role="img" aria-label="Mappa colorata per variazione dell'indicatore scelto"></svg>
       <div class="legend"><span id="lmin"></span><div class="bar"></div><span id="lmax"></span></div>
     </div>
     <div class="stack">
-      <div class="card detail" id="detail"></div>
+      <div class="card detail"></div>
       <div class="card"><h3 id="rtitle">Classifica</h3><ul class="rank" id="rank"></ul></div>
     </div>
   </div>
+
+  <div id="v-dots" class="vh"><div class="card"><h3 id="dtitle"></h3><svg class="chart" id="dots"></svg><p class="hint">Cerchio vuoto: tre mesi prima. Cerchio pieno: mese scelto. La linea tratteggiata è il riferimento. Clicca una riga per il dettaglio.</p></div><div class="card detail below"></div></div>
+  <div id="v-mx" class="vh"><div class="mxw"><table class="mx" id="mx"></table></div><p class="hint">Ogni colonna è colorata sul proprio intervallo (più scuro = valore più alto). Clicca l'intestazione per ordinare per quell'indicatore, una riga per il dettaglio.</p><div class="card detail below"></div></div>
+  <div id="v-sc" class="vh"><div class="card"><h3 id="stitle"></h3><svg class="chart" id="sc"></svg><p class="hint">Asse orizzontale: livello. Asse verticale: accelerazione rispetto a tre mesi prima. Le linee tratteggiate sono il riferimento e lo zero. Clicca un punto per il dettaglio.</p></div><div class="card detail below"></div></div>
 
   <p class="note" id="note"></p>
 </div>
@@ -100,7 +137,7 @@ var NOTES={
  it:"<b>Come leggere.</b> Gli indici regionali sono costruiti su base propria per ciascun territorio: la mappa confronta le <b>variazioni</b>, non i livelli dei prezzi. L'accelerazione è la differenza tra la variazione annua del mese scelto e quella di tre mesi prima. Trentino-Alto Adige è l'aggregato delle due province autonome. <b>Fonte:</b> ISTAT, indici dei prezzi al consumo per l'intera collettività (NIC), classificazione ECOICOP v2; ultimo dato disponibile: {ult}. Elaborazione strategica21.",
  eu:"<b>Come leggere.</b> I prezzi sono l'indice armonizzato (IPCA/HICP) di Eurostat, tasso annuo per divisione di spesa; le <b>vendite al dettaglio</b> sono il volume destagionalizzato (variazione annua) e la <b>fiducia dei consumatori</b> è il saldo destagionalizzato delle opinioni (sopra zero prevale l'ottimismo). L'IPCA differisce dall'indice NIC usato per le regioni italiane: lo stesso mese può dare valori vicini ma non identici. La misura «sul mese» non è disponibile a livello europeo. Per ogni indicatore la mappa si ferma all'ultimo mese con dati. <b>Fonte:</b> Eurostat (prc_hicp_minr, sts_trtu_m, ei_bsco_m); ultimo dato prezzi: {ult}. Elaborazione strategica21."
 };
-var STORE={},D,G,M="it",state={cat:"00",mis:"yoy",i:0,sel:null};
+var STORE={},D,G,M="it",state={cat:"00",mis:"yoy",i:0,sel:null,view:"map",sort:"desc"};
 var $=function(id){return document.getElementById(id)};
 var fmt=function(v,sign){if(v==null||isNaN(v))return"n.d.";var s=v.toFixed(1).replace(".",",");return(sign&&v>0?"+":"")+s};
 var MESI=["gennaio","febbraio","marzo","aprile","maggio","giugno","luglio","agosto","settembre","ottobre","novembre","dicembre"];
@@ -136,14 +173,15 @@ function render(){
  var arr=cs.map(function(k){return vals[k]}).filter(function(v){return v!=null});var mn=Math.min.apply(0,arr),mx=Math.max.apply(0,arr);
  document.querySelectorAll("#map path").forEach(function(p){var v=vals[p.getAttribute("data-c")];p.style.fill=v==null?"var(--rule)":mix(mx>mn?(v-mn)/(mx-mn):.5);p.classList.toggle("sel",p.getAttribute("data-c")===state.sel)});
  var u=unitOf(c,m).trim();$("lmin").textContent=fmt(mn,m!=="yoy")+u;$("lmax").textContent=fmt(mx,m!=="yoy")+u;
- var order=cs.slice().sort(function(a,b){return(vals[b]==null?-99:vals[b])-(vals[a]==null?-99:vals[a])});
+ var order=cs.slice().sort(function(a,b){return(vals[b]==null?-99:vals[b])-(vals[a]==null?-99:vals[a])}),sord=sortCodes(vals);
  var top=Math.max(Math.abs(mn),Math.abs(mx),Math.abs(refv||0),.1),html="",inserted=false;
- order.forEach(function(k){if(!inserted&&refv!=null&&vals[k]!=null&&vals[k]<refv){html+=row(ref,refv,top);inserted=true}html+=row(k,vals[k],top)});if(!inserted)html+=row(ref,refv,top);
+ if(state.sort==="desc"){sord.forEach(function(k){if(!inserted&&refv!=null&&vals[k]!=null&&vals[k]<refv){html+=row(ref,refv,top);inserted=true}html+=row(k,vals[k],top)});if(!inserted)html+=row(ref,refv,top)}
+ else{html=row(ref,refv,top);sord.forEach(function(k){html+=row(k,vals[k],top)})}
  $("rank").innerHTML=html;$("rtitle").textContent=D.divisioni[c]+" · "+lab(D.mesi[i]);
  $("rank").querySelectorAll("li").forEach(function(li){li.addEventListener("click",function(){var k=li.getAttribute("data-c");if(k!==ref)select(k)})});
  var yb=document.querySelector('#mis [data-m=yoy]'),ab=document.querySelector('#mis [data-m=acc]'),mb=document.querySelector('#mis [data-m=mom]');
  yb.textContent=isFid(c)?"Livello":"Su base annua";ab.textContent=isFid(c)?"Variazione 3 mesi":"Accelerazione";mb.style.display=(M==="eu"||isFid(c))?"none":"";
- detail(vals,refv);lead(vals,refv,order);
+ detail(vals,refv);lead(vals,refv,order);drawView(vals,sord);
 }
 function row(k,v,top){var w=v==null?0:Math.max(2,Math.abs(v)/top*100),isRef=k===MODES[M].ref;return'<li data-c="'+k+'" class="'+(isRef?"ita":"")+(k===state.sel?" sel":"")+'"><span>'+D.aree[k]+'</span><span class="bar"><span style="width:'+w+'%;'+(v!=null&&v<0?"background:var(--vol)":"")+'"></span></span><span class="v">'+fmt(v,state.mis!=="yoy")+'</span></li>'}
 function select(k){state.sel=(state.sel===k?null:k);render()}
@@ -153,15 +191,80 @@ function detail(vals,refv){var ref=MODES[M].ref,k=state.sel||ref,c=state.cat,m=s
  var lo=Math.min.apply(0,pts.map(function(p){return p[1]})),hi=Math.max.apply(0,pts.map(function(p){return p[1]})),n=ser.length-1||1;
  var sp=pts.map(function(p,j){return(j?"L":"M")+(p[0]/n*300).toFixed(1)+","+(46-(hi>lo?(p[1]-lo)/(hi-lo)*40:20)).toFixed(1)}).join("");
  var last=pts[pts.length-1],su=isFid(c)?"":"%";
- $("detail").innerHTML='<h2>'+D.aree[k]+'</h2><div class="big">'+fmt(v,m!=="yoy")+unitOf(c,m)+'</div><div class="sub">'+D.divisioni[c]+" · "+mname(c,m)+" · "+lab(D.mesi[i])+'</div>'+
+ var dh='<h2>'+D.aree[k]+'</h2><div class="big">'+fmt(v,m!=="yoy")+unitOf(c,m)+'</div><div class="sub">'+D.divisioni[c]+" · "+mname(c,m)+" · "+lab(D.mesi[i])+'</div>'+
   (gap!=null?'<div class="sub">'+(gap>=0?"+":"-")+fmt(Math.abs(gap))+' pt rispetto '+MODES[M].refTxt+'</div>':'')+
-  '<svg class="spark" viewBox="0 0 300 52" preserveAspectRatio="none" aria-label="Andamento nel tempo"><path d="'+sp+'" fill="none" stroke="var(--val)" stroke-width="2" vector-effect="non-scaling-stroke"/>'+(last?'<circle cx="'+(last[0]/n*300).toFixed(1)+'" cy="'+(46-(hi>lo?(last[1]-lo)/(hi-lo)*40:20)).toFixed(1)+'" r="3.2" fill="var(--val)"/>':'')+'</svg><div class="sub">'+(isFid(c)?"Saldo":"Variazione annua")+', da '+lab(D.mesi[0])+': min '+fmt(lo)+su+' · max '+fmt(hi)+su+'</div>'}
+  '<svg class="spark" viewBox="0 0 300 52" preserveAspectRatio="none" aria-label="Andamento nel tempo"><path d="'+sp+'" fill="none" stroke="var(--val)" stroke-width="2" vector-effect="non-scaling-stroke"/>'+(last?'<circle cx="'+(last[0]/n*300).toFixed(1)+'" cy="'+(46-(hi>lo?(last[1]-lo)/(hi-lo)*40:20)).toFixed(1)+'" r="3.2" fill="var(--val)"/>':'')+'</svg><div class="sub">'+(isFid(c)?"Saldo":"Variazione annua")+', da '+lab(D.mesi[0])+': min '+fmt(lo)+su+' · max '+fmt(hi)+su+'</div>';document.querySelectorAll(".detail").forEach(function(e){e.innerHTML=dh})}
 function lead(vals,refv,order){var c=state.cat,m=state.mis,a=order.filter(function(k){return vals[k]!=null});if(!a.length||refv==null){$("lead").textContent="";return}
  var hi=a[0],lo=a[a.length-1],sp=(vals[hi]-vals[lo]),w=MODES[M].where,nm=D.divisioni[c].toLowerCase(),what;
  if(c==="FID")what=m==="yoy"?"il saldo di fiducia dei consumatori è a <b>"+fmt(refv)+"</b>":"il saldo di fiducia è cambiato di <b>"+fmt(refv,1)+" pt</b> negli ultimi tre mesi";
  else if(c==="VEN")what=m==="yoy"?"le vendite al dettaglio in volume sono variate del <b>"+fmt(refv,1)+"%</b> sull'anno":"la variazione annua delle vendite è cambiata di <b>"+fmt(refv,1)+" pt</b> rispetto a tre mesi prima";
  else what=m==="yoy"?"i prezzi sono saliti del <b>"+fmt(refv)+"%</b> sull'anno":m==="mom"?"i prezzi sono variati del <b>"+fmt(refv,1)+"%</b> sul mese":"la variazione annua è cambiata di <b>"+fmt(refv,1)+" pt</b> rispetto a tre mesi prima";
  $("lead").innerHTML="A "+lab(D.mesi[state.i])+", per «"+nm+"» "+w+" "+what+". Il valore più alto è in <b>"+D.aree[hi]+"</b> ("+fmt(vals[hi],m!=="yoy")+"), il più basso in <b>"+D.aree[lo]+"</b> ("+fmt(vals[lo],m!=="yoy")+"): scarto di "+fmt(sp)+" punti."}
+
+var SIG={ITC1:"PIE",ITC2:"VDA",ITC3:"LIG",ITC4:"LOM",ITDA:"TAA",ITD3:"VEN",ITD4:"FVG",ITD5:"EMR",ITE1:"TOS",ITE2:"UMB",ITE3:"MAR",ITE4:"LAZ",ITF1:"ABR",ITF2:"MOL",ITF3:"CAM",ITF4:"PUG",ITF5:"BAS",ITF6:"CAL",ITG1:"SIC",ITG2:"SAR",IT:"ITA",EL:"GR",EU27_2020:"UE27"};
+var SHORT={"00":"Totale","01":"Alimentari","02":"Alcol e tabacco","03":"Abbigliamento","04":"Casa ed energia","05":"Mobili","06":"Salute","07":"Trasporti","08":"Comunicazione","09":"Tempo libero","10":"Istruzione","11":"Ristorazione","12":"Assicurazioni","13":"Cura persona",VEN:"Vendite dettaglio",FID:"Fiducia"};
+var NS="http://www.w3.org/2000/svg";
+function sig(k){return SIG[k]||k}
+function sortCodes(vals){var cs=codes().slice(),s=state.sort,i=state.i,c=state.cat;
+ if(s==="az")return cs.sort(function(a,b){return D.aree[a].localeCompare(D.aree[b],"it")});
+ var useAcc=(s==="acc"||s==="dec"),dir=(s==="asc"||s==="dec")?1:-1,key=function(k){return useAcc?val(k,c,"acc",i):vals[k]};
+ return cs.sort(function(a,b){var x=key(a),y=key(b);if(x==null&&y==null)return 0;if(x==null)return 1;if(y==null)return-1;return dir*(x-y)})}
+function lum(rgb){var a=rgb.match(/\d+/g).map(Number);return(0.299*a[0]+0.587*a[1]+0.114*a[2])/255}
+function ticks(mn,mx,n){var span=mx-mn,st=Math.pow(10,Math.floor(Math.log10(span/n))),r=span/n/st;st*=r>5?10:r>2?5:r>1?2:1;var t=[];for(var v=Math.ceil(mn/st)*st;v<=mx+1e-9;v+=st)t.push(Math.round(v*100)/100);return t}
+function drawView(vals,sord){var v=state.view;
+ ["map","dots","mx","sc"].forEach(function(x){$("v-"+x).classList.toggle("vh",x!==v)});
+ $("sortf").style.display=v==="sc"?"none":"";
+ if(v==="dots")drawDots(sord);else if(v==="mx")drawMatrix(sord);else if(v==="sc")drawScatter(vals)}
+function drawDots(sord){var c=state.cat,m=state.mis,i=state.i,bm=m==="mom"?"mom":"yoy",ref=MODES[M].ref,list=[ref].concat(sord),su=isFid(c)?"":"%";
+ var pts=list.map(function(k){return{k:k,a:val(k,c,bm,i-3),b:val(k,c,bm,i)}}),all=[];
+ pts.forEach(function(p){if(p.a!=null)all.push(p.a);if(p.b!=null)all.push(p.b)});
+ var mn=Math.min.apply(0,all),mx=Math.max.apply(0,all),pad=(mx-mn)*.06||1;mn-=pad;mx+=pad;
+ var W=640,L=116,R=44,rh=22,T=26,H=pts.length*rh+T+8,x=function(v){return L+(v-mn)/(mx-mn)*(W-L-R)},h="";
+ ticks(mn,mx,5).forEach(function(t){h+='<line class="g" x1="'+x(t)+'" x2="'+x(t)+'" y1="'+(T-6)+'" y2="'+(H-6)+'"/><text x="'+x(t)+'" y="12" text-anchor="middle">'+fmt(t)+'</text>'});
+ var rv=pts[0].b;if(rv!=null)h+='<line x1="'+x(rv)+'" x2="'+x(rv)+'" y1="'+(T-6)+'" y2="'+(H-6)+'" stroke="var(--ink)" stroke-dasharray="4 3" opacity=".55"/>';
+ pts.forEach(function(p,j){var y=T+j*rh+rh/2,isRef=p.k===ref,sel=p.k===state.sel;
+  h+='<g class="row" data-c="'+p.k+'"><rect class="hit" x="0" y="'+(y-rh/2)+'" width="'+W+'" height="'+rh+'" fill="'+(sel?"var(--rule)":"transparent")+'" opacity="'+(sel?.55:1)+'"/>'+
+  '<text class="'+(sel||isRef?"b":"l")+'" x="'+(L-8)+'" y="'+(y+4)+'" text-anchor="end"'+(isRef?' font-style="italic"':'')+'>'+D.aree[p.k]+'</text>';
+  if(p.a!=null&&p.b!=null)h+='<line x1="'+x(p.a)+'" x2="'+x(p.b)+'" y1="'+y+'" y2="'+y+'" stroke="'+(p.b>=p.a?"var(--val)":"var(--vol)")+'" stroke-width="3" stroke-linecap="round" opacity=".55"/>';
+  if(p.a!=null)h+='<circle cx="'+x(p.a)+'" cy="'+y+'" r="4" fill="var(--panel)" stroke="var(--muted)" stroke-width="1.6"/>';
+  if(p.b!=null)h+='<circle cx="'+x(p.b)+'" cy="'+y+'" r="5" fill="'+(p.b>=(p.a==null?p.b:p.a)?"var(--val)":"var(--vol)")+'"/><text x="'+(Math.max(p.a==null?p.b:p.a,p.b)>=p.b?x(Math.max(p.a==null?p.b:p.a,p.b))+9:x(p.b)+9)+'" y="'+(y+4)+'" class="'+(sel?"b":"")+'">'+fmt(p.b)+su+'</text>';
+  else h+='<text x="'+(L+4)+'" y="'+(y+4)+'">n.d.</text>';
+  h+='</g>'});
+ $("dots").setAttribute("viewBox","0 0 "+W+" "+H);$("dots").innerHTML=h;
+ $("dtitle").textContent=D.divisioni[c]+" · "+(bm==="mom"?"variazione sul mese":isFid(c)?"saldo":"variazione annua")+" · "+lab(D.mesi[i-3])+" → "+lab(D.mesi[i])}
+function drawMatrix(sord){var m=state.mis,i=state.i,ref=MODES[M].ref,cats=Object.keys(D.divisioni).sort(),rows=[ref].concat(sord),cols={};
+ cats.forEach(function(c){var j=i;function has(jj){return rows.some(function(k){return val(k,c,m,jj)!=null})}while(j>3&&!has(j))j--;
+  var a=[];rows.forEach(function(k){var v=val(k,c,m,j);if(v!=null)a.push(v)});cols[c]={j:j,mn:Math.min.apply(0,a),mx:Math.max.apply(0,a)}});
+ var h='<thead><tr><th class="n">'+(M==="it"?"Regione":"Paese")+'</th>';
+ cats.forEach(function(c){h+='<th data-cat="'+c+'" class="'+(c===state.cat?"sel":"")+'" title="'+D.divisioni[c]+'">'+SHORT[c]+(cols[c].j!==i?'<small>'+lab(D.mesi[cols[c].j]).slice(0,3)+' '+D.mesi[cols[c].j].slice(2,4)+'</small>':'')+'</th>'});
+ h+='</tr></thead><tbody>';
+ rows.forEach(function(k){h+='<tr data-c="'+k+'" class="'+(k===ref?"ref":"")+(k===state.sel?" sel":"")+'"><td class="n">'+D.aree[k]+'</td>';
+  cats.forEach(function(c){var cc=cols[c],v=val(k,c,m,cc.j);
+   if(v==null){h+='<td class="v" style="color:var(--muted)">n.d.</td>';return}
+   var col=mix(cc.mx>cc.mn?(v-cc.mn)/(cc.mx-cc.mn):.5);
+   h+='<td class="v" style="background:'+col+';color:'+(lum(col)>.55?"#16242A":"#fff")+'">'+fmt(v,m!=="yoy")+'</td>'});
+  h+='</tr>'});
+ $("mx").innerHTML=h+'</tbody>'}
+function drawScatter(vals){var c=state.cat,m=state.mis,i=state.i,bm=m==="mom"?"mom":"yoy",ref=MODES[M].ref,pts=[];
+ codes().concat([ref]).forEach(function(k){var x=val(k,c,bm,i),y=val(k,c,"acc",i);if(x!=null&&y!=null)pts.push({k:k,x:x,y:y})});
+ if(pts.length<3){$("sc").innerHTML="";$("stitle").textContent="Dati insufficienti per questo indicatore";return}
+ var xs=pts.map(function(p){return p.x}),ys=pts.map(function(p){return p.y});
+ var x0=Math.min.apply(0,xs),x1=Math.max.apply(0,xs),y0=Math.min.apply(0,ys.concat([0])),y1=Math.max.apply(0,ys.concat([0])),px=(x1-x0)*.08||1,py=(y1-y0)*.1||1;x0-=px;x1+=px;y0-=py;y1+=py;
+ var W=640,H=440,L=46,R=16,T=18,B=40,X=function(v){return L+(v-x0)/(x1-x0)*(W-L-R)},Y=function(v){return H-B-(v-y0)/(y1-y0)*(H-T-B)},h="";
+ ticks(x0,x1,6).forEach(function(t){h+='<line class="g" x1="'+X(t)+'" x2="'+X(t)+'" y1="'+T+'" y2="'+(H-B)+'"/><text x="'+X(t)+'" y="'+(H-B+16)+'" text-anchor="middle">'+fmt(t)+'</text>'});
+ ticks(y0,y1,5).forEach(function(t){h+='<line class="g" x1="'+L+'" x2="'+(W-R)+'" y1="'+Y(t)+'" y2="'+Y(t)+'"/><text x="'+(L-6)+'" y="'+(Y(t)+4)+'" text-anchor="end">'+fmt(t)+'</text>'});
+ var rp=pts.filter(function(p){return p.k===ref})[0];
+ h+='<line x1="'+L+'" x2="'+(W-R)+'" y1="'+Y(0)+'" y2="'+Y(0)+'" stroke="var(--ink)" stroke-dasharray="4 3" opacity=".55"/>';
+ if(rp)h+='<line x1="'+X(rp.x)+'" x2="'+X(rp.x)+'" y1="'+T+'" y2="'+(H-B)+'" stroke="var(--ink)" stroke-dasharray="4 3" opacity=".55"/>';
+ h+='<text x="'+(W-R-4)+'" y="'+(T+12)+'" text-anchor="end">Alto e in accelerazione</text><text x="'+(L+4)+'" y="'+(T+12)+'">Basso ma in accelerazione</text><text x="'+(W-R-4)+'" y="'+(H-B-6)+'" text-anchor="end">Alto e in rallentamento</text><text x="'+(L+4)+'" y="'+(H-B-6)+'">Basso e in rallentamento</text>';
+ pts.forEach(function(p){var isRef=p.k===ref,sel=p.k===state.sel;
+  h+='<g class="row" data-c="'+p.k+'"><title>'+D.aree[p.k]+': '+fmt(p.x)+' / '+fmt(p.y,1)+'</title>'+
+  (isRef?'<rect x="'+(X(p.x)-5)+'" y="'+(Y(p.y)-5)+'" width="10" height="10" transform="rotate(45 '+X(p.x)+' '+Y(p.y)+')" fill="var(--ink)"/>':'<circle cx="'+X(p.x)+'" cy="'+Y(p.y)+'" r="'+(sel?7:5)+'" fill="var(--val)" opacity=".85" stroke="'+(sel?"var(--ink)":"var(--panel)")+'" stroke-width="'+(sel?2:1)+'"/>')+
+  '<text class="'+(sel||isRef?"b":"l")+'" x="'+(X(p.x)+8)+'" y="'+(Y(p.y)+4)+'" style="font-size:10.5px">'+sig(p.k)+'</text></g>'});
+ h+='<text x="'+((L+W-R)/2)+'" y="'+(H-6)+'" text-anchor="middle">'+(isFid(c)?"Saldo":bm==="mom"?"Variazione sul mese (%)":"Variazione annua (%)")+'</text><text transform="rotate(-90 12 '+((T+H-B)/2)+')" x="12" y="'+((T+H-B)/2)+'" text-anchor="middle">Accelerazione (pt)</text>';
+ $("sc").setAttribute("viewBox","0 0 "+W+" "+H);$("sc").innerHTML=h;
+ $("stitle").textContent=D.divisioni[c]+" · livello e accelerazione · "+lab(D.mesi[i])}
+function pickFrom(e){var el=e.target.closest&&e.target.closest("[data-c]");return el?el.getAttribute("data-c"):null}
 function fillSelects(){
  var cat=$("cat");cat.innerHTML="";Object.keys(D.divisioni).sort().forEach(function(k){var o=document.createElement("option");o.value=k;o.textContent=D.divisioni[k];cat.appendChild(o)});
  var ms=$("mese");ms.innerHTML="";for(var i=D.mesi.length-1;i>=3;i--){var o=document.createElement("option");o.value=i;o.textContent=lab(D.mesi[i]);ms.appendChild(o)}
@@ -189,6 +292,10 @@ function load(mode){
  var f=mode==="it"?["regioni"]:["europa"];
  return Promise.all([fetch("data/radar/"+f[0]+".json").then(function(r){return r.json()}),fetch("data/radar/"+f[0]+".geojson").then(function(r){return r.json()})]).then(function(r){STORE[mode]={D:mode==="it"?r[0]:euPrepare(r[0]),G:r[1]}})}
 function go(mode){load(mode).then(function(){activate(mode)}).catch(function(){$("lead").textContent="Dati non disponibili al momento."})}
+$("sort").onchange=function(){state.sort=$("sort").value;render()};
+document.querySelectorAll("#views button").forEach(function(b){b.onclick=function(){state.view=b.getAttribute("data-v");document.querySelectorAll("#views button").forEach(function(x){x.setAttribute("aria-pressed",x===b)});render()}});
+["dots","sc"].forEach(function(id){$(id).addEventListener("click",function(e){var k=pickFrom(e);if(k&&k!==MODES[M].ref)select(k)})});
+$("mx").addEventListener("click",function(e){var th=e.target.closest&&e.target.closest("th[data-cat]");if(th){state.cat=th.getAttribute("data-cat");$("cat").value=state.cat;render();return}var k=pickFrom(e);if(k&&k!==MODES[M].ref)select(k)});
 $("cat").onchange=function(){state.cat=$("cat").value;state.i=D.mesi.length-1;$("mese").value=state.i;render()};
 $("mese").onchange=function(){state.i=+$("mese").value;render()};
 document.querySelectorAll("#mis button").forEach(function(b){b.onclick=function(){state.mis=b.getAttribute("data-m");document.querySelectorAll("#mis button").forEach(function(x){x.setAttribute("aria-pressed",x===b)});render()}});
