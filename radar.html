@@ -269,7 +269,7 @@ function activate(mode){
  document.querySelectorAll(".modes button").forEach(function(b){b.setAttribute("aria-pressed",b.getAttribute("data-mode")===mode)});
  $("h1").textContent=MODES[mode].h1;document.title=MODES[mode].h1+" · strategica21";
  $("note").innerHTML=NOTES[mode].replace("{ult}",lab(D.ultimo_periodo||D.mesi[D.mesi.length-1]));
- fillSelects();drawMap();render();
+ state.expand=false;fillSelects();drawMap();render();
  try{history.replaceState(null,"",mode==="eu"?"#europa":location.pathname+location.search)}catch(e){}}
 function euPrepare(raw){
  var dati={},div=Object.assign({},raw.divisioni,{VEN:"Vendite al dettaglio (volume)",FID:"Fiducia dei consumatori (saldo)"}),n=raw.mesi.length,nul=function(){return new Array(n).fill(null)};
