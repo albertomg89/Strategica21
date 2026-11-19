@@ -146,7 +146,6 @@ def yoy(d):
 nomi = {g: PAESI[g][0] for g in PAESI}
 nomi.update(AGGR)
 res = {
-    "aggiornato": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
     "fonte": "Eurostat (prc_hicp_minr, sts_trtu_m, ei_bsco_m)",
     "mesi": mesi,
     "paesi": nomi,
@@ -166,6 +165,8 @@ if ultimo_prezzi:
 
 # ---- 4. Geometrie dei Paesi (Natural Earth 50m, ritagliate sull'Europa) ----
 try:
+    if os.path.exists(f"{OUT}/europa.geojson") and not os.environ.get("FORCE_GEO"):
+        raise StopIteration
     from shapely.geometry import shape, box, mapping
     URL = "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_50m_admin_0_countries.geojson"
     gj = requests.get(URL, timeout=180).json()
@@ -191,6 +192,8 @@ try:
     json.dump({"type": "FeatureCollection", "features": feats}, open(f"{OUT}/europa.geojson", "w"), separators=(",", ":"))
     print("europa.geojson", os.path.getsize(f"{OUT}/europa.geojson"), "bytes;", len(feats), "paesi su", len(PAESI))
     report["geojson"] = {"paesi": len(feats), "mancanti": sorted(set(PAESI) - {x["properties"]["code"] for x in feats})}
+except StopIteration:
+    print("geometrie già presenti: salto")
 except Exception as e:
     print("ERRORE geometrie", repr(e)); report["geojson"] = {"errore": repr(e)}
 

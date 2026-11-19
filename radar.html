@@ -72,22 +72,11 @@ svg.chart .g{stroke:var(--rule);stroke-width:1}
 svg.chart .row{cursor:pointer}
 svg.chart .row:hover rect.hit{fill:var(--rule);opacity:.35}
 .vh{display:none}
-.grid[data-l=a] .mapcol{position:sticky;top:12px}
-.grid[data-l=b]{align-items:stretch}
-.grid[data-l=b] .stack{height:0;min-height:100%;display:flex;flex-direction:column;gap:16px}
-.grid[data-l=b] .stack>*+*{margin-top:0}
-.grid[data-l=b] .stack>.card:last-child{flex:1;min-height:0;overflow:auto}
 .grid[data-l=d]{align-items:stretch}
 .grid[data-l=d] .mapcol{display:flex;flex-direction:column}
 .grid[data-l=d] .mapcol svg{margin:auto 0}
-.grid[data-l=c] .stack{display:contents}
-.grid[data-l=c] .stack>.card:last-child{grid-column:1/-1}
-.grid[data-l=c] .rank{column-count:3;column-gap:28px}
-.grid[data-l=c] .rank li{break-inside:avoid}
 .rank li.gap{cursor:default;display:block;text-align:center;color:var(--muted);padding:2px 0;line-height:1;letter-spacing:.3em}
 .rank li.more{display:block;text-align:center;color:var(--val);font-weight:600;font-size:13px;padding:9px 0 3px;border-bottom:0}
-@media(max-width:760px){.grid[data-l=a] .mapcol{position:static}.grid[data-l=b] .stack{height:auto;min-height:0}.grid[data-l=b] .stack>.card:last-child{overflow:visible}.grid[data-l=c] .stack{display:block}.grid[data-l=c] .stack>*+*{margin-top:16px}.grid[data-l=c] .rank{column-count:1}}
-@media(min-width:761px) and (max-width:980px){.grid[data-l=c] .rank{column-count:2}}
 .hint{color:var(--muted);font-size:12px;margin:8px 2px 0}
 .below{margin-top:16px}
 </style>
@@ -111,11 +100,6 @@ svg.chart .row:hover rect.hit{fill:var(--rule);opacity:.35}
         <button data-v="mx" aria-pressed="false">Matrice</button>
         <button data-v="sc" aria-pressed="false">Dispersione</button>
       </div></div>
-    <div class="field"><label for="lay">Layout (prova)</label><select id="lay">
-      <option value="a">A · Mappa fissa mentre scorri</option>
-      <option value="b">B · Classifica scorrevole, altezza = mappa</option>
-      <option value="c">C · Classifica sotto, su 3 colonne</option>
-      <option value="d" selected>D · Estremi (top e bottom 5)</option></select></div>
     <div class="field" id="sortf"><label for="sort">Ordina per</label><select id="sort">
       <option value="desc">Valore, dal più alto</option>
       <option value="asc">Valore, dal più basso</option>
@@ -301,7 +285,6 @@ function load(mode){
  var f=mode==="it"?["regioni"]:["europa"];
  return Promise.all([fetch("data/radar/"+f[0]+".json").then(function(r){return r.json()}),fetch("data/radar/"+f[0]+".geojson").then(function(r){return r.json()})]).then(function(r){STORE[mode]={D:mode==="it"?r[0]:euPrepare(r[0]),G:r[1]}})}
 function go(mode){load(mode).then(function(){activate(mode)}).catch(function(){$("lead").textContent="Dati non disponibili al momento."})}
-$("lay").onchange=function(){state.lay=$("lay").value;state.expand=false;$("v-map").setAttribute("data-l",state.lay);render()};
 $("sort").onchange=function(){state.sort=$("sort").value;render()};
 document.querySelectorAll("#views button").forEach(function(b){b.onclick=function(){state.view=b.getAttribute("data-v");document.querySelectorAll("#views button").forEach(function(x){x.setAttribute("aria-pressed",x===b)});render()}});
 $("sc").addEventListener("click",function(e){var k=pickFrom(e);if(k&&k!==MODES[M].ref)select(k)});

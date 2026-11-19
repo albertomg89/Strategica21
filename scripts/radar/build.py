@@ -79,7 +79,6 @@ for a in AREE:
 print("serie ultime mancanti:", len(missing), missing[:20])
 
 out = {
-    "aggiornato": datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds"),
     "ultimo_periodo": last, "mesi": months,
     "fonte": "ISTAT, indici dei prezzi al consumo per l'intera collettività (NIC), ECOICOP v2",
     "divisioni": DIVISIONI, "aree": AREE, "dati": data,
@@ -93,6 +92,8 @@ print("indice generale yoy per regione:", yy)
 
 # ---- 2. geometria delle regioni (semplificata) ----
 try:
+    if os.path.exists(f"{OUT}/regioni.geojson") and not os.environ.get("FORCE_GEO"):
+        raise StopIteration
     from shapely.geometry import shape, mapping
     g = S.get("https://raw.githubusercontent.com/openpolis/geojson-italy/master/geojson/limits_IT_regions.geojson", timeout=120)
     g.raise_for_status()
@@ -114,5 +115,7 @@ try:
     print("regioni in geojson:", len(feats), "di", len(REGIONI))
     json.dump({"type": "FeatureCollection", "features": feats}, open(f"{OUT}/regioni.geojson", "w"), separators=(",", ":"))
     print("regioni.geojson", os.path.getsize(f"{OUT}/regioni.geojson"), "byte")
+except StopIteration:
+    print("geometrie già presenti: salto")
 except Exception as e:
     print("GEOMETRIA KO:", repr(e))
